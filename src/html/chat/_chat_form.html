@@ -1,0 +1,26 @@
+<div class="chat-messages" data-chat="4">
+  @include('./_chat_message-consul.html',
+  {
+  'text':
+  "Стоимость <span class='total-car'>LADA GRANTA</span> - <span class='total-price'>от 5 155 000 руб.</span>"
+  })
+
+  <div class="chat__message-block">
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+    <p class="chat__message chat__message-consultant msg-show">
+      Данное авто участвует в акции “Выгодный июнь”. Для получения подробной информации о дополнительных скидках и
+      подарках (Регистратор, Резина или Страховой полис)
+    </p>
+  </div>
+
+  @include('./_chat_message-consul.html',
+  {
+  'text':
+  "Оставьте Ваш номер телефона"
+  })
+
+  @include('./_form_discount.html')
+
+</div>

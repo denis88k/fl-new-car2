@@ -1,0 +1,11 @@
+**/App.tsx
+.prettierrc
+package.json
+/.git
+/.vscode
+/dist
+*.scss
+*.css
+/.next
+/node_modules
+/build

@@ -1,0 +1,97 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	@media screen and (max-width: 750px) {
+		min-width: 345px;
+	}
+	@media screen and (max-width: 355px) {
+		min-width: 290px;
+	}
+
+	&__item {
+		position: relative;
+
+		& .just-validate-error-label {
+			position: absolute;
+			left: 235px;
+			top: 50%;
+			font-size: 18px;
+			transform: translateY(-50%);
+		}
+	}
+
+	& .input__tel {
+		position: relative;
+
+		& ~ .input__tel-text {
+			position: absolute;
+			left: 26px;
+			top: -9px;
+			padding: 0 6px;
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 135%;
+			color: var(--text-grey);
+			background-color: var(--white);
+		}
+	}
+
+	&__input {
+		border: 2px solid var(--border-color);
+		border-radius: 15px;
+		padding: 20px 0 20px 45px;
+		width: 100%;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 135%;
+		color: var(--text-black);
+
+		&:focus {
+			border-color: var(--text-black);
+		}
+
+		&.just-validate-error-field {
+			border-color: #b81111;
+
+			&::placeholder {
+				color: #b81111;
+			}
+
+			~ .input__tel-text {
+				color: #b81111;
+			}
+		}
+
+		&.just-validate-success-field {
+			border-color: #2ccd59;
+
+			~ .input__tel-text {
+				color: #2ccd59;
+			}
+		}
+	}
+
+	&__item-btn {
+		border-radius: 15px;
+		padding-top: 22px;
+		padding-bottom: 22px;
+		@include adaptiv-value(font-size, 20, 18, 1);
+		font-weight: 500;
+		line-height: 100%;
+		text-align: center;
+		color: var(--white);
+		background-color: var(--primary-color);
+		transition: all 0.3s ease;
+		cursor: pointer;
+
+		&::after {
+			background-image: url('./../img/arrow_right_white.svg');
+			transform: translate(200%, 50%);
+		}
+
+		// &:hover {
+		// 	background-color: #309bff;
+		// }
+	}
+}

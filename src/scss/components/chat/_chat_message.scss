@@ -1,0 +1,137 @@
+.msg-blocks-choice {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.chat {
+  &__message {
+    @include adaptiv-value(padding-top, 25, 20, 1);
+    @include adaptiv-value(padding-bottom, 25, 20, 1);
+    @include adaptiv-value(padding-left, 40, 20, 1);
+    @include adaptiv-value(padding-right, 40, 20, 1);
+  }
+
+  &-messages {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+  }
+
+  &__message-block {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s linear;
+  }
+
+  &__message-consultant {
+    position: absolute;
+    align-self: flex-start;
+    border-radius: 0 50px 50px;
+    box-shadow: 0 4px 13px rgb(0 0 0 / 7%);
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 135%;
+    color: #31333e;
+    background-color: white;
+    opacity: 0;
+    visibility: hidden;
+    @include adaptiv-value(margin-bottom, 20, 15, 1);
+    transition: all 0.3s ease;
+  }
+
+  &__message-client {
+    position: absolute;
+    align-self: flex-end;
+    @include adaptiv-value(margin-top, 30, 20, 1);
+    @include adaptiv-value(margin-bottom, 20, 15, 1);
+    border-radius: 50px 0 50px 50px;
+    @include adaptiv-value(font-size, 20, 18, 1);
+    font-weight: 400;
+    line-height: 135%;
+    color: white;
+    background-color: #343434;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &__message-print {
+    position: absolute;
+    align-self: flex-start;
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 18px;
+    color: #7c7c7c;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    & .message-print {
+      clip-path: inset(0 18px 0 0);
+      animation-name: anim_print;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-iteration-count: infinite;
+    }
+
+    // отображение элемента
+    &.msg-print-show {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      animation: anim_show_message 0.2s ease forwards;
+    }
+  }
+}
+
+// показывает сообщение от консультанта
+.msg-show {
+  position: static;
+  opacity: 1;
+  visibility: visible;
+  animation-name: anim_show_message;
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+// показывает сообщение от клиента
+.msg-show-client {
+  position: static;
+  opacity: 1;
+  visibility: visible;
+  animation-name: anim_show_message-client;
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes anim_print {
+  to {
+    clip-path: inset(0 -10px 0 0);
+  }
+}
+
+@keyframes anim_show_message {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes anim_show_message-client {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

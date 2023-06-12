@@ -1,0 +1,64 @@
+// Подключение шрифта
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face {
+    src: url('../fonts/#{$file_name}.woff2') format('woff2'), url('../fonts/#{$file_name}.woff') format('woff');
+    font-family: $font_name;
+    font-weight: #{$weight};
+    font-style: #{$style};
+    font-display: swap;
+  }
+}
+
+// Адаптивное свойство
+@mixin adaptiv-value($property, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+
+  @if $type ==1 {
+    // Только если меньше контейнера
+
+    #{$property}: $startSize + px;
+
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidthContainer - 320}));
+    }
+  } @else if $type ==2 {
+    // Только если больше контейнера
+
+    #{$property}: $startSize + px;
+
+    @media (min-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+    }
+  } @else {
+    // Всегда
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+  }
+}
+
+// Адаптивное свойство внутри определённого диапазона с ""maxWidthCont" до "minWidthCont"
+// @include adaptiv-value-in-min(margin-top, 110, 50, 1150, 560);
+@mixin adaptiv-value-in-min($property, $startSize, $minSize, $maxWidthCont, $minWidthCont) {
+  $addSize: $startSize - $minSize;
+  #{$property}: $startSize + px;
+
+  @media (max-width: #{$maxWidthCont + px}) {
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidthCont+ px}) / #{$maxWidthCont - $minWidthCont}));
+  }
+}
+
+// Адаптивное свойство с контейнера до "определённой минимальной ширины"
+// @include adaptiv-value-to(margin-top, 90, 50, 320);
+@mixin adaptiv-value-to($property, $startSize, $minSize, $minWidth) {
+  $addSize: $startSize - $minSize;
+  #{$property}: $minSize + px;
+
+  @media (min-width: #{$minWidth + px}) {
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / (#{$maxWidth - $minWidth})));
+  }
+}
+
+// @include maxwidth(855);
+@mixin maxwidth($MW) {
+  width: 100%;
+  max-width: #{$MW}px;
+}

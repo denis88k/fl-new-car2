@@ -1,0 +1,38 @@
+.chat {
+	&__form-inner {
+		display: flex;
+		column-gap: 30px;
+		justify-content: space-between;
+		margin-top: 40px;
+
+		@media screen and (max-width: 750px) {
+			flex-direction: column;
+			align-items: center;
+			row-gap: 25px;
+		}
+	}
+
+	&__form-block {
+		flex: 1 1 50%;
+		@media screen and (max-width: 750px) {
+			flex: 1 1 100%;
+
+			&:nth-child(1) {
+				max-width: 375px;
+			}
+		}
+
+		.just-validate-error-label {
+			left: 26px;
+			top: -30px;
+			font-size: 18px;
+			transform: translateY(0);
+		}
+
+		.form__item:nth-child(2) {
+			.just-validate-error-label {
+				top: -20px;
+			}
+		}
+	}
+}

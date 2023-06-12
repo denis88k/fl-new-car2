@@ -1,0 +1,56 @@
+.discount {
+	display: flex;
+	flex-direction: column;
+	border-radius: 15px;
+	height: 100%;
+	background-color: rgba(246, 247, 248, 0.5);
+
+	&__price {
+		border-radius: 15px 15px 0 0;
+		padding: 16px 0 12px;
+		font-weight: 700;
+		font-size: 31px;
+		line-height: 125%;
+		text-align: center;
+		color: var(--primary-color);
+		background-color: var(--red-light);
+	}
+
+	&__promocode {
+		padding: 17px 0 12px;
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 135%;
+		color: var(--text-black);
+
+		span {
+			color: var(--primary-color);
+		}
+	}
+
+	&__text {
+		$padding: 54px;
+		border-top: 1px solid rgba(228, 228, 228, 0.7);
+		padding-top: 13px;
+
+		// @include adaptiv-value(padding-bottom, 30, 20, 1);
+		padding-right: $padding;
+		padding-left: $padding;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 135%;
+		color: #838383;
+		@media screen and (max-width: 750px) {
+			$padding: 25px;
+			padding-right: $padding;
+			padding-bottom: 20px;
+			padding-left: $padding;
+		}
+	}
+
+	&__price,
+	&__promocode,
+	&__text {
+		text-align: center;
+	}
+}

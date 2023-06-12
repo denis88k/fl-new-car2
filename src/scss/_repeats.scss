@@ -1,0 +1,82 @@
+.promo {
+	&-title {
+		font-weight: 700;
+		font-style: normal;
+		font-size: 25px;
+		line-height: 115%;
+		color: var(--text-black);
+	}
+
+	&-btn {
+		display: flex;
+		align-items: center;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 18px;
+		line-height: 100%;
+		color: var(--primary-color);
+		cursor: pointer;
+
+		&::after {
+			right: -15px;
+			top: 4px;
+			background-image: url('./../img/arrow_right_red.svg');
+			transition: all 0.2s linear;
+		}
+
+		&:hover::after {
+			right: -20px;
+		}
+	}
+}
+
+.arrow-right {
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 6.79px;
+		height: 11px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.promo {
+		&-title {
+			font-size: 22px;
+		}
+	}
+}
+
+.show_anim {
+	animation-name: show_anim;
+	animation-duration: 0.7s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
+}
+
+@keyframes show_anim {
+	0% {
+		opacity: 0.5;
+		transform: translateY(300px) scale(0.9);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes show_modal {
+	0% {
+		transform: translateY(300px) scale(0.9);
+	}
+
+	100% {
+		transform: translateY(0) scale(1);
+	}
+}

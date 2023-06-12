@@ -1,0 +1,117 @@
+.consultant {
+  &_sticky {
+    position: absolute;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 13px rgb(0 0 0 / 7%);
+    background-color: white;
+    transform: translateY(-100%);
+    transition: all 0.3s linear;
+    @include adaptiv-value(border-bottom-left-radius, 99, 40, 1);
+    @include adaptiv-value(border-bottom-right-radius, 99, 40, 1);
+
+    &.show {
+      position: fixed;
+      transform: translateY(0);
+    }
+  }
+
+  &_container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 25px;
+    max-width: 940px;
+
+    @include adaptiv-value(padding-right, 25, 15, 1);
+    @include adaptiv-value(padding-right, 0, 25, 1);
+  }
+
+  &_sticky-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  &_sticky-block {
+    display: flex;
+    align-items: center;
+  }
+
+  &_sticky-img {
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    @include adaptiv-value(width, 75, 38, 1);
+    @include adaptiv-value(height, 75, 38, 1);
+    @include adaptiv-value(margin-right, 25, 10, 1);
+  }
+
+  &_sticky-name {
+    @include adaptiv-value(margin-bottom, 5, 0, 1);
+    @include adaptiv-value(font-size, 20, 16, 1);
+    font-weight: 700;
+    line-height: 125%;
+    color: #31333e;
+  }
+
+  &_sticky-position {
+    font-weight: 400;
+    @include adaptiv-value(font-size, 15, 14, 1);
+    line-height: 135%;
+    color: #8d8d8d;
+
+    &.mobil {
+      display: none;
+    }
+    @media screen and (max-width: 750px) {
+      &.deskt {
+        display: none;
+      }
+
+      &.mobil {
+        display: block;
+      }
+    }
+  }
+
+  &_sticky__tel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 10px 30px;
+    background-color: #f6f7f8;
+    cursor: pointer;
+
+    @media screen and (max-width: 500px) {
+      width: 63px;
+      height: 43px;
+      background-color: #e2f1ff;
+    }
+  }
+
+  &_sticky__tel-link {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 125%;
+    color: #0085ff;
+
+    & .tel-link-mob {
+      display: none;
+    }
+    @media screen and (max-width: 500px) {
+      & .tel-link-desk {
+        display: none;
+      }
+
+      & .tel-link-mob {
+        display: block;
+        width: 24.75px;
+        height: 24.75px;
+      }
+    }
+  }
+}

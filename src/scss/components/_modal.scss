@@ -1,0 +1,159 @@
+.modal {
+  z-index: -100;
+  display: none;
+  transition: all 0.3s ease;
+  inset: 0;
+
+  &__inner {
+    @include maxwidth(612);
+    @include adaptiv-value(padding-top, 45, 25, 1);
+    @include adaptiv-value(padding-bottom, 50, 14, 1);
+    @include adaptiv-value(padding-left, 30, 15, 1);
+    @include adaptiv-value(padding-right, 30, 15, 1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    @include adaptiv-value(border-radius, 50, 20, 1);
+    box-shadow: 0 6px 22px rgb(255 255 255 / 37%), 0 -5px 0 #0084ff;
+    background-color: white;
+  }
+
+  &__close {
+    position: absolute;
+    right: -52px;
+    top: 5px;
+    cursor: pointer;
+    @include adaptiv-value(width, 40, 35, 1);
+    @include adaptiv-value(height, 40, 35, 1);
+    @media screen and (max-width: 730px) {
+      right: 15px;
+      top: -53px;
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    @include adaptiv-value(font-size, 43, 28, 1);
+    line-height: 105%;
+    text-align: center;
+    color: #31333e;
+    @media screen and (max-width: 750px) {
+      font-weight: 700;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 12px;
+    margin-bottom: 40px;
+    @include adaptiv-value(font-size, 20, 17, 1);
+    font-weight: 400;
+    line-height: 135%;
+    text-align: center;
+    color: #90929a;
+  }
+
+  &-payment {
+    .modal__inner {
+      position: relative;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 70%;
+        display: block;
+        width: 380px;
+        height: 243px;
+        background-image: url('./../img/car.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @media screen and (max-width: 900px) {
+          display: none;
+        }
+      }
+
+      &::before {
+        left: -380px;
+        transform: translate(0, -70%);
+      }
+
+      &::after {
+        right: -380px;
+        transform: translate(0, -70%) scale(-1, 1);
+      }
+    }
+  }
+
+  &-tradIn {
+    .modal__inner {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        @include adaptiv-value(left, -95, 0, 1);
+        @include adaptiv-value(bottom, -82, -130, 1);
+        z-index: 2;
+        display: block;
+        width: 250px;
+        height: 152px;
+        background-image: url('./../img/arrow_around_left.svg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  // открытое модальное окно
+  &.active {
+    position: fixed;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: scroll;
+    background-color: rgb(0 0 0 / 30%);
+
+    // анимация для появления содержимого блока
+    & .modal__inner {
+      animation-name: show_modal;
+      animation-duration: 0.7s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+.modal-sendForm {
+  & .modal__inner {
+    @include adaptiv-value(padding-top, 45, 25, 1);
+    @include adaptiv-value(padding-bottom, 45, 25, 1);
+    @include adaptiv-value(padding-left, 45, 25, 1);
+    @include adaptiv-value(padding-right, 45, 25, 1);
+  }
+
+  & .modal__subtitle {
+    @include adaptiv-value(margin-top, 12, 8, 1);
+    margin-right: 80px;
+    margin-bottom: 0;
+    margin-left: 80px;
+    @media screen and (max-width: 1115px) {
+      margin-right: 100px;
+      margin-left: 100px;
+    }
+    @media screen and (max-width: 665px) {
+      margin-right: 110px;
+      margin-left: 110px;
+    }
+    @media screen and (max-width: 510px) {
+      margin-right: 60px;
+      margin-left: 60px;
+    }
+    @media screen and (max-width: 400px) {
+      margin-right: 30px;
+      margin-left: 30px;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+// Любая директория с файлом App.tsx
+**/App.tsx
+
+.prettierrc
+package.json
