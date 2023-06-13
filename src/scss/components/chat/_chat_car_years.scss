@@ -1,0 +1,61 @@
+.chat {
+	&__message-block-choice {
+		&_multi {
+		}
+	}
+}
+.car-years {
+	&__block {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__selects {
+		display: flex;
+	}
+
+	&__select-item {
+		flex-grow: 1;
+	}
+
+	&__input {
+	}
+
+	&__input-text {
+	}
+
+	&__select {
+	}
+
+	&__option {
+	}
+
+	&__checkbox {
+	}
+
+	&__checkbox-text {
+	}
+
+	&__checkbox-year {
+	}
+
+	&__checkbox-name {
+	}
+
+	&__checkbox-check {
+	}
+
+	&__showAll {
+	}
+
+	&__continue {
+	}
+}
+.arrow-input {
+}
+.select-from {
+}
+.clear {
+}
+.option {
+}

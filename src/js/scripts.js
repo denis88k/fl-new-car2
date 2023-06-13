@@ -91,7 +91,7 @@ const chatLogic = numberChat => {
 	});
 
 	// блок с выборами
-	const msgBlocksChoice = chat.querySelector('.msg-blocks-choice');
+	const msgBlocksChoice = chat.querySelector('.chat__message-block-choice');
 	setTimeout(() => {
 		msgBlocksChoice?.classList.add('msg-show'); // блок с выборами появляется
 

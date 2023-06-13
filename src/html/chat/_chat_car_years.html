@@ -4,36 +4,99 @@
   'text':
   'Какой год автомобиля?'
   })
-  <div class="chat__message-block-choice_multi msg-show">
-    <div class="car-years__block">
-      <div class="car-years__select">
-        <select name="Год от" class="select-multi" aria-label="Год от">
-          <option value="">Сбросить</option>
-          <option value="2020">2020</option>
-          <option value="2019">2019</option>
-          <option value="2018">2018</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-          <option value="2015">2015</option>
-          <option value="2014">2014</option>
-          <option value="2013">2013</option>
-          <option value="2012">2012</option>
-          <option value="2011">2011</option>
-        </select>
-        <select name="Год до" class="select-multi" aria-label="Год до">
-          <option value="">Сбросить</option>
-          <option value="2020">2020</option>
-          <option value="2019">2019</option>
-          <option value="2018">2018</option>
-          <option value="2017">2017</option>
-          <option value="2016">2016</option>
-          <option value="2015">2015</option>
-          <option value="2014">2014</option>
-          <option value="2013">2013</option>
-          <option value="2012">2012</option>
-          <option value="2011">2011</option>
-        </select>
-      </div>
+
+  <div class="chat__message-block">
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+    <div class="chat__message chat__message-consultant msg-show">
+
     </div>
   </div>
+
+  <div class="chat__message-block-choice_multi msg-show">
+
+    <div class="car-years__block">
+
+      <div class="car-years__selects">
+        <div class="car-years__select-item">
+          <div class="car-years__input">
+            <div class="car-years__input-text">Год от</div>
+            <svg class="arrow-input" width="12" height="8" viewBox="0 0 12 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.5 1.75L6 6.25L1.5 1.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <div class="car-years__select select-from">
+            <div class="car-years__option clear">Сбросить</div>
+            <div class="car-years__option option" data-value="2020">2020</div>
+            <div class="car-years__option option" data-value="2019">2019</div>
+            <div class="car-years__option option" data-value="2018">2018</div>
+            <div class="car-years__option option" data-value="2017">2017</div>
+            <div class="car-years__option option" data-value="2016">2016</div>
+            <div class="car-years__option option" data-value="2015">2015</div>
+            <div class="car-years__option option" data-value="2014">2014</div>
+            <div class="car-years__option option" data-value="2013">2013</div>
+            <div class="car-years__option option" data-value="2012">2012</div>
+            <div class="car-years__option option" data-value="2011">2011</div>
+          </div>
+
+        </div>
+
+        <div class="car-years__select-item">
+
+          <div class="car-years__input">
+            <div class="car-years__input-text">Год от</div>
+            <svg class="arrow-input" width="12" height="8" viewBox="0 0 12 8" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.5 1.75L6 6.25L1.5 1.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <div class="car-years__select select-from">
+            <div class="car-years__option clear">Сбросить</div>
+            <div class="car-years__option option" data-value="2020">2020</div>
+            <div class="car-years__option option" data-value="2019">2019</div>
+            <div class="car-years__option option" data-value="2018">2018</div>
+            <div class="car-years__option option" data-value="2017">2017</div>
+            <div class="car-years__option option" data-value="2016">2016</div>
+            <div class="car-years__option option" data-value="2015">2015</div>
+            <div class="car-years__option option" data-value="2014">2014</div>
+            <div class="car-years__option option" data-value="2013">2013</div>
+            <div class="car-years__option option" data-value="2012">2012</div>
+            <div class="car-years__option option" data-value="2011">2011</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="car-years__checkbox">
+        <div class="car-years__block">
+          <div class="car-years__checkbox-text" data-from="2015" data-to="2017">
+            <div class="car-years__checkbox-year">2015-2017</div>
+            <div class="car-years__checkbox-name">X</div>
+          </div>
+          <svg class="car-years__checkbox-check" width="14" height="12" viewBox="0 0 14 12" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+
+      <button class="car-years__showAll">Показать все поколения</button>
+
+      <button class="car-years__continue" type="button">Продолжить</button>
+
+    </div>
+
+  </div>
+
+  @include('./_chat_message-client.html',
+  {
+  'text':
+  '2015-2017'
+  })
+
 </div>
