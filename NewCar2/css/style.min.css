@@ -194,6 +194,28 @@ body._lock {
     transform: translateY(0) scale(1);
   }
 }
+.btn-continue {
+  border-radius: 15px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 135%;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--primary-color);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+@media (max-width: 1420px) {
+  .btn-continue {
+    padding-top: calc(18px + 2 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .btn-continue {
+    padding-bottom: calc(18px + 2 * ((100vw - 320px) / 1100));
+  }
+}
+
 .modal {
   z-index: -100;
   display: none;
@@ -1358,6 +1380,10 @@ body._lock {
     transform: translateX(0);
   }
 }
+.chat__choice-multi {
+  width: 100%;
+}
+
 .car-card__blocks {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -1440,6 +1466,163 @@ body._lock {
   color: var(--primary-color);
 }
 
+.car-years__block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.car-years__selects {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+}
+.car-years__select-item {
+  flex-grow: 1;
+}
+.car-years__input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+  padding-bottom: 24px;
+  padding-left: 25px;
+  padding-right: 38.5px;
+}
+@media (max-width: 1420px) {
+  .car-years__input {
+    padding-top: calc(21px + 4 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .car-years__input {
+    padding-bottom: calc(21px + 3 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .car-years__input {
+    padding-left: calc(15px + 10 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .car-years__input {
+    padding-right: calc(24.5px + 14 * ((100vw - 320px) / 1100));
+  }
+}
+.car-years__input .arrow-input {
+  stroke: #cdcdcd;
+}
+.car-years__select-item:nth-child(1) .car-years__input {
+  border-right: 1px solid var(--border-color);
+}
+.car-years__input-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+}
+.car-years__select {
+  display: none;
+}
+.car-years__checkbox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+@media (max-width: 1420px) {
+  .car-years__checkbox {
+    margin-top: calc(10px + 15 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .car-years__checkbox {
+    margin-bottom: calc(15px + 5 * ((100vw - 320px) / 1100));
+  }
+}
+@media screen and (max-width: 715px) {
+  .car-years__checkbox {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+.car-years__checkbox-block {
+  display: flex;
+  justify-content: space-between;
+  grid-column: 1 span;
+  border-radius: 10px;
+  padding: 15px 15px 19px 20px;
+  background-color: var(--choice-multi);
+  cursor: pointer;
+}
+.car-years__checkbox-year {
+  margin-bottom: 5px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 135%;
+  color: var(--text-black);
+}
+@media screen and (max-width: 715px) {
+  .car-years__checkbox-year {
+    font-weight: 400;
+    font-size: 18px;
+  }
+}
+.car-years__checkbox-name {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: var(--text-grey);
+}
+.car-years__checkbox-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  background: var(--white);
+}
+.car-years__checkbox-check svg {
+  opacity: 0;
+  visibility: hidden;
+}
+.car-years__checkbox-block.active {
+  background-color: var(--primary-color);
+}
+.car-years__checkbox-block.active .car-years__checkbox-year {
+  color: var(--white);
+}
+.car-years__checkbox-block.active .car-years__checkbox-name {
+  color: rgba(255, 255, 255, 0.65);
+}
+.car-years__checkbox-block.active .car-years__checkbox-check svg {
+  opacity: 1;
+  visibility: visible;
+}
+.car-years__showAll {
+  margin-bottom: 22px;
+  position: relative;
+  display: flex;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: var(--primary-color);
+  background-color: var(--white);
+}
+@media (max-width: 1420px) {
+  .car-years__showAll {
+    margin-bottom: calc(17px + 5 * ((100vw - 320px) / 1100));
+  }
+}
+.car-years__showAll .arrow-input {
+  margin-top: 5.8px;
+  margin-left: 8.5px;
+  stroke: var(--primary-color);
+}
+.car-years__showAll.active .arrow-input {
+  transform: rotate(180deg);
+}
 .chat__form-inner {
   display: flex;
   column-gap: 30px;

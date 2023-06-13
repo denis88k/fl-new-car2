@@ -1,17 +1,14 @@
-.chat {
-	&__message-block-choice {
-		&_multi {
-		}
-	}
-}
 .car-years {
 	&__block {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
 	}
 
 	&__selects {
 		display: flex;
+		border: 1px solid var(--border-color);
+		border-radius: 10px;
 	}
 
 	&__select-item {
@@ -19,43 +16,167 @@
 	}
 
 	&__input {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		@include adaptiv-value(padding-top, 25, 21, 1);
+		@include adaptiv-value(padding-bottom, 24, 21, 1);
+		@include adaptiv-value(padding-left, 25, 15, 1);
+		@include adaptiv-value(padding-right, 38.5, 24.5, 1);
+
+		.arrow-input {
+			stroke: #cdcdcd;
+		}
+	}
+
+	&__select-item:nth-child(1) .car-years__input {
+		border-right: 1px solid var(--border-color);
 	}
 
 	&__input-text {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 100%;
 	}
 
 	&__select {
+		display: none;
 	}
 
 	&__option {
 	}
 
 	&__checkbox {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+		@include adaptiv-value(margin-top, 25, 10, 1);
+		@include adaptiv-value(margin-bottom, 20, 15, 1);
+		@media screen and (max-width: 715px) {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 10px;
+		}
 	}
 
-	&__checkbox-text {
+	&__checkbox-block {
+		display: flex;
+		justify-content: space-between;
+		grid-column: 1 span;
+		border-radius: 10px;
+		padding: 15px 15px 19px 20px;
+		background-color: var(--choice-multi);
+		cursor: pointer;
 	}
+
+	// &__checkbox-text {
+	// }
 
 	&__checkbox-year {
+		margin-bottom: 5px;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 135%;
+		color: var(--text-black);
+		@media screen and (max-width: 715px) {
+			font-weight: 400;
+			font-size: 18px;
+		}
 	}
 
 	&__checkbox-name {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 100%;
+		color: var(--text-grey);
 	}
 
 	&__checkbox-check {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #e4e4e4;
+		border-radius: 5px;
+		width: 22px;
+		height: 22px;
+		background: var(--white);
+
+		svg {
+			opacity: 0;
+			visibility: hidden;
+		}
+	}
+
+	&__checkbox-block.active {
+		background-color: var(--primary-color);
+
+		.car-years__checkbox-year {
+			color: var(--white);
+		}
+
+		.car-years__checkbox-name {
+			color: rgba(255, 255, 255, 0.65);
+		}
+
+		.car-years__checkbox-check {
+			svg {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
 	}
 
 	&__showAll {
+		@include adaptiv-value(margin-bottom, 22, 17, 1);
+		position: relative;
+		display: flex;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 100%;
+		color: var(--primary-color);
+		background-color: var(--white);
+
+		& .arrow-input {
+			margin-top: 5.8px;
+			margin-left: 8.5px;
+			stroke: var(--primary-color);
+		}
+
+		&.active {
+			.arrow-input {
+				transform: rotate(180deg);
+			}
+		}
+
+		// &::after {
+		// 	content: '';
+		// 	position: absolute;
+		// 	display: inline-block;
+		// 	width: 11px;
+		// 	height: 6.79px;
+		// 	color: var(--primary-color);
+		// 	background-image: url('./../img/arrow_input.svg');
+		// 	background-position: center;
+		// 	background-size: cover;
+		// 	background-repeat: no-repeat;
+		// 	transition: 0.2s linear;
+		// }
 	}
 
 	&__continue {
 	}
 }
+
 .arrow-input {
 }
+
 .select-from {
 }
+
 .clear {
 }
+
 .option {
+}
+
+.btn-continue {
 }
