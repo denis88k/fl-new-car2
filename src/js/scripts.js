@@ -12,6 +12,26 @@ window.addEventListener('scroll', () => {
 	}
 });
 
+// =================years===============
+const yearsShowSelect = () => {
+	const selectItems = document.querySelectorAll('.car-years__select-item');
+	// console.log(selectItem, 'selectItem');
+	selectItems.forEach(select => {
+		select.onclick = () => {
+			selectItems.forEach(select => {
+				select.classList.contains('active') &&
+					(select?.classList.remove('active'), select.querySelector('.car-years__select')?.classList.remove('active'));
+			});
+			// console.log(e.target);
+			select.classList.toggle('active');
+			console.log(select);
+			select.querySelector('.car-years__select')?.classList.toggle('active');
+		};
+	});
+};
+
+yearsShowSelect();
+
 // прокрутка до определённого сообщения
 // https://learn.javascript.ru/size-and-scroll-window
 // false - elem внизу
@@ -193,4 +213,4 @@ const chatLogic = numberChat => {
 	}
 };
 
-chatLogic(numberChat);
+// chatLogic(numberChat);

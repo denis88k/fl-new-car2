@@ -7,12 +7,26 @@
 
 	&__selects {
 		display: flex;
-		border: 1px solid var(--border-color);
+
+		// border: 1px solid var(--border-color);
 		border-radius: 10px;
 	}
 
 	&__select-item {
+		position: relative;
 		flex-grow: 1;
+		border: 1px solid var(--border-color);
+		transition: all 0.2s ease;
+
+		&:hover {
+			border-color: var(--primary-color);
+		}
+
+		&.active {
+			.arrow-input {
+				transform: rotate(180deg);
+			}
+		}
 	}
 
 	&__input {
@@ -23,14 +37,27 @@
 		@include adaptiv-value(padding-bottom, 24, 21, 1);
 		@include adaptiv-value(padding-left, 25, 15, 1);
 		@include adaptiv-value(padding-right, 38.5, 24.5, 1);
+		cursor: pointer;
 
 		.arrow-input {
 			stroke: #cdcdcd;
+			transition: all 0.3s ease;
 		}
 	}
 
-	&__select-item:nth-child(1) .car-years__input {
-		border-right: 1px solid var(--border-color);
+	&__select-item:nth-child(1) {
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+
+		&:hover {
+			z-index: 10;
+		}
+	}
+
+	&__select-item:nth-child(2) {
+		margin-left: -1px;
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
 	}
 
 	&__input-text {
@@ -40,10 +67,55 @@
 	}
 
 	&__select {
-		display: none;
+		position: absolute;
+		left: -1px;
+		z-index: -10;
+		display: flex;
+		flex-direction: column;
+		margin-top: 10px;
+		border-radius: 10px;
+		padding-top: 10px;
+		box-shadow: 0 5px 13px rgba(0, 0, 0, 0.12);
+		background-color: var(--white);
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(10px);
+		transition: all 0.3s ease-in-out;
+
+		&.active {
+			z-index: 10;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
 	}
 
 	&__option {
+		padding-right: 30px;
+		padding-left: 44px;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 205%;
+		color: var(--text-black);
+		cursor: pointer;
+
+		&:hover {
+			color: var(--primary-color);
+			background-color: var(--red-light);
+		}
+
+		&.clear {
+			color: var(--text-grey);
+			background-image: url('./../img/close-icon.svg');
+			background-position: left 17px center;
+			background-size: 13px 13px;
+			background-repeat: no-repeat;
+		}
+
+		&.active {
+			color: var(--white);
+			background-color: var(--primary-color);
+		}
 	}
 
 	&__checkbox {
@@ -60,23 +132,30 @@
 
 	&__checkbox-block {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
 		grid-column: 1 span;
 		border-radius: 10px;
 		padding: 15px 15px 19px 20px;
 		background-color: var(--choice-multi);
+		transition: all 0.3s ease;
 		cursor: pointer;
+		@media screen and (max-width: 810px) {
+			padding: 12px 10px 12px 12px;
+		}
 	}
 
-	// &__checkbox-text {
-	// }
+	&__checkbox-top {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 5px;
+	}
 
 	&__checkbox-year {
-		margin-bottom: 5px;
 		font-weight: 500;
 		font-size: 20px;
 		line-height: 135%;
 		color: var(--text-black);
+		transition: all 0.3s ease;
 		@media screen and (max-width: 715px) {
 			font-weight: 400;
 			font-size: 18px;
@@ -84,10 +163,17 @@
 	}
 
 	&__checkbox-name {
+		overflow: hidden;
+		width: 157px;
 		font-weight: 400;
 		font-size: 18px;
 		line-height: 100%;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 		color: var(--text-grey);
+		@media screen and (max-width: 880px) {
+			width: 125px;
+		}
 	}
 
 	&__checkbox-check {
@@ -125,7 +211,15 @@
 		}
 	}
 
-	&__showAll {
+	&__checkbox-block:hover {
+		background-color: var(--red-light);
+
+		& .car-years__checkbox-year {
+			color: var(--primary-color);
+		}
+	}
+
+	&__show-more {
 		@include adaptiv-value(margin-bottom, 22, 17, 1);
 		position: relative;
 		display: flex;
@@ -146,20 +240,6 @@
 				transform: rotate(180deg);
 			}
 		}
-
-		// &::after {
-		// 	content: '';
-		// 	position: absolute;
-		// 	display: inline-block;
-		// 	width: 11px;
-		// 	height: 6.79px;
-		// 	color: var(--primary-color);
-		// 	background-image: url('./../img/arrow_input.svg');
-		// 	background-position: center;
-		// 	background-size: cover;
-		// 	background-repeat: no-repeat;
-		// 	transition: 0.2s linear;
-		// }
 	}
 
 	&__continue {
