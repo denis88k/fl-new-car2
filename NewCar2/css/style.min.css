@@ -1543,6 +1543,10 @@ body._lock {
 .car-years__input:hover .arrow-input {
   stroke: var(--primary-color);
 }
+.car-years__input.active {
+  z-index: 10;
+  border-color: var(--primary-color);
+}
 .car-years__input.active .car-years__input-text {
   color: var(--primary-color);
 }
@@ -1620,14 +1624,22 @@ body._lock {
   }
 }
 .car-years__checkbox-block {
+  position: absolute;
   display: flex;
   flex-direction: column;
   grid-column: 1 span;
   border-radius: 10px;
   padding: 15px 15px 19px 20px;
   background-color: var(--choice-multi);
-  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
   cursor: pointer;
+}
+.car-years__checkbox-block.isVisible {
+  position: static;
+  opacity: 1;
+  visibility: visible;
 }
 @media screen and (max-width: 810px) {
   .car-years__checkbox-block {
@@ -1700,6 +1712,9 @@ body._lock {
 .car-years__checkbox-block:hover .car-years__checkbox-year {
   color: var(--primary-color);
 }
+.car-years__checkbox-block:hover .car-years__checkbox-name {
+  color: var(--text-grey);
+}
 .car-years__show-more {
   margin-bottom: 22px;
   position: relative;
@@ -1709,6 +1724,7 @@ body._lock {
   line-height: 100%;
   color: var(--primary-color);
   background-color: var(--white);
+  cursor: pointer;
 }
 @media (max-width: 1420px) {
   .car-years__show-more {
