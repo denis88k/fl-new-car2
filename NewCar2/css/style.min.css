@@ -760,7 +760,7 @@ body._lock {
   font-size: 20px;
   font-weight: 700;
   line-height: 125%;
-  color: #31333e;
+  color: var(--text-black);
 }
 @media (max-width: 1420px) {
   .consultant_sticky-name {
@@ -776,7 +776,7 @@ body._lock {
   font-weight: 400;
   font-size: 15px;
   line-height: 135%;
-  color: #8d8d8d;
+  color: var(--text-grey);
 }
 @media (max-width: 1420px) {
   .consultant_sticky-position {
@@ -807,7 +807,7 @@ body._lock {
   .consultant_sticky__tel {
     width: 63px;
     height: 43px;
-    background-color: #e2f1ff;
+    background-color: var(--red-light);
   }
 }
 .consultant_sticky__tel-link {
@@ -815,7 +815,7 @@ body._lock {
   font-style: normal;
   font-size: 20px;
   line-height: 125%;
-  color: #0085ff;
+  color: var(--primary-color);
 }
 .consultant_sticky__tel-link .tel-link-mob {
   display: none;
@@ -828,6 +828,9 @@ body._lock {
     display: block;
     width: 24.75px;
     height: 24.75px;
+  }
+  .consultant_sticky__tel-link .tel-link-mob svg {
+    fill: var(--primary-color);
   }
 }
 
