@@ -1476,29 +1476,23 @@ body._lock {
 }
 .car-years__selects {
   display: flex;
-  border-radius: 10px;
 }
 .car-years__select-item {
   position: relative;
-  flex-grow: 1;
-  border: 1px solid var(--border-color);
-  transition: all 0.2s ease;
-}
-.car-years__select-item:hover {
-  border-color: var(--primary-color);
-}
-.car-years__select-item.active .arrow-input {
-  transform: rotate(180deg);
+  flex: 1 1 50%;
 }
 .car-years__input {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  cursor: pointer;
   padding-top: 25px;
   padding-bottom: 24px;
   padding-left: 25px;
   padding-right: 38.5px;
-  cursor: pointer;
 }
 @media (max-width: 1420px) {
   .car-years__input {
@@ -1524,14 +1518,11 @@ body._lock {
   stroke: #cdcdcd;
   transition: all 0.3s ease;
 }
-.car-years__select-item:nth-child(1) {
+.car-years__select-item:nth-child(1) .car-years__input {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.car-years__select-item:nth-child(1):hover {
-  z-index: 10;
-}
-.car-years__select-item:nth-child(2) {
+.car-years__select-item:nth-child(2) .car-years__input {
   margin-left: -1px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -1540,6 +1531,24 @@ body._lock {
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
+  transition: all 0.2s ease;
+}
+.car-years__input:hover {
+  z-index: 10;
+  border-color: var(--primary-color);
+}
+.car-years__input:hover .car-years__input-text {
+  color: var(--primary-color);
+}
+.car-years__input:hover .arrow-input {
+  stroke: var(--primary-color);
+}
+.car-years__input.active .car-years__input-text {
+  color: var(--primary-color);
+}
+.car-years__input.active .arrow-input {
+  stroke: var(--primary-color);
+  transform: rotate(180deg);
 }
 .car-years__select {
   position: absolute;

@@ -14,20 +14,102 @@ window.addEventListener('scroll', () => {
 
 // =================years===============
 const yearsShowSelect = () => {
-	const selectItems = document.querySelectorAll('.car-years__select-item');
-	// console.log(selectItem, 'selectItem');
-	selectItems.forEach(select => {
-		select.onclick = () => {
-			selectItems.forEach(select => {
-				select.classList.contains('active') &&
-					(select?.classList.remove('active'), select.querySelector('.car-years__select')?.classList.remove('active'));
+	// const selectItems = document.querySelectorAll('.car-years__select-item'); // год от/ год до
+	const selectInputs = document.querySelectorAll('.car-years__input'); // год от/ год до
+	let isOpenSelect = false;
+	selectInputs.forEach(selectInput => {
+		selectInput.onclick = () => {
+			console.log(selectInput, 'selectInput');
+			selectInputs.forEach(selectInput => {
+				selectInput.classList.contains('active') &&
+					(selectInput?.classList.remove('active'), selectInput.querySelector('.car-years__select')?.classList.remove('active'));
 			});
-			// console.log(e.target);
-			select.classList.toggle('active');
-			console.log(select);
-			select.querySelector('.car-years__select')?.classList.toggle('active');
+			// if (!isOpenSelect) {
+			// 	isOpenSelect = true;
+			// 	selectInput.classList.add('active');
+			// 	const selectInput = selectItem.querySelector('.input-years'); // вписывается год при выборе года
+			// 	const selector = selectItem.querySelector('.car-years__select'); // блок выбором с года
+			// 	selector?.classList.add('active'); // блок со списком годов открылся
+			// 	const options = selector.querySelectorAll('.option'); // года
+			// 	options.forEach(option => {
+			// 		option.onclick = e => {
+			// 			options.forEach(option => {
+			// 				option.classList.remove('active');
+			// 			});
+			// 			selectInput.innerHTML = e.target.dataset.value;
+			// 			e.target.classList.add('active');
+			// 		};
+			// 	});
+			// 	const btnClearYears = selector.querySelector('.clear'); // кнопка сбросить
+			// 	btnClearYears.onclick = () => {
+			// 		options.forEach(option => {
+			// 			option.classList.remove('active');
+			// 		});
+			// 		selectInput.innerHTML = '';
+			// 	};
+			// } else {
+			// 	document.querySelector('body').onclick = e => {
+			// 		console.log(e.target, 'e');
+			// 		// const selector = selectItem.querySelector('.car-years__select');
+			// 		// if (selector?.classList.contains('active')) {
+			// 		// 	const selectOptions = selectItem.querySelectorAll('.car-years__option');
+			// 		// 	selectOptions.forEach(option => {
+			// 		// 		if (e.target !== option) {
+			// 		// 			selectItem.classList.remove('active');
+			// 		// 			selector.classList.remove('active');
+			// 		// 		}
+			// 		// 	});
+			// 		// }
+			// 	};
+			// }
 		};
 	});
+	// selectItems.forEach(selectItem => {
+	// 	selectItem.onclick = () => {
+	// 		selectItems.forEach(selectItem => {
+	// 			selectItem.classList.contains('active') &&
+	// 				(selectItem?.classList.remove('active'), selectItem.querySelector('.car-years__select')?.classList.remove('active'));
+	// 		});
+	// 		if (!isOpenSelect) {
+	// 			isOpenSelect = true;
+	// 			selectItem.classList.add('active');
+	// 			const selectInput = selectItem.querySelector('.input-years'); // вписывается год при выборе года
+	// 			const selector = selectItem.querySelector('.car-years__select'); // блок выбором с года
+	// 			selector?.classList.add('active'); // блок со списком годов открылся
+	// 			const options = selector.querySelectorAll('.option'); // года
+	// 			options.forEach(option => {
+	// 				option.onclick = e => {
+	// 					options.forEach(option => {
+	// 						option.classList.remove('active');
+	// 					});
+	// 					selectInput.innerHTML = e.target.dataset.value;
+	// 					e.target.classList.add('active');
+	// 				};
+	// 			});
+	// 			const btnClearYears = selector.querySelector('.clear'); // кнопка сбросить
+	// 			btnClearYears.onclick = () => {
+	// 				options.forEach(option => {
+	// 					option.classList.remove('active');
+	// 				});
+	// 				selectInput.innerHTML = '';
+	// 			};
+	// 		} else {
+	// 			document.querySelector('body').onclick = e => {
+	// 				console.log(e.target, 'e');
+	// 				// const selector = selectItem.querySelector('.car-years__select');
+	// 				// if (selector?.classList.contains('active')) {
+	// 				// 	const selectOptions = selectItem.querySelectorAll('.car-years__option');
+	// 				// 	selectOptions.forEach(option => {
+	// 				// 		if (e.target !== option) {
+	// 				// 			selectItem.classList.remove('active');
+	// 				// 			selector.classList.remove('active');
+	// 				// 		}
+	// 				// 	});
+	// 				// }
+	// 			};
+	// 		}
+	// 	};
+	// });
 };
 
 yearsShowSelect();
