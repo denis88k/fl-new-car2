@@ -1633,17 +1633,20 @@ body._lock {
   background-color: var(--choice-multi);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.3s ease-in-out;
   cursor: pointer;
+  transform: translateY(-20px);
 }
 .car-years__checkbox-block.isVisible {
   position: static;
   opacity: 1;
   visibility: visible;
+  transform: translateY(0px);
 }
 @media screen and (max-width: 810px) {
   .car-years__checkbox-block {
     padding: 12px 10px 12px 12px;
+    transform: translateY(-10px);
   }
 }
 .car-years__checkbox-top {
