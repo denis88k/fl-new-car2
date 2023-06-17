@@ -35,7 +35,7 @@ const yearsShowSelect = () => {
 	// const selectInputs = document.querySelectorAll('.car-years__input'); // год от/ год до
 	let selectFrom = 0;
 	let selectTo = 0;
-	let isBetween = checkboxBlocks => false;
+	let isBetween = () => false;
 	let count = 0;
 
 	const updateCheckboxActive = (checkboxBlocks, selectFrom, selectTo) => {
@@ -62,7 +62,7 @@ const yearsShowSelect = () => {
 		}
 		if (selectFrom === 0 && selectTo === 0) {
 			console.log('всё по нулям:', selectFrom, '-', selectTo);
-			isBetween = checkboxBlock => false;
+			isBetween = () => false;
 		}
 		console.log(isBetween);
 		// removeClassArray(checkboxBlocks, 'active');
