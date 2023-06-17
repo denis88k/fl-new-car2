@@ -1,0 +1,257 @@
+<div class="chat-messages" data-chat="1">
+  @include('./_chat_message-consul.html',
+  {
+  'text':
+  'Какой год автомобиля?'
+  })
+
+  <div class="chat__message-block">
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+
+    <div class="chat__message chat__message-consultant chat__choice-multi msg-show">
+
+      <div class="years__block">
+
+        <div class="years__selects">
+          <!-- input "год от" -->
+          <div class="years__select-item">
+            <div class="years__input">
+              <p class="years__input-text">
+                Год от <span class="input-years"></span>
+              </p>
+              <svg class="arrow-input" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 1.75L6 6.25L1.5 1.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <!-- список годов от -->
+            <div class="years__select select-from">
+              <div class="years__option clear">Сбросить</div>
+              <div class="years__option option" data-value="2020">2020</div>
+              <div class="years__option option" data-value="2019">2019</div>
+              <div class="years__option option" data-value="2018">2018</div>
+              <div class="years__option option" data-value="2017">2017</div>
+              <div class="years__option option" data-value="2016">2016</div>
+              <div class="years__option option" data-value="2015">2015</div>
+              <div class="years__option option" data-value="2014">2014</div>
+              <div class="years__option option" data-value="2013">2013</div>
+              <div class="years__option option" data-value="2012">2012</div>
+              <div class="years__option option" data-value="2011">2011</div>
+            </div>
+          </div>
+
+          <!-- input "год до" -->
+          <div class="years__select-item">
+            <div class="years__input">
+              <p class="years__input-text">
+                Год до <span class="input-years"></span>
+              </p>
+              <svg class="arrow-input" width="12" height="8" viewBox="0 0 12 8" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 1.75L6 6.25L1.5 1.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <!-- список годов до -->
+            <div class="years__select select-to">
+              <div class="years__option clear">Сбросить</div>
+              <div class="years__option option" data-value="2020">2020</div>
+              <div class="years__option option" data-value="2019">2019</div>
+              <div class="years__option option" data-value="2018">2018</div>
+              <div class="years__option option" data-value="2017">2017</div>
+              <div class="years__option option" data-value="2016">2016</div>
+              <div class="years__option option" data-value="2015">2015</div>
+              <div class="years__option option" data-value="2014">2014</div>
+              <div class="years__option option" data-value="2013">2013</div>
+              <div class="years__option option" data-value="2012">2012</div>
+              <div class="years__option option" data-value="2011">2011</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- блок с поколениями -->
+        <div class="years__checkbox">
+          <div class="years__checkbox-block" data-from="2011" data-to="2012">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2011-2012</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2012" data-to="2013">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2012-2013</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X Рестайлинг 2 [2012-2013]</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2013" data-to="2015">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2013-2015</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2015" data-to="2018">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2015-2018</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2011" data-to="2013">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2011-2013</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2016" data-to="2018">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2016-2018</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2019" data-to="2021">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2019-2021</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2020" data-to="2021">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2020-2021</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2022" data-to="2023">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2022-2023</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2021" data-to="2023">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2021-2023</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2018" data-to="2020">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2018-2020</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2014" data-to="2016">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2014-2016</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+          <div class="years__checkbox-block" data-from="2017" data-to="2020">
+            <div class="years__checkbox-top">
+              <div class="years__checkbox-year">2017-2020</div>
+              <div class="years__checkbox-check">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m12.625 1.5-7.875 9-3.375-3.375" stroke="#F53737" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+              </div>
+            </div>
+            <div class="years__checkbox-name">X</div>
+          </div>
+
+        </div>
+
+        <button class="years__show-more">
+          <span class='years__show-more-text'>Показать все поколения </span>
+          <svg class="arrow-input" width="12" height="8" viewBox="0 0 12 8" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5 1.75L6 6.25L1.5 1.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <button class="years__continue btn-red btn-continue" type="button">
+          Продолжить
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  @include('./_chat_message-client.html',
+  {
+  'text':
+  '2015-2017'
+  })
+
+</div>

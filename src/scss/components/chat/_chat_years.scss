@@ -1,8 +1,8 @@
-.car-years {
+.years {
 	&__block {
 		display: flex;
 		flex-direction: column;
-		width: 100%;
+		// width: 100%;
 	}
 
 	&__selects {
@@ -37,14 +37,14 @@
 	}
 
 	&__select-item:nth-child(1) {
-		& .car-years__input {
+		& .years__input {
 			border-top-left-radius: 10px;
 			border-bottom-left-radius: 10px;
 		}
 	}
 
 	&__select-item:nth-child(2) {
-		& .car-years__input {
+		& .years__input {
 			margin-left: -1px;
 			border-top-right-radius: 10px;
 			border-bottom-right-radius: 10px;
@@ -62,7 +62,7 @@
 		z-index: 10;
 		border-color: var(--primary-color);
 
-		.car-years__input-text {
+		.years__input-text {
 			color: var(--primary-color);
 		}
 
@@ -75,7 +75,7 @@
 		z-index: 10;
 		border-color: var(--primary-color);
 
-		.car-years__input-text {
+		.years__input-text {
 			color: var(--primary-color);
 		}
 
@@ -159,15 +159,15 @@
 		background-color: var(--choice-multi);
 		opacity: 0;
 		visibility: hidden;
+		transform: translateY(-20px);
 		transition: background-color 0.2s ease, transform 0.3s ease-in-out;
 		cursor: pointer;
-		transform: translateY(-20px);
 
 		&.isVisible {
 			position: static;
 			opacity: 1;
 			visibility: visible;
-			transform: translateY(0px);
+			transform: translateY(0);
 		}
 		@media screen and (max-width: 810px) {
 			padding: 12px 10px 12px 12px;
@@ -215,7 +215,7 @@
 		border-radius: 5px;
 		width: 22px;
 		height: 22px;
-		background: var(--white);
+		background-color: var(--white);
 
 		svg {
 			opacity: 0;
@@ -226,15 +226,15 @@
 	&__checkbox-block.active {
 		background-color: var(--primary-color);
 
-		.car-years__checkbox-year {
+		.years__checkbox-year {
 			color: var(--white);
 		}
 
-		.car-years__checkbox-name {
+		.years__checkbox-name {
 			color: rgba(255, 255, 255, 0.65);
 		}
 
-		.car-years__checkbox-check {
+		.years__checkbox-check {
 			svg {
 				opacity: 1;
 				visibility: visible;
@@ -245,11 +245,11 @@
 	&__checkbox-block:hover {
 		background-color: var(--red-light);
 
-		& .car-years__checkbox-year {
+		& .years__checkbox-year {
 			color: var(--primary-color);
 		}
 
-		.car-years__checkbox-name {
+		.years__checkbox-name {
 			color: var(--text-grey);
 		}
 	}
@@ -278,21 +278,21 @@
 		}
 	}
 
-	&__continue {
-	}
+	// &__continue {
+	// }
 }
 
-.arrow-input {
-}
+// .arrow-input {
+// }
 
-.select-from {
-}
+// .select-from {
+// }
 
-.clear {
-}
+// .clear {
+// }
 
-.option {
-}
+// .option {
+// }
 
-.btn-continue {
-}
+// .btn-continue {
+// }

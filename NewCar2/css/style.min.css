@@ -186,15 +186,8 @@ body._lock {
     transform: translateY(0) scale(1);
   }
 }
-@keyframes show_modal {
-  0% {
-    transform: translateY(300px) scale(0.9);
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
-}
-.btn-continue {
+.btn-red {
+  border: 1px solid var(--white);
   border-radius: 15px;
   font-weight: 500;
   font-size: 18px;
@@ -202,18 +195,43 @@ body._lock {
   text-align: center;
   color: var(--white);
   background-color: var(--primary-color);
+  transition: all 0.3s ease;
+  cursor: pointer;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 @media (max-width: 1420px) {
-  .btn-continue {
+  .btn-red {
     padding-top: calc(18px + 2 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
-  .btn-continue {
+  .btn-red {
     padding-bottom: calc(18px + 2 * ((100vw - 320px) / 1100));
   }
+}
+.btn-red:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--white);
+}
+
+.btn-white {
+  border-radius: 15px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 135%;
+  text-align: center;
+  color: var(--primary-color);
+  background-color: var(--white);
+  transition: all 0.3s ease;
+}
+.btn-white:hover {
+  border-color: var(--white);
+  color: var(--white);
+  background-color: var(--primary-color);
 }
 
 .modal {
@@ -233,8 +251,8 @@ body._lock {
   display: flex;
   flex-direction: column;
   border-radius: 50px;
-  box-shadow: 0 6px 22px rgba(255, 255, 255, 0.37), 0 -5px 0 #0084ff;
-  background-color: white;
+  box-shadow: 0 6px 22px rgba(255, 255, 255, 0.37), 0 -5px 0 var(--primary-color);
+  background-color: var(--white);
 }
 @media (max-width: 1420px) {
   .modal__inner {
@@ -385,6 +403,14 @@ body._lock {
   animation-duration: 0.7s;
   animation-timing-function: ease;
   animation-fill-mode: forwards;
+}
+@keyframes show_modal {
+  0% {
+    transform: translateY(300px) scale(0.9);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
 
 .modal-sendForm .modal__inner {
@@ -1229,10 +1255,22 @@ body._lock {
 }
 
 .chat__message {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 20px;
+  line-height: 135%;
+  font-weight: 400;
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 40px;
   padding-right: 40px;
+  transition: all 0.7s ease;
+}
+@media (max-width: 1420px) {
+  .chat__message {
+    font-size: calc(18px + 2 * ((100vw - 320px) / 1100));
+  }
 }
 @media (max-width: 1420px) {
   .chat__message {
@@ -1265,19 +1303,13 @@ body._lock {
   transition: all 0.3s linear;
 }
 .chat__message-consultant {
-  position: absolute;
   align-self: flex-start;
   border-radius: 0 50px 50px;
   box-shadow: 0 4px 13px rgba(0, 0, 0, 0.07);
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 135%;
-  color: #31333e;
-  background-color: white;
-  opacity: 0;
-  visibility: hidden;
+  color: var(--text-black);
+  background-color: var(--white);
   margin-bottom: 20px;
-  transition: all 0.3s ease;
+  transform: translateX(-40px);
 }
 @media (max-width: 1420px) {
   .chat__message-consultant {
@@ -1285,18 +1317,13 @@ body._lock {
   }
 }
 .chat__message-client {
-  position: absolute;
   align-self: flex-end;
   margin-top: 30px;
   margin-bottom: 20px;
   border-radius: 50px 0 50px 50px;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 135%;
-  color: white;
-  background-color: #343434;
-  opacity: 0;
-  visibility: hidden;
+  color: var(--white);
+  background-color: var(--answer-msg);
+  transform: translateX(40px);
 }
 @media (max-width: 1420px) {
   .chat__message-client {
@@ -1308,21 +1335,16 @@ body._lock {
     margin-bottom: calc(15px + 5 * ((100vw - 320px) / 1100));
   }
 }
-@media (max-width: 1420px) {
-  .chat__message-client {
-    font-size: calc(18px + 2 * ((100vw - 320px) / 1100));
-  }
-}
 .chat__message-print {
   position: absolute;
   align-self: flex-start;
   margin-top: 20px;
   font-style: italic;
   font-size: 18px;
-  color: #7c7c7c;
+  color: var(--text-grey);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 .chat__message-print .message-print {
   clip-path: inset(0 18px 0 0);
@@ -1335,52 +1357,19 @@ body._lock {
   position: static;
   opacity: 1;
   visibility: visible;
-  animation: anim_show_message 0.2s ease forwards;
+  transform: translateX(0);
 }
 
 .msg-show {
   position: static;
   opacity: 1;
   visibility: visible;
-  animation-name: anim_show_message;
-  animation-duration: 0.7s;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
-}
-
-.msg-show-client {
-  position: static;
-  opacity: 1;
-  visibility: visible;
-  animation-name: anim_show_message-client;
-  animation-duration: 0.7s;
-  animation-timing-function: ease;
-  animation-fill-mode: forwards;
+  transform: translateX(0);
 }
 
 @keyframes anim_print {
   to {
     clip-path: inset(0 -10px 0 0);
-  }
-}
-@keyframes anim_show_message {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes anim_show_message-client {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
   }
 }
 .chat__choice-multi {
@@ -1469,19 +1458,18 @@ body._lock {
   color: var(--primary-color);
 }
 
-.car-years__block {
+.years__block {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
-.car-years__selects {
+.years__selects {
   display: flex;
 }
-.car-years__select-item {
+.years__select-item {
   position: relative;
   flex: 1 1 50%;
 }
-.car-years__input {
+.years__input {
   position: relative;
   display: flex;
   align-items: center;
@@ -1495,66 +1483,66 @@ body._lock {
   padding-right: 38.5px;
 }
 @media (max-width: 1420px) {
-  .car-years__input {
+  .years__input {
     padding-top: calc(21px + 4 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
-  .car-years__input {
+  .years__input {
     padding-bottom: calc(21px + 3 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
-  .car-years__input {
+  .years__input {
     padding-left: calc(15px + 10 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
-  .car-years__input {
+  .years__input {
     padding-right: calc(24.5px + 14 * ((100vw - 320px) / 1100));
   }
 }
-.car-years__input .arrow-input {
+.years__input .arrow-input {
   stroke: #cdcdcd;
   transition: all 0.3s ease;
 }
-.car-years__select-item:nth-child(1) .car-years__input {
+.years__select-item:nth-child(1) .years__input {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-.car-years__select-item:nth-child(2) .car-years__input {
+.years__select-item:nth-child(2) .years__input {
   margin-left: -1px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-.car-years__input-text {
+.years__input-text {
   font-weight: 400;
   font-size: 18px;
   line-height: 100%;
   transition: all 0.2s ease;
 }
-.car-years__input:hover {
+.years__input:hover {
   z-index: 10;
   border-color: var(--primary-color);
 }
-.car-years__input:hover .car-years__input-text {
+.years__input:hover .years__input-text {
   color: var(--primary-color);
 }
-.car-years__input:hover .arrow-input {
+.years__input:hover .arrow-input {
   stroke: var(--primary-color);
 }
-.car-years__input.active {
+.years__input.active {
   z-index: 10;
   border-color: var(--primary-color);
 }
-.car-years__input.active .car-years__input-text {
+.years__input.active .years__input-text {
   color: var(--primary-color);
 }
-.car-years__input.active .arrow-input {
+.years__input.active .arrow-input {
   stroke: var(--primary-color);
   transform: rotate(180deg);
 }
-.car-years__select {
+.years__select {
   position: absolute;
   left: -1px;
   z-index: -10;
@@ -1570,13 +1558,13 @@ body._lock {
   transform: translateY(10px);
   transition: all 0.3s ease-in-out;
 }
-.car-years__select.active {
+.years__select.active {
   z-index: 10;
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
 }
-.car-years__option {
+.years__option {
   padding-right: 30px;
   padding-left: 44px;
   font-weight: 400;
@@ -1585,22 +1573,22 @@ body._lock {
   color: var(--text-black);
   cursor: pointer;
 }
-.car-years__option:hover {
+.years__option:hover {
   color: var(--primary-color);
   background-color: var(--red-light);
 }
-.car-years__option.clear {
+.years__option.clear {
   color: var(--text-grey);
   background-image: url("./../img/close-icon.svg");
   background-position: left 17px center;
   background-size: 13px 13px;
   background-repeat: no-repeat;
 }
-.car-years__option.active {
+.years__option.active {
   color: var(--white);
   background-color: var(--primary-color);
 }
-.car-years__checkbox {
+.years__checkbox {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
@@ -1608,22 +1596,22 @@ body._lock {
   margin-bottom: 20px;
 }
 @media (max-width: 1420px) {
-  .car-years__checkbox {
+  .years__checkbox {
     margin-top: calc(10px + 15 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
-  .car-years__checkbox {
+  .years__checkbox {
     margin-bottom: calc(15px + 5 * ((100vw - 320px) / 1100));
   }
 }
 @media screen and (max-width: 715px) {
-  .car-years__checkbox {
+  .years__checkbox {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 }
-.car-years__checkbox-block {
+.years__checkbox-block {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -1633,28 +1621,28 @@ body._lock {
   background-color: var(--choice-multi);
   opacity: 0;
   visibility: hidden;
+  transform: translateY(-20px);
   transition: background-color 0.2s ease, transform 0.3s ease-in-out;
   cursor: pointer;
-  transform: translateY(-20px);
 }
-.car-years__checkbox-block.isVisible {
+.years__checkbox-block.isVisible {
   position: static;
   opacity: 1;
   visibility: visible;
-  transform: translateY(0px);
+  transform: translateY(0);
 }
 @media screen and (max-width: 810px) {
-  .car-years__checkbox-block {
+  .years__checkbox-block {
     padding: 12px 10px 12px 12px;
     transform: translateY(-10px);
   }
 }
-.car-years__checkbox-top {
+.years__checkbox-top {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5px;
 }
-.car-years__checkbox-year {
+.years__checkbox-year {
   font-weight: 500;
   font-size: 20px;
   line-height: 135%;
@@ -1662,12 +1650,12 @@ body._lock {
   transition: all 0.3s ease;
 }
 @media screen and (max-width: 715px) {
-  .car-years__checkbox-year {
+  .years__checkbox-year {
     font-weight: 400;
     font-size: 18px;
   }
 }
-.car-years__checkbox-name {
+.years__checkbox-name {
   overflow: hidden;
   width: 157px;
   font-weight: 400;
@@ -1678,11 +1666,11 @@ body._lock {
   color: var(--text-grey);
 }
 @media screen and (max-width: 880px) {
-  .car-years__checkbox-name {
+  .years__checkbox-name {
     width: 125px;
   }
 }
-.car-years__checkbox-check {
+.years__checkbox-check {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1690,35 +1678,35 @@ body._lock {
   border-radius: 5px;
   width: 22px;
   height: 22px;
-  background: var(--white);
+  background-color: var(--white);
 }
-.car-years__checkbox-check svg {
+.years__checkbox-check svg {
   opacity: 0;
   visibility: hidden;
 }
-.car-years__checkbox-block.active {
+.years__checkbox-block.active {
   background-color: var(--primary-color);
 }
-.car-years__checkbox-block.active .car-years__checkbox-year {
+.years__checkbox-block.active .years__checkbox-year {
   color: var(--white);
 }
-.car-years__checkbox-block.active .car-years__checkbox-name {
+.years__checkbox-block.active .years__checkbox-name {
   color: rgba(255, 255, 255, 0.65);
 }
-.car-years__checkbox-block.active .car-years__checkbox-check svg {
+.years__checkbox-block.active .years__checkbox-check svg {
   opacity: 1;
   visibility: visible;
 }
-.car-years__checkbox-block:hover {
+.years__checkbox-block:hover {
   background-color: var(--red-light);
 }
-.car-years__checkbox-block:hover .car-years__checkbox-year {
+.years__checkbox-block:hover .years__checkbox-year {
   color: var(--primary-color);
 }
-.car-years__checkbox-block:hover .car-years__checkbox-name {
+.years__checkbox-block:hover .years__checkbox-name {
   color: var(--text-grey);
 }
-.car-years__show-more {
+.years__show-more {
   margin-bottom: 22px;
   position: relative;
   display: flex;
@@ -1730,17 +1718,162 @@ body._lock {
   cursor: pointer;
 }
 @media (max-width: 1420px) {
-  .car-years__show-more {
+  .years__show-more {
     margin-bottom: calc(17px + 5 * ((100vw - 320px) / 1100));
   }
 }
-.car-years__show-more .arrow-input {
+.years__show-more .arrow-input {
   margin-top: 5.8px;
   margin-left: 8.5px;
   stroke: var(--primary-color);
 }
-.car-years__show-more.active .arrow-input {
+.years__show-more.active .arrow-input {
   transform: rotate(180deg);
+}
+
+.mileage__block {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+@media (max-width: 1420px) {
+  .mileage__block {
+    row-gap: calc(10px + 10 * ((100vw - 320px) / 1100));
+  }
+}
+.mileage__inputs {
+  display: flex;
+}
+.mileage__label {
+  flex: 1 1 50%;
+}
+.mileage__input {
+  position: relative;
+  border: 1px solid var(--border-color);
+  width: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: var(--text-grey);
+  transition: all 0.2s ease;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 25px;
+}
+@media (max-width: 1420px) {
+  .mileage__input {
+    padding-top: calc(21px + 4 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .mileage__input {
+    padding-bottom: calc(21px + 4 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .mileage__input {
+    padding-left: calc(15px + 10 * ((100vw - 320px) / 1100));
+  }
+}
+.mileage__input:focus {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+.mileage__input:hover {
+  z-index: 10;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+.mileage__label:nth-child(1) .mileage__input {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.mileage__label:nth-child(2) .mileage__input {
+  margin-left: -1px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.mileage__checkbox {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+@media (max-width: 1420px) {
+  .mileage__checkbox {
+    gap: calc(10px + 6 * ((100vw - 320px) / 1100));
+  }
+}
+.mileage__checkbox-block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 100%;
+  background-color: var(--choice-multi);
+  cursor: pointer;
+  padding-top: 38px;
+  padding-bottom: 38px;
+  padding-left: 83px;
+  padding-right: 83px;
+}
+@media (max-width: 1420px) {
+  .mileage__checkbox-block {
+    padding-top: calc(38px + 0 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .mileage__checkbox-block {
+    padding-bottom: calc(38px + 0 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .mileage__checkbox-block {
+    padding-left: calc(96px + -13 * ((100vw - 320px) / 1100));
+  }
+}
+@media (max-width: 1420px) {
+  .mileage__checkbox-block {
+    padding-right: calc(96px + -13 * ((100vw - 320px) / 1100));
+  }
+}
+.mileage__checkbox-text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 135%;
+  text-align: center;
+  color: var(--primary-color);
+}
+.mileage__checkbox-check {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  width: 22px;
+  height: 22px;
+  background-color: var(--white);
+}
+.mileage__checkbox-check svg {
+  opacity: 0;
+  visibility: hidden;
+}
+.mileage__checkbox-block:hover {
+  background-color: var(--red-light);
+}
+.mileage__checkbox-block.active {
+  background-color: var(--primary-color);
+}
+.mileage__checkbox-block.active .mileage__checkbox-text {
+  color: var(--white);
+}
+.mileage__checkbox-block.active .mileage__checkbox-check svg {
+  opacity: 1;
+  visibility: visible;
 }
 .chat__form-inner {
   display: flex;
