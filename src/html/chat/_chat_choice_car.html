@@ -1,0 +1,54 @@
+<div class="chat-messages" data-chat="4">
+  <div class="chat__message-block ">
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+  </div>
+  <div class="chat__message-block-choice msg-show">
+    <div class="choice-car">
+      <div class="choice-car__blocks">
+        <div class="choice-car__block block-choice" data-choice="Lada Granta II Рестайлинг [2010 - 2012]">
+          <div class="choice-car__img">
+            <img src="./img/car_model.jpg" alt="car">
+          </div>
+          <div class="choice-car__info">
+            <div class="choice-car__title">
+              Lada Granta II Рестайлинг [2010 - 2012]
+            </div>
+            <div class="choice-car__price">
+              <span class="choice-car__price-total">549 000р.</span>
+              <span class="choice-car__price-month">44 000 р/мес</span>
+            </div>
+            <div class="choice-car__mileage-owner">
+              <div class="choice-car__mileage">
+                223 836 км
+              </div>
+              <div class="choice-car__owner">
+                3 владельца
+              </div>
+            </div>
+            <div class="choice-car__charact">
+              1.6 л / 87 л.с. / Бензин
+            </div>
+            <a class="choice-car__tel" href="tel:+74872528942">+7 (4872) 52-89-42</a>
+          </div>
+        </div>
+      </div>
+      <div class="choice-car__btn btn-white">
+        Загрузить ещё автомобили
+      </div>
+    </div>
+  </div>
+
+  @include('./_chat_message-client.html',
+  {
+  'text':
+  'Lada Granta II Рестайлинг [2010 - 2012]'
+  })
+
+  @include('./_chat_message-consul.html',
+  {
+  'text':
+  'Отличный выбор. Вывожу подробную информацию о данном автомобиле'
+  })
+</div>

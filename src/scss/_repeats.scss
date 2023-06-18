@@ -93,7 +93,9 @@
 }
 
 .btn-white {
-	border-radius: 15px;
+	border-radius: 20px;
+	@include adaptiv-value(border-radius, 20, 15, 1);
+	border: 1px solid var(--primary-color);
 	padding-top: 22px;
 	padding-bottom: 22px;
 	font-weight: 500;

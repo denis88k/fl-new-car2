@@ -2,6 +2,7 @@
 	&__block {
 		display: flex;
 		flex-direction: column;
+
 		// width: 100%;
 	}
 
@@ -28,7 +29,7 @@
 		@include adaptiv-value(padding-top, 25, 21, 1);
 		@include adaptiv-value(padding-bottom, 24, 21, 1);
 		@include adaptiv-value(padding-left, 25, 15, 1);
-		@include adaptiv-value(padding-right, 38.5, 24.5, 1);
+		@include adaptiv-value(padding-right, 38.5, 26, 1);
 
 		.arrow-input {
 			stroke: #cdcdcd;
@@ -216,6 +217,7 @@
 		width: 22px;
 		height: 22px;
 		background-color: var(--white);
+		transition: all 0.2s ease-in-out;
 
 		svg {
 			opacity: 0;
