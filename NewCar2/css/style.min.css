@@ -1776,6 +1776,7 @@ body._lock {
   }
 }
 .mileage__input:focus {
+  z-index: 10;
   border-color: var(--primary-color);
   color: var(--primary-color);
 }
@@ -1875,6 +1876,7 @@ body._lock {
   opacity: 1;
   visibility: visible;
 }
+
 .chat__form-inner {
   display: flex;
   column-gap: 30px;

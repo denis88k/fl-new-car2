@@ -29,6 +29,7 @@
 		@include adaptiv-value(padding-left, 25, 15, 1);
 
 		&:focus {
+			z-index: 10;
 			border-color: var(--primary-color);
 			color: var(--primary-color);
 		}
@@ -67,11 +68,11 @@
 	}
 
 	&__checkbox-block {
-		position: relative;
 		$ptb-b: 38;
 		$ptb-s: 38;
 		$plr-b: 83;
 		$plr-s: 96;
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -136,6 +137,6 @@
 		}
 	}
 
-	&__continue {
-	}
+	// &__continue {
+	// }
 }
