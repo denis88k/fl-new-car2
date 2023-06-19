@@ -1,8 +1,5 @@
 // =============swiper=============
-import Swiper, { Navigation, Pagination } from 'swiper';
-// import Swiper styles
-// import 'swiper/css';
-// import 'swiper/css/pagination';
+import Swiper, { Navigation, Pagination, Thumbs } from 'swiper';
 
 const swipersChoice = document.querySelectorAll('.choice-car__swiper');
 swipersChoice.forEach(swiperChoice => {
@@ -17,6 +14,24 @@ swipersChoice.forEach(swiperChoice => {
 			prevEl: '.choice-car__btn-prev',
 		},
 	});
+});
+
+const swiperReportMini = document.querySelector('.report__swiper-mini');
+const swiperMini = new Swiper(swiperReportMini, {
+	spaceBetween: 5,
+});
+
+const swiperReport = document.querySelector('.report__swiper');
+const swiper = new Swiper(swiperReport, {
+	modules: [Navigation, Thumbs],
+	loop: true,
+	navigation: {
+		nextEl: '.report__btn-next',
+		prevEl: '.report__btn-prev',
+	},
+	// thumbs: {
+	// 	swiper: swiperMini,
+	// },
 });
 
 // =====================

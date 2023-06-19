@@ -1884,6 +1884,13 @@ body._lock {
   color: var(--primary-color);
 }
 
+.swiper-button-prev,
+.swiper-button-next {
+  top: 0;
+  margin-top: 0;
+  width: 30%;
+  height: 100%;
+}
 .swiper-button-prev::after,
 .swiper-button-next::after {
   content: "";
@@ -2898,6 +2905,17 @@ body._lock {
   }
 }
 
+.report__slider {
+  margin-bottom: 40px;
+}
+@media (max-width: 1420px) {
+  .report__slider {
+    margin-bottom: calc(20px + 20 * ((100vw - 320px) / 1100));
+  }
+}
+.report__slide img {
+  border-radius: 20px;
+}
 .report__about {
   display: flex;
   flex-direction: column;

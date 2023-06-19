@@ -1,5 +1,12 @@
 .report {
 	&__slider {
+		@include adaptiv-value(margin-bottom, 40, 20, 1);
+	}
+
+	&__slide {
+		img {
+			border-radius: 20px;
+		}
 	}
 
 	&__about {
