@@ -3,6 +3,7 @@
     <div class="chat__message-print">
       <span class="message-print">Ольга печатает ...</span>
     </div>
+
     <div class="chat__message chat__message-consultant chat__choice-multi msg-show">
       <div class="owner__block">
         <p class="owner__message">
@@ -48,5 +49,11 @@
         </button>
       </div>
     </div>
+
   </div>
+  @include('./_chat_message-client.html',
+  {
+  'text':
+  '1'
+  })
 </div>

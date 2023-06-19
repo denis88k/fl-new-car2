@@ -16,6 +16,7 @@ const removeClassArray = (elements, cls) => {
 	});
 };
 
+// функция компонент для проставления галочек на checkboxBlock's
 const checkboxComponent = block => {
 	const componentCheckbox = document.querySelector(`.${block}__checkbox`);
 	componentCheckbox.addEventListener('click', e => {
@@ -26,6 +27,57 @@ const checkboxComponent = block => {
 		}
 		toggleClass(componentCheckboxBlock, 'active');
 	});
+};
+
+// =========кнопка показать ещё=========
+// blocksShow - блоки, которые нужно отобразить
+// btn - кнопка
+// btnText - элемент где нужно отобразить текст: показать, скрыть
+// blockVisible - кол-во, которое отобразиться в первый раз
+// textHidden - текст, когда спрятаны часть блоков
+// textOpen - текст, когда отображены все блоки
+const btnShowMore = (blocksShow, btn, btnText = '', blockVisible, textHidden, textOpen) => {
+	// checkboxBlocks->blocks
+	const blocks = document.querySelectorAll(blocksShow);
+	const btnShowMore = document.querySelector(btn);
+	let btnShowMoreText;
+	if (btnShowMore.querySelector(btnText)) {
+		btnShowMoreText = btnShowMore.querySelector(btnText);
+	} else {
+		btnShowMoreText = btnShowMore;
+	}
+
+	let countBlock = blockVisible; // сколько в начале отобразить шт
+	let isShowMore = false;
+	if (blocks.length > countBlock) {
+		for (let i = 0; i <= countBlock; i++) {
+			addClass(blocks[i], 'isVisible');
+		}
+
+		btnShowMore.addEventListener('click', () => {
+			if (!isShowMore) {
+				// если другие данные больше blockFirstVisible не показаны
+				for (let i = countBlock + 1; i < blocks.length; i++) {
+					addClass(blocks[i], 'isVisible');
+				}
+				btnShowMoreText.innerHTML = textHidden;
+				isShowMore = true;
+				addClass(btnShowMore, 'active');
+			} else if (isShowMore) {
+				// если отображены все другие поколения
+				for (let i = countBlock + 1; i < blocks.length; i++) {
+					removeClass(blocks[i], 'isVisible');
+				}
+				btnShowMoreText.innerHTML = textOpen;
+				isShowMore = false;
+				removeClass(btnShowMore, 'active');
+			}
+		});
+	}
+	if (blocks.length <= blockVisible) {
+		blocks.forEach(block => addClass(block, 'isVisible'));
+		btnShowMore.style.display = 'none';
+	}
 };
 
 // фиксация шапки консультанта
@@ -48,7 +100,7 @@ const yearsShowSelect = () => {
 	let selectTo = 0;
 	let isBetween = () => false;
 	let count = 0;
-
+	// функция проверяющая подходит ли checkboxBlock под условия
 	const updateCheckboxActive = (checkboxBlocks, selectFrom, selectTo) => {
 		// если задан from и to, то в промежутке
 		if (selectFrom > 0 && selectTo > 0) {
@@ -169,7 +221,6 @@ const yearsShowSelect = () => {
 yearsShowSelect();
 
 // ====блоки с выбором года выпуска (поколений) ====
-
 // const yearsCheckbox = () => {
 // 	const yearsCheckbox = document.querySelector('.years__checkbox');
 // 	yearsCheckbox.addEventListener('click', e => {
@@ -185,44 +236,45 @@ yearsShowSelect();
 checkboxComponent('years');
 
 // ====КНОПКА "ПОКАЗАТЬ ВСЕ ПОКОЛЕНИЯ"=====
-const yearsBtnShowMore = () => {
-	const checkboxBlocks = document.querySelectorAll('.years__checkbox-block');
-	const btnShowMore = document.querySelector('.years__show-more');
-	const btnShowMoreText = btnShowMore.querySelector('.years__show-more-text');
-	let countCheckboxBlock = 5; // 6 шт
-	// console.log(checkboxBlocks.length, 'checkboxBlocks.length');
-	let isShowMore = false;
-	if (checkboxBlocks.length > countCheckboxBlock) {
-		for (let i = 0; i <= countCheckboxBlock; i++) {
-			addClass(checkboxBlocks[i], 'isVisible');
-		}
+// const yearsBtnShowMore = () => {
+// 	const checkboxBlocks = document.querySelectorAll('.years__checkbox-block');
+// 	const btnShowMore = document.querySelector('.years__show-more');
+// 	const btnShowMoreText = btnShowMore.querySelector('.years__show-more-text');
+// 	let countCheckboxBlock = 5; // 6 шт
+// 	// console.log(checkboxBlocks.length, 'checkboxBlocks.length');
+// 	let isShowMore = false;
+// 	if (checkboxBlocks.length > countCheckboxBlock) {
+// 		for (let i = 0; i <= countCheckboxBlock; i++) {
+// 			addClass(checkboxBlocks[i], 'isVisible');
+// 		}
 
-		btnShowMore.addEventListener('click', () => {
-			if (!isShowMore) {
-				// если другие поколения больше 6 не показаны
-				for (let i = countCheckboxBlock + 1; i < checkboxBlocks.length; i++) {
-					addClass(checkboxBlocks[i], 'isVisible');
-				}
-				btnShowMoreText.innerHTML = 'Свернуть';
-				isShowMore = true;
-				addClass(btnShowMore, 'active');
-			} else if (isShowMore) {
-				// если отображены все другие поколения
-				for (let i = countCheckboxBlock + 1; i < checkboxBlocks.length; i++) {
-					removeClass(checkboxBlocks[i], 'isVisible');
-				}
-				btnShowMoreText.innerHTML = 'Показать все поколения';
-				isShowMore = false;
-				removeClass(btnShowMore, 'active');
-			}
-		});
-	}
-	if (checkboxBlocks.length <= 5) {
-		checkboxBlocks.forEach(checkboxBlock => addClass(checkboxBlock, 'isVisible'));
-		btnShowMore.style.display = 'none';
-	}
-};
-yearsBtnShowMore();
+// 		btnShowMore.addEventListener('click', () => {
+// 			if (!isShowMore) {
+// 				// если другие поколения больше 6 не показаны
+// 				for (let i = countCheckboxBlock + 1; i < checkboxBlocks.length; i++) {
+// 					addClass(checkboxBlocks[i], 'isVisible');
+// 				}
+// 				btnShowMoreText.innerHTML = 'Свернуть';
+// 				isShowMore = true;
+// 				addClass(btnShowMore, 'active');
+// 			} else if (isShowMore) {
+// 				// если отображены все другие поколения
+// 				for (let i = countCheckboxBlock + 1; i < checkboxBlocks.length; i++) {
+// 					removeClass(checkboxBlocks[i], 'isVisible');
+// 				}
+// 				btnShowMoreText.innerHTML = 'Показать все поколения';
+// 				isShowMore = false;
+// 				removeClass(btnShowMore, 'active');
+// 			}
+// 		});
+// 	}
+// 	if (checkboxBlocks.length <= 5) {
+// 		checkboxBlocks.forEach(checkboxBlock => addClass(checkboxBlock, 'isVisible'));
+// 		btnShowMore.style.display = 'none';
+// 	}
+// };
+// yearsBtnShowMore();
+btnShowMore('.years__checkbox-block', '.years__show-more', '.years__show-more-text', 5, 'Свернуть', 'Показать все поколения');
 
 // ===========ПРОБЕГ===========
 // ======CHECKBOX ПРОБЕГА======
@@ -265,6 +317,8 @@ const mileageInput = () => {
 			console.log('деструктуризация');
 			[inputFrom, inputTo] = [inputTo, inputFrom];
 		}
+		// inputFrom < 100k, inputTo > 100k, то ничего
+		// inputFrom = 100k, inputTo = 100k, то ничего
 		if (
 			(inputFrom < 100_000 && inputFrom !== 0 && inputTo > 100_000) ||
 			(inputFrom === 100_000 && inputTo === 100_000) ||
@@ -317,8 +371,6 @@ const mileageInput = () => {
 			addClass(mileageCheckboxBlocks[0], 'active');
 			// console.log('isLess100');
 		}
-		// inputFrom < 100k, inputTo > 100k, то ничего
-		// inputFrom = 100k, inputTo = 100k, то ничего
 
 		// console.log('inputFrom:', inputFrom, '-', inputTo, ':inputTo');
 	});

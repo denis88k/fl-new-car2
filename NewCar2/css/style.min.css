@@ -187,7 +187,7 @@ body._lock {
   }
 }
 .btn-red {
-  border: 1px solid var(--white);
+  border: 1px solid var(--primary-color);
   border-radius: 15px;
   font-weight: 500;
   font-size: 18px;
@@ -211,15 +211,13 @@ body._lock {
   }
 }
 .btn-red:hover {
-  border-color: var(--primary-color);
   color: var(--primary-color);
   background-color: var(--white);
 }
 
 .btn-white {
-  border-radius: 20px;
-  border-radius: 20px;
   border: 1px solid var(--primary-color);
+  border-radius: 20px;
   padding-top: 22px;
   padding-bottom: 22px;
   font-weight: 500;
@@ -229,6 +227,8 @@ body._lock {
   color: var(--primary-color);
   background-color: var(--white);
   transition: all 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
 }
 @media (max-width: 1420px) {
   .btn-white {
@@ -236,7 +236,6 @@ body._lock {
   }
 }
 .btn-white:hover {
-  border-color: var(--white);
   color: var(--white);
   background-color: var(--primary-color);
 }
@@ -1316,7 +1315,7 @@ body._lock {
 }
 .chat__message-client {
   align-self: flex-end;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 50px 0 50px 50px;
   color: var(--white);
@@ -1325,7 +1324,7 @@ body._lock {
 }
 @media (max-width: 1420px) {
   .chat__message-client {
-    margin-top: calc(20px + 10 * ((100vw - 320px) / 1100));
+    margin-top: calc(15px + 5 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
@@ -1356,6 +1355,9 @@ body._lock {
   opacity: 1;
   visibility: visible;
   transform: translateX(0);
+}
+.chat__choice-multi {
+  margin-bottom: 0;
 }
 
 .msg-show {
@@ -1832,8 +1834,8 @@ body._lock {
   cursor: pointer;
   padding-top: 30px;
   padding-bottom: 30px;
-  padding-left: 92px;
-  padding-right: 92px;
+  padding-left: 83px;
+  padding-right: 83px;
 }
 @media (max-width: 1420px) {
   .mileage__checkbox-block {
@@ -1847,12 +1849,12 @@ body._lock {
 }
 @media (max-width: 1420px) {
   .mileage__checkbox-block {
-    padding-left: calc(96px + -4 * ((100vw - 320px) / 1100));
+    padding-left: calc(96px + -13 * ((100vw - 320px) / 1100));
   }
 }
 @media (max-width: 1420px) {
   .mileage__checkbox-block {
-    padding-right: calc(96px + -4 * ((100vw - 320px) / 1100));
+    padding-right: calc(96px + -13 * ((100vw - 320px) / 1100));
   }
 }
 .mileage__checkbox-text {
