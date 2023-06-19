@@ -1,0 +1,151 @@
+.report {
+	&__slider {
+	}
+
+	&__about {
+		display: flex;
+		flex-direction: column;
+	}
+
+	// &__about-title {
+	// }
+
+	&__about-price {
+		display: flex;
+		font-weight: 700;
+		font-size: 25px;
+		line-height: 100%;
+		color: var(--primary-color);
+		@include adaptiv-value(margin-top, 15, 10, 1);
+		@include adaptiv-value(margin-bottom, 30, 15, 1);
+	}
+
+	&__about-price-total {
+		margin-right: 25px;
+	}
+
+	&__about-price-month {
+	}
+
+	&__charact {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__charact-column {
+		display: flex;
+		column-gap: 25px;
+		justify-content: space-between;
+		font-size: 18px;
+		line-height: 100%;
+	}
+
+	&__charact-column-name,
+	&__charact-column-data {
+		display: flex;
+		flex-direction: column;
+		row-gap: 15px;
+	}
+
+	&__charact-column-name {
+		font-weight: 400;
+		color: var(--text-grey);
+	}
+
+	&__charact-column-data {
+		font-weight: 500;
+		color: var(--text-black);
+	}
+
+	&__about-btn-red {
+		@include adaptiv-value(margin-top, 35, 25, 1);
+		@include adaptiv-value(margin-bottom, 15, 10, 1);
+	}
+
+	&__info {
+		@include adaptiv-value(margin-top, 55, 50, 1);
+		@include adaptiv-value(margin-bottom, 60, 50, 1);
+		display: flex;
+		flex-direction: column;
+	}
+
+	// &__info-title {
+	// }
+	&__info .report__charact {
+		@include adaptiv-value(margin-top, 40, 30, 1);
+		@include adaptiv-value(margin-bottom, 15, 10, 1);
+	}
+
+	&__info-star {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 100%;
+		color: var(--text-grey);
+	}
+
+	&__info-data {
+		display: flex;
+		flex-direction: column;
+		@include adaptiv-value(row-gap, 20, 15, 1);
+		margin-top: 27px;
+		@include adaptiv-value(margin-bottom, 20, 15, 1);
+	}
+
+	&__info-block {
+		border: 1px solid var(--border-color);
+		border-radius: 20px;
+		padding: 25px;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-20px);
+		position: absolute;
+		&.isVisible {
+			position: static;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+	}
+
+	&__info-block-title {
+		position: relative;
+		margin-bottom: 10px;
+		padding-left: 18px;
+		font-weight: 700;
+		font-size: 20px;
+		line-height: 115%;
+		color: var(--text-black);
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			display: block;
+			border-radius: 50%;
+			width: 8px;
+			height: 8px;
+			background-color: #00cb5d;
+			top: 7.5px;
+		}
+	}
+
+	&__info-block-text {
+		font-weight: 400;
+		font-size: 17px;
+		line-height: 140%;
+		color: var(--text-grey);
+	}
+
+	&__info-btn {
+	}
+}
+
+.report-title {
+	font-weight: 700;
+	font-size: 32px;
+	line-height: 100%;
+	color: var(--text-black);
+}
+
+.btn-modul {
+}

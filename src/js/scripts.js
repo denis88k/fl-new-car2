@@ -33,48 +33,40 @@ const checkboxComponent = block => {
 // blocksShow - блоки, которые нужно отобразить
 // btn - кнопка
 // btnText - элемент где нужно отобразить текст: показать, скрыть
-// blockVisible - кол-во, которое отобразиться в первый раз
+// countBlockVisible - кол-во, которое отобразиться в первый раз
 // textHidden - текст, когда спрятаны часть блоков
 // textOpen - текст, когда отображены все блоки
-const btnShowMore = (blocksShow, btn, btnText = '', blockVisible, textHidden, textOpen) => {
+const btnShowMore = (blocksShow, btn, btnText = '', countBlockVisible, textHidden, textOpen) => {
 	// checkboxBlocks->blocks
 	const blocks = document.querySelectorAll(blocksShow);
 	const btnShowMore = document.querySelector(btn);
 	let btnShowMoreText;
-	if (btnShowMore.querySelector(btnText)) {
-		btnShowMoreText = btnShowMore.querySelector(btnText);
-	} else {
-		btnShowMoreText = btnShowMore;
-	}
-
-	let countBlock = blockVisible; // сколько в начале отобразить шт
 	let isShowMore = false;
+	let countBlock = countBlockVisible; // сколько в начале отобразить шт
+
+	btnText ? (btnShowMoreText = btnShowMore.querySelector(btnText)) : (btnShowMoreText = btnShowMore);
+
+	const toggleClassActive = isShowMore => {
+		for (let i = countBlock + 1; i < blocks.length; i++) {
+			isShowMore ? removeClass(blocks[i], 'isVisible') : addClass(blocks[i], 'isVisible');
+		}
+		isShowMore ? removeClass(btnShowMore, 'active') : addClass(btnShowMore, 'active');
+	};
+	const toggleBtnText = isShowMore => {
+		btnShowMoreText.innerHTML = isShowMore ? textOpen : textHidden;
+	};
+
 	if (blocks.length > countBlock) {
 		for (let i = 0; i <= countBlock; i++) {
 			addClass(blocks[i], 'isVisible');
 		}
-
 		btnShowMore.addEventListener('click', () => {
-			if (!isShowMore) {
-				// если другие данные больше blockFirstVisible не показаны
-				for (let i = countBlock + 1; i < blocks.length; i++) {
-					addClass(blocks[i], 'isVisible');
-				}
-				btnShowMoreText.innerHTML = textHidden;
-				isShowMore = true;
-				addClass(btnShowMore, 'active');
-			} else if (isShowMore) {
-				// если отображены все другие поколения
-				for (let i = countBlock + 1; i < blocks.length; i++) {
-					removeClass(blocks[i], 'isVisible');
-				}
-				btnShowMoreText.innerHTML = textOpen;
-				isShowMore = false;
-				removeClass(btnShowMore, 'active');
-			}
+			toggleClassActive(isShowMore);
+			toggleBtnText(isShowMore);
+			isShowMore = !isShowMore;
 		});
 	}
-	if (blocks.length <= blockVisible) {
+	if (blocks.length <= countBlockVisible) {
 		blocks.forEach(block => addClass(block, 'isVisible'));
 		btnShowMore.style.display = 'none';
 	}
@@ -392,6 +384,9 @@ mileageInput();
 // };
 // ownerCheckbox();
 checkboxComponent('owner');
+
+// ===========кнопка "сведения все сведения"===========
+btnShowMore('.report__info-block', '.report__info-btn', '', 2, 'Свернуть', 'Показать все сведения');
 
 // прокрутка до определённого сообщения
 // https://learn.javascript.ru/size-and-scroll-window
