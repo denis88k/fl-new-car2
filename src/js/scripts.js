@@ -1,3 +1,26 @@
+// =============swiper=============
+import Swiper, { Navigation, Pagination } from 'swiper';
+// import Swiper styles
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+
+const swipersChoice = document.querySelectorAll('.choice-car__swiper');
+swipersChoice.forEach(swiperChoice => {
+	const swiper = new Swiper(swiperChoice, {
+		modules: [Navigation, Pagination],
+		loop: true,
+		pagination: {
+			el: '.choice-car__pagination',
+		},
+		navigation: {
+			nextEl: '.choice-car__btn-next',
+			prevEl: '.choice-car__btn-prev',
+		},
+	});
+});
+
+// =====================
+
 const addClass = (element, cls) => {
 	element?.classList.add(cls);
 };

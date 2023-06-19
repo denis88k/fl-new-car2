@@ -21,22 +21,6 @@
 		}
 	}
 
-	& .input__tel {
-		position: relative;
-
-		& ~ .input__tel-text {
-			position: absolute;
-			left: 26px;
-			top: -9px;
-			padding: 0 6px;
-			font-weight: 400;
-			font-size: 14px;
-			line-height: 135%;
-			color: var(--text-grey);
-			background-color: var(--white);
-		}
-	}
-
 	&__input {
 		border: 2px solid var(--border-color);
 		border-radius: 15px;
@@ -93,5 +77,21 @@
 		// &:hover {
 		// 	background-color: #309bff;
 		// }
+	}
+}
+
+.input__tel {
+	position: relative;
+
+	& ~ .input__tel-text {
+		position: absolute;
+		left: 26px;
+		top: -9px;
+		padding: 0 6px;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 135%;
+		color: var(--text-grey);
+		background-color: var(--white);
 	}
 }

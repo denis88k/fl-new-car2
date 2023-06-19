@@ -64,3 +64,21 @@
 	line-height: 135%;
 	color: var(--primary-color);
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+	&::after {
+		content: '';
+	}
+}
+
+.swiper-pagination-bullet {
+	width: 7px;
+	height: 7px;
+	background-color: rgba(255, 255, 255, 0.5);
+	opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: var(--white);
+}
