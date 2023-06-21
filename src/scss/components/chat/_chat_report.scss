@@ -3,10 +3,34 @@
 		@include adaptiv-value(margin-bottom, 40, 20, 1);
 	}
 
-	&__slide {
+	&__wrapper-mini {
+		gap: 5px;
+	}
+
+	&__slide-mini {
+		@include adaptiv-value(width, 95, 60, 1);
+		@include adaptiv-value(height, 95, 60, 1);
+		opacity: 0.85;
+
+		img {
+			min-height: 100%;
+			object-fit: cover;
+		}
+
+		&.swiper-slide-thumb-active {
+			opacity: 1;
+		}
+	}
+
+	&__slide,
+	&__slide-mini {
 		img {
 			border-radius: 20px;
 		}
+	}
+
+	&__swiper {
+		margin-bottom: 5px;
 	}
 
 	&__about {

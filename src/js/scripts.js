@@ -1,6 +1,7 @@
 // =============swiper=============
 import Swiper, { Navigation, Pagination, Thumbs } from 'swiper';
 
+// слайдер в choice-car
 const swipersChoice = document.querySelectorAll('.choice-car__swiper');
 swipersChoice.forEach(swiperChoice => {
 	const swiper = new Swiper(swiperChoice, {
@@ -16,11 +17,14 @@ swipersChoice.forEach(swiperChoice => {
 	});
 });
 
+// слайдер превью
 const swiperReportMini = document.querySelector('.report__swiper-mini');
 const swiperMini = new Swiper(swiperReportMini, {
-	spaceBetween: 5,
+	loop: true,
+	freeMode: true,
+	slidesPerView: 'auto',
 });
-
+// слайдер в report
 const swiperReport = document.querySelector('.report__swiper');
 const swiper = new Swiper(swiperReport, {
 	modules: [Navigation, Thumbs],
@@ -29,9 +33,9 @@ const swiper = new Swiper(swiperReport, {
 		nextEl: '.report__btn-next',
 		prevEl: '.report__btn-prev',
 	},
-	// thumbs: {
-	// 	swiper: swiperMini,
-	// },
+	thumbs: {
+		swiper: swiperMini,
+	},
 });
 
 // =====================
@@ -90,6 +94,7 @@ const btnShowMore = (blocksShow, btn, btnText = '', countBlockVisible, textHidde
 		}
 		isShowMore ? removeClass(btnShowMore, 'active') : addClass(btnShowMore, 'active');
 	};
+
 	const toggleBtnText = isShowMore => {
 		btnShowMoreText.innerHTML = isShowMore ? textOpen : textHidden;
 	};
@@ -104,6 +109,7 @@ const btnShowMore = (blocksShow, btn, btnText = '', countBlockVisible, textHidde
 			isShowMore = !isShowMore;
 		});
 	}
+
 	if (blocks.length <= countBlockVisible) {
 		blocks.forEach(block => addClass(block, 'isVisible'));
 		btnShowMore.style.display = 'none';
@@ -129,7 +135,7 @@ const yearsShowSelect = () => {
 	let selectFrom = 0;
 	let selectTo = 0;
 	let isBetween = () => false;
-	let count = 0;
+	// let count = 0;
 	// функция проверяющая подходит ли checkboxBlock под условия
 	const updateCheckboxActive = (checkboxBlocks, selectFrom, selectTo) => {
 		// если задан from и to, то в промежутке
@@ -183,11 +189,11 @@ const yearsShowSelect = () => {
 
 		if (selectInput) {
 			console.log('selectInput====');
-			count++;
+			// count++;
 			const selector = selectInput.nextElementSibling; // блок со списком годов
 			toggleClass(selectInput, 'active');
 			toggleClass(selector, 'active');
-			console.log(selectFrom, '-', selectTo, 'count:', count);
+			// console.log(selectFrom, '-', selectTo, 'count:', count);
 		}
 
 		if (YearsOption) {
@@ -201,7 +207,7 @@ const yearsShowSelect = () => {
 			const checkboxBlocks = document.querySelectorAll('.years__checkbox-block'); // блоки checkbox с поколениями
 			if (containsClass(YearsOption, 'option')) {
 				console.log('option====');
-				count++;
+				// count++;
 				const option = YearsOption.closest('.option');
 				addClass(option, 'active');
 				inputYears.innerHTML = option.dataset.value;
@@ -214,12 +220,12 @@ const yearsShowSelect = () => {
 				}
 
 				updateCheckboxActive(checkboxBlocks, selectFrom, selectTo);
-				console.log(selectFrom, '-', selectTo, 'count:', count);
+				// console.log(selectFrom, '-', selectTo, 'count:', count);
 			}
 
 			if (containsClass(YearsOption, 'clear')) {
 				console.log('optionClear====');
-				count++;
+				// count++;
 
 				inputYears.innerHTML = '';
 				if (optionContainsFrom) {
@@ -230,7 +236,7 @@ const yearsShowSelect = () => {
 					selectTo = 0;
 					updateCheckboxActive(checkboxBlocks, selectFrom, selectTo);
 				}
-				console.log(selectFrom, '-', selectTo, 'count:', count);
+				// console.log(selectFrom, '-', selectTo, 'count:', count);
 			}
 		}
 		return;
@@ -249,6 +255,11 @@ const yearsShowSelect = () => {
 	});
 };
 yearsShowSelect();
+// ======обнуление инпута года выпуска/поколений======
+const resetYearsShowSelect = () => {
+	document.querySelector('.select-from>.clear').click();
+	document.querySelector('.select-to>.clear').click();
+};
 
 // ====блоки с выбором года выпуска (поколений) ====
 // const yearsCheckbox = () => {
@@ -266,45 +277,10 @@ yearsShowSelect();
 checkboxComponent('years');
 
 // ====КНОПКА "ПОКАЗАТЬ ВСЕ ПОКОЛЕНИЯ"=====
-// const yearsBtnShowMore = () => {
-// 	const checkboxBlocks = document.querySelectorAll('.years__checkbox-block');
-// 	const btnShowMore = document.querySelector('.years__show-more');
-// 	const btnShowMoreText = btnShowMore.querySelector('.years__show-more-text');
-// 	let countCheckboxBlock = 5; // 6 шт
-// 	// console.log(checkboxBlocks.length, 'checkboxBlocks.length');
-// 	let isShowMore = false;
-// 	if (checkboxBlocks.length > countCheckboxBlock) {
-// 		for (let i = 0; i <= countCheckboxBlock; i++) {
-// 			addClass(checkboxBlocks[i], 'isVisible');
-// 		}
-
-// 		btnShowMore.addEventListener('click', () => {
-// 			if (!isShowMore) {
-// 				// если другие поколения больше 6 не показаны
-// 				for (let i = countCheckboxBlock + 1; i < checkboxBlocks.length; i++) {
-// 					addClass(checkboxBlocks[i], 'isVisible');
-// 				}
-// 				btnShowMoreText.innerHTML = 'Свернуть';
-// 				isShowMore = true;
-// 				addClass(btnShowMore, 'active');
-// 			} else if (isShowMore) {
-// 				// если отображены все другие поколения
-// 				for (let i = countCheckboxBlock + 1; i < checkboxBlocks.length; i++) {
-// 					removeClass(checkboxBlocks[i], 'isVisible');
-// 				}
-// 				btnShowMoreText.innerHTML = 'Показать все поколения';
-// 				isShowMore = false;
-// 				removeClass(btnShowMore, 'active');
-// 			}
-// 		});
-// 	}
-// 	if (checkboxBlocks.length <= 5) {
-// 		checkboxBlocks.forEach(checkboxBlock => addClass(checkboxBlock, 'isVisible'));
-// 		btnShowMore.style.display = 'none';
-// 	}
-// };
-// yearsBtnShowMore();
 btnShowMore('.years__checkbox-block', '.years__show-more', '.years__show-more-text', 5, 'Свернуть', 'Показать все поколения');
+// ======обнуление кнопки "ПОКАЗАТЬ ВСЕ ПОКОЛЕНИЯ"======
+// TODO: кнопка показать ещё
+const resetBtnShowMoreYears = () => {};
 
 // ===========ПРОБЕГ===========
 // ======CHECKBOX ПРОБЕГА======
@@ -338,7 +314,7 @@ const mileageInput = () => {
 		inputFrom = Number(valueFrom.value.split(' ').join('').replace(/,/gi, '.'));
 		inputTo = Number(valueTo.value.split(' ').join('').replace(/,/gi, '.'));
 		// console.log(inputFrom, inputTo);
-		const inputValue = Number(e.target.value.split(' ').join('').replace(/,/gi, '.'));
+		// const inputValue = Number(e.target.value.split(' ').join('').replace(/,/gi, '.'));
 		// console.log(inputValue, 'inputValue');
 		e.target.value = e.target.value.replace(/\D/g, '').replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
 		// console.log(e.target.value);
@@ -401,13 +377,19 @@ const mileageInput = () => {
 			addClass(mileageCheckboxBlocks[0], 'active');
 			// console.log('isLess100');
 		}
-
 		// console.log('inputFrom:', inputFrom, '-', inputTo, ':inputTo');
 	});
 };
 mileageInput();
 
-// ===========владелец===========
+// ======обнуление инпута пробега======
+const resetMileageInput = () => {
+	document.querySelector('.input-from').value = 0;
+	document.querySelector('.input-to').value = 0;
+	removeClassArray(document.querySelectorAll('.mileage__checkbox-block'), 'active');
+};
+
+// ===========ВЛАДЕЛЕЦ===========
 // ======CHECKBOX владелец======
 // const ownerCheckbox = () => {
 // 	const ownerCheckbox = document.querySelector('.owner__checkbox');
@@ -423,8 +405,11 @@ mileageInput();
 // ownerCheckbox();
 checkboxComponent('owner');
 
-// ===========кнопка "сведения все сведения"===========
+// ===========кнопка "сведения все сведения" в секции report__info===========
 btnShowMore('.report__info-block', '.report__info-btn', '', 2, 'Свернуть', 'Показать все сведения');
+const resetBtnShowMoreReport = () => {
+	document.querySelector('.report__info-btn').click();
+};
 
 // прокрутка до определённого сообщения
 // https://learn.javascript.ru/size-and-scroll-window
