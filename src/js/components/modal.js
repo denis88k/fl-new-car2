@@ -1,8 +1,16 @@
+import { addClass, removeClass } from './helpers.js';
+
 const modalErrorDelete = modal => {
 	modal.querySelectorAll('.form__input')?.forEach(input => {
-		input.classList.remove('just-validate-error-field');
+		removeClass(input, 'just-validate-error-field');
 	});
 	modal.querySelectorAll('.just-validate-error-label')?.forEach(errorElement => errorElement.remove());
+};
+
+const removeActiveClassModale = () => {
+	removeClass(body, '_lock');
+	removeClass(modal, 'active');
+	modalErrorDelete(modal);
 };
 
 const modal = (btnOpen, modal, btnClose) => {
@@ -14,21 +22,27 @@ const modal = (btnOpen, modal, btnClose) => {
 	// открытие модального окна
 	btnOpen?.addEventListener('click', e => {
 		e.preventDefault();
-		body.classList.add('_lock');
-		modal.classList.add('active');
+		addClass(body, '_lock');
+		addClass(modal, 'active');
+		// body.classList.add('_lock');
+		// modal.classList.add('active');
 	});
 	// закрытие модального окна: по кнопке
 	btnClose?.addEventListener('click', () => {
-		body.classList.remove('_lock');
-		modal.classList.remove('active');
-		modalErrorDelete(modal);
+		// removeClass(body, '_lock')
+		// removeClass(modal, 'active')
+		// body.classList.remove('_lock');
+		// modal.classList.remove('active');
+		// modalErrorDelete(modal);
+		removeActiveClassModale();
 	});
 	// закрытие модального окна: по области вокруг модального окна
 	modal?.addEventListener('click', e => {
 		if (e.target === modal) {
-			body.classList.remove('_lock');
-			modal.classList.remove('active');
-			modalErrorDelete(modal);
+			removeActiveClassModale();
+			// body.classList.remove('_lock');
+			// modal.classList.remove('active');
+			// modalErrorDelete(modal);
 		}
 	});
 };

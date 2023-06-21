@@ -240,15 +240,34 @@
 	}
 
 	&__map-block {
-		display: block;
+		// display: block;
+		display: flex;
+		overflow: hidden;
 		border-radius: 20px;
+
+		// @include adaptiv-value(margin-left, 0, -15, 1);
+		// @include adaptiv-value(margin-right, 0, -15, 1);
+		// @include adaptiv-value-in-min(margin-left, -120, -15, 940, 375);
+		// @include adaptiv-value-in-min(margin-right, -120, -15, 940, 375);
+		// @include adaptiv-value-in-min(padding-left, 120, 15, 940, 375);
+		// @include adaptiv-value-in-min(padding-right, 120, 15, 940, 375);
+
+		// @include adaptiv-value-in-min(margin-left, 0, -15, 940, 375);
+		// @include adaptiv-value-in-min(margin-right, 0, -15, 940, 375);
+
 		width: 100%;
 
 		// height: 100%;
-		height: 700px;
-		@include adaptiv-value-in-min(margin-left, 0, -15, 940, 375);
-		@include adaptiv-value-in-min(margin-right, 0, -15, 940, 375);
+		height: 368px;
+		@media screen and (max-width: 420px) {
+			// margin-right: -15px;
+			// margin-left: -15px;
+		}
 	}
+}
+
+.ymaps-2-1-79-copyright {
+	display: none !important;
 }
 
 .report-title {

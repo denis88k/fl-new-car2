@@ -3195,22 +3195,14 @@ body._lock {
   }
 }
 .report__map-block {
-  display: block;
+  display: flex;
+  overflow: hidden;
   border-radius: 20px;
   width: 100%;
-  height: 700px;
-  margin-left: 0px;
-  margin-right: 0px;
+  height: 368px;
 }
-@media (max-width: 940px) {
-  .report__map-block {
-    margin-left: calc(-15px + 15 * ((100vw - 375px) / 565));
-  }
-}
-@media (max-width: 940px) {
-  .report__map-block {
-    margin-right: calc(-15px + 15 * ((100vw - 375px) / 565));
-  }
+.ymaps-2-1-79-copyright {
+  display: none !important;
 }
 
 .report-title {
