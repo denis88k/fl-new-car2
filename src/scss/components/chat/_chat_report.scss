@@ -197,8 +197,11 @@
 		color: var(--text-grey);
 	}
 
-	// &__info-btn {
-	// }
+	&__info-btn {
+		display: flex;
+		justify-content: center;
+	}
+
 	&__form {
 		display: flex;
 		flex-direction: column;
@@ -239,12 +242,12 @@
 	&__map-block {
 		display: block;
 		border-radius: 20px;
-		height: 100px;
-		background-color: red;
+		width: 100%;
+
+		// height: 100%;
+		height: 700px;
 		@include adaptiv-value-in-min(margin-left, 0, -15, 940, 375);
 		@include adaptiv-value-in-min(margin-right, 0, -15, 940, 375);
-
-		// }
 	}
 }
 
@@ -255,5 +258,5 @@
 	color: var(--text-black);
 }
 
-.btn-modul {
-}
+// .btn-modul {
+// }
