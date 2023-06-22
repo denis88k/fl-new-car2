@@ -16,7 +16,7 @@ const removeClassArray = (elements, cls) => {
 	});
 };
 const closestElement = (element, cls) => {
-	document.querySelector(element).closest(cls);
+	return element.closest(`.${cls}`);
 };
 
 export { addClass, closestElement, containsClass, removeClass, removeClassArray, toggleClass };

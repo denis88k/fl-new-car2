@@ -105,7 +105,7 @@ const blockVisibleAndBtnShowMore = (...params) => {
 		btnText ? (btnShowMoreText = btnShowMore.querySelector(btnText)) : (btnShowMoreText = btnShowMore);
 		btnShowMoreText.innerText = textOpen;
 
-		const btnShowMoreClick = () => {
+		const btnShowMoreClick = e => {
 			// console.log(isShowMore);
 			e.preventDefault();
 			for (let i = countBlockVisible; i <= blocks.length; i++) {

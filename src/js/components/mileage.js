@@ -1,3 +1,5 @@
+import { addClass, removeClassArray } from './helpers.js';
+
 const mileageInput = () => {
 	// const mileageInputs = document.querySelectorAll('.mileage__input');
 	const mileageInputs = document.querySelector('.mileage__inputs');

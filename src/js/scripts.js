@@ -1,13 +1,13 @@
 import Swiper, { Navigation, Pagination, Thumbs } from 'swiper';
 
+import { chatLogic } from './components/chat.js';
 import { checkboxComponent } from './components/checkbox.js';
 import { addClass, closestElement, containsClass, removeClass, removeClassArray, toggleClass } from './components/helpers.js';
 import { mileageInput, resetMileageInput } from './components/mileage.js';
+import { resetCheckboxOwner } from './components/owner.js';
 import stickyConsultant from './components/stickyConsultant.js';
 import { blockVisibleAndBtnShowMore } from './components/visibleBlockAndBtnShowMore.js';
 import { resetYearsShowSelect, yearsShowSelect } from './components/years.js';
-import { resetCheckboxOwner } from './components/owner.js';
-import { chatLogic } from './components/chat.js';
 
 // =============swiper=============
 // ========= CHOICE-CAR =========

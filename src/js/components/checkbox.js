@@ -1,3 +1,5 @@
+import { toggleClass } from './helpers.js';
+
 // функция компонент для проставления галочек на checkboxBlock'ы
 const checkboxComponent = block => {
 	const componentCheckbox = document.querySelector(`.${block}__checkbox`);

@@ -7,17 +7,17 @@ const modalErrorDelete = modal => {
 	modal.querySelectorAll('.just-validate-error-label')?.forEach(errorElement => errorElement.remove());
 };
 
-const removeActiveClassModale = () => {
-	removeClass(body, '_lock');
-	removeClass(modal, 'active');
-	modalErrorDelete(modal);
-};
-
 const modal = (btnOpen, modal, btnClose) => {
 	btnOpen = document.querySelector(btnOpen);
 	modal = document.querySelector(modal);
 	btnClose = document.querySelector(btnClose);
 	const body = document.body;
+
+	const removeActiveClassModal = () => {
+		removeClass(body, '_lock');
+		removeClass(modal, 'active');
+		modalErrorDelete(modal);
+	};
 
 	// открытие модального окна
 	btnOpen?.addEventListener('click', e => {
@@ -34,12 +34,12 @@ const modal = (btnOpen, modal, btnClose) => {
 		// body.classList.remove('_lock');
 		// modal.classList.remove('active');
 		// modalErrorDelete(modal);
-		removeActiveClassModale();
+		removeActiveClassModal();
 	});
 	// закрытие модального окна: по области вокруг модального окна
 	modal?.addEventListener('click', e => {
 		if (e.target === modal) {
-			removeActiveClassModale();
+			removeActiveClassModal();
 			// body.classList.remove('_lock');
 			// modal.classList.remove('active');
 			// modalErrorDelete(modal);
