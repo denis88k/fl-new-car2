@@ -1,4 +1,4 @@
-import { addClass, removeClassArray } from './helpers.js';
+import { addClass, closestElement, containsClass, removeClassArray } from './helpers.js';
 
 const mileageInput = () => {
 	// const mileageInputs = document.querySelectorAll('.mileage__input');
@@ -10,15 +10,20 @@ const mileageInput = () => {
 	let inputTo = 0;
 	let isMore100 = () => false;
 	let isLess100 = () => false;
+	const answerTextMore = 'Больше 100 000 км';
+	const answerTextLess = 'Меньше 100 000 км';
+	const answerTextAny = 'Любой пробег';
+
+	const chatMessageBlock = closestElement(mileageInputs, 'chat__message-block');
+	const answerMessage = chatMessageBlock.nextElementSibling;
+	answerMessage.innerText = '';
+
 	mileageInputs.addEventListener('input', e => {
 		removeClassArray(mileageCheckboxBlocks, 'active');
 		inputFrom = Number(valueFrom.value.split(' ').join('').replace(/,/gi, '.'));
 		inputTo = Number(valueTo.value.split(' ').join('').replace(/,/gi, '.'));
-		// console.log(inputFrom, inputTo);
-		// const inputValue = Number(e.target.value.split(' ').join('').replace(/,/gi, '.'));
-		// console.log(inputValue, 'inputValue');
 		e.target.value = e.target.value.replace(/\D/g, '').replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
-		// console.log(e.target.value);
+
 		// inputFrom > inputTo, то [inputFrom, inputTo] = [inputTo, inputFrom]
 		if (inputFrom > inputTo && inputTo !== 0) {
 			console.log('деструктуризация');
@@ -31,7 +36,8 @@ const mileageInput = () => {
 			(inputFrom === 100_000 && inputTo === 100_000) ||
 			(inputFrom === 0 && inputTo === 0)
 		) {
-			// console.log('ни один из вариантов');
+			console.log('ни один из вариантов');
+			answerMessage.innerText = answerTextAny;
 			return;
 		}
 		// =====от=====
@@ -72,13 +78,68 @@ const mileageInput = () => {
 
 		if (isMore100()) {
 			addClass(mileageCheckboxBlocks[1], 'active');
+			answerMessage.innerText = answerTextMore;
 			// console.log('isMore100');
 		}
 		if (isLess100()) {
 			addClass(mileageCheckboxBlocks[0], 'active');
+			answerMessage.innerText = answerTextLess;
 			// console.log('isLess100');
 		}
 		// console.log('inputFrom:', inputFrom, '-', inputTo, ':inputTo');
+	});
+
+	const mileageCheckboxBlock = document.querySelector('.mileage__checkbox');
+	mileageCheckboxBlock.addEventListener('click', e => {
+		const blockTo = closestElement(e.target, 'mileage__checkbox-block[data-value="to"]');
+		const blockFrom = closestElement(e.target, 'mileage__checkbox-block[data-value="from"]');
+		// console.log(e.target);
+		// if (containsClass(blockTo, 'active')) {
+		if (blockTo) {
+			if (!containsClass(blockTo, 'active')) {
+				console.log(blockTo, 'blockTo');
+				if (containsClass(blockTo.nextElementSibling, 'active')) {
+					console.log(1);
+					answerMessage.innerText = answerTextAny;
+				} else {
+					console.log(2);
+					answerMessage.innerText = answerTextLess;
+				}
+			} else {
+				if (containsClass(blockTo.nextElementSibling, 'active')) {
+					answerMessage.innerText = answerTextMore;
+					console.log(3);
+				} else {
+					answerMessage.innerText = answerTextAny;
+					console.log(4);
+				}
+			}
+		}
+
+		if (blockFrom) {
+			if (!containsClass(blockFrom, 'active')) {
+				console.log(blockFrom, 'blockFrom');
+
+				if (containsClass(blockFrom.previousElementSibling, 'active')) {
+					answerMessage.innerText = answerTextAny;
+					console.log(5);
+				} else {
+					answerMessage.innerText = answerTextMore;
+					console.log(6);
+				}
+			} else {
+				if (containsClass(blockFrom.previousElementSibling, 'active')) {
+					answerMessage.innerText = answerTextLess;
+					console.log(7);
+				} else {
+					answerMessage.innerText = answerTextAny;
+					console.log(8);
+				}
+			}
+		}
+
+		// if(!containsClass(blockTo, 'active') && (blockTo.nextElementSibling))
+		// const blockTo = block.dataset.value
 	});
 };
 

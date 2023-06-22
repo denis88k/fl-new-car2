@@ -3,46 +3,91 @@ import { addClass, closestElement, containsClass, removeClass, removeClassArray,
 const yearsShowSelect = () => {
 	let selectFrom = 0;
 	let selectTo = 0;
-	let answMsgFrom = 0;
-	let answMsgTo = 0;
+	let answerMsgFrom = 0;
+	let answerMsgTo = 0;
 	let isBetween = () => false;
 	// let count = 0;
 
 	// функция ответа сообщения
 	const checkboxBlock = document.querySelector('.years__checkbox');
+	// input's
+	const input = document.querySelectorAll('.years__select-item');
+	const inputFrom = input[0];
+	const inputTo = input[1];
+	const inputFromText = inputFrom.querySelector('.input-years');
+	const inputToText = inputTo.querySelector('.input-years');
+	// options
+	const optionFromInput = document.querySelectorAll('.select-from>.option');
+	const optionToInput = document.querySelectorAll('.select-to>.option');
 	const checkboxBlockClick = e => {
 		const checkboxBlock = closestElement(e.target, 'years__checkbox-block');
 		if (!containsClass(checkboxBlock, 'active')) {
 			console.log(checkboxBlock);
-			// answMsgFrom = selectFrom;
-			// answMsgTo = selectTo;
+			// answerMsgFrom = selectFrom;
+			// answerMsgTo = selectTo;
 			const checkboxFrom = Number(checkboxBlock.dataset.from);
 			const checkboxTo = Number(checkboxBlock.dataset.to);
-			if (
-				(selectFrom < checkboxFrom && selectFrom === 0 && answMsgFrom > checkboxFrom) ||
-				(selectFrom > checkboxFrom && answMsgFrom > checkboxFrom)
-			) {
-				answMsgFrom = checkboxFrom;
+			// console.log(selectFrom, selectTo);
+
+			// TODO:
+			// selectFrom > checkboxFrom => selectFrom = checkboxFrom
+			// selectFrom <= checkboxFrom => return
+			// selectTo >= checkboxTo => return
+			// selectTo < checkboxTo => selectTo = checkboxTo
+			if (selectFrom > checkboxFrom || (selectFrom <= checkboxFrom && selectFrom === 0)) {
+				selectFrom = checkboxFrom;
+				inputFromText.innerText = selectFrom;
+				optionFromInput.forEach(option => {
+					if (Number(option.dataset.value) === selectFrom) {
+						console.log('optionFromInput');
+						option.click();
+						// addClass(option, 'active')
+					} else {
+						// containsClass(option, 'active') && removeClass(option, 'active')
+					}
+				});
 			}
-			if (selectTo < checkboxTo && answMsgTo < checkboxTo) {
-				answMsgTo = checkboxTo;
+			if (selectFrom <= checkboxFrom && selectFrom !== 0) selectFrom;
+			if (selectTo >= checkboxTo) selectTo;
+			if (selectTo < checkboxTo) {
+				selectTo = checkboxTo;
+				inputToText.innerText = selectTo;
+				optionToInput.forEach(option => {
+					if (Number(option.dataset.value) === selectTo) {
+						console.log('optionToInput');
+						option.click();
+						// addClass(option, 'active')
+					} else {
+						// containsClass(option, 'active') && removeClass(option, 'active')
+					}
+				});
 			}
-			if (answMsgFrom > 0 && answMsgTo > 0) {
-				answMessage.innerText = `${answMsgFrom} - ${answMsgTo}`;
-			}
-			if (answMsgFrom > 0 && answMsgTo === 0) {
-				answMessage.innerText = `${answMsgFrom}`;
-			}
-			if (answMsgFrom === 0 && answMsgTo > 0) {
-				answMessage.innerText = `${answMsgTo}`;
-			}
-			console.log(selectFrom, selectTo, '-', answMsgFrom, answMsgTo);
+
+			// if (
+			// 	(selectFrom < checkboxFrom && selectFrom === 0 && answerMsgFrom > checkboxFrom) ||
+			// 	(selectFrom > checkboxFrom && answerMsgFrom > checkboxFrom)
+			// ) {
+			// 	answerMsgFrom = checkboxFrom;
+			// }
+			// if (selectTo < checkboxTo && answerMsgTo < checkboxTo) {
+			// 	answerMsgTo = checkboxTo;
+			// }
+			// if (answerMsgFrom > 0 && answerMsgTo > 0) {
+			// 	answerMessage.innerText = `${answerMsgFrom} - ${answerMsgTo}`;
+			// }
+			// if (answerMsgFrom > 0 && answerMsgTo === 0) {
+			// 	answerMessage.innerText = `${answerMsgFrom}`;
+			// }
+			// if (answerMsgFrom === 0 && answerMsgTo > 0) {
+			// 	answerMessage.innerText = `${answerMsgTo}`;
+			// }
+			console.log(selectFrom, selectTo, '-', answerMsgFrom, answerMsgTo);
 		}
 	};
 	checkboxBlock.addEventListener('click', checkboxBlockClick);
 
 	// функция проверяющая подходит ли checkboxBlock под условия
-	const updateCheckboxActive = (checkboxBlocks, selectFrom, selectTo, answMessage) => {
+	const updateCheckboxActive = (checkboxBlocks, selectFrom, selectTo, answerMessage) => {
 		// если задан from и to, то в промежутке
 		if (selectFrom > 0 && selectTo > 0) {
 			// console.log(selectFrom, selectTo, 'оба больше нуля');
@@ -54,27 +99,37 @@ const yearsShowSelect = () => {
 			isBetween = checkboxBlock =>
 				(selectFrom <= Number(checkboxBlock.dataset.from) && Number(checkboxBlock.dataset.from) <= selectTo) ||
 				(selectFrom <= Number(checkboxBlock.dataset.to) && Number(checkboxBlock.dataset.to) <= selectTo);
-			answMessage.innerText = `${selectFrom} - ${selectTo}`;
+
+			answerMessage.innerText = `от ${selectFrom} до ${selectTo}`;
+
+			// if (selectFrom < answerMsgFrom && selectTo > answerMsgTo) {
+			// 	answerMessage.innerText = `${selectFrom} - ${selectTo}`;
+			// }
+			// if (selectFrom > answerMsgFrom && selectTo < answerMsgTo) {
+			// 	answerMessage.innerText = `${answerMsgFrom} - ${selectTo}`;
+			// }
+			// if(selectFrom > answerMsgFrom && selectTo < answerMsgTo){
+			// 	answerMessage.innerText = `${answerMsgFrom} - ${selectTo}`;
+			// }
 		}
 		// если задан from, а to=0, то показать всё, что больше from
 		if (selectFrom > 0 && selectTo === 0) {
 			// console.log('год от больше нуля:', selectFrom, 'год до=0:', selectTo);
 			isBetween = checkboxBlock => selectFrom <= Number(checkboxBlock.dataset.from) || selectFrom <= Number(checkboxBlock.dataset.to);
-			answMessage.innerText = `${selectFrom}`;
+			answerMessage.innerText = `от ${selectFrom}`;
 		}
 		// если задан from=0, а to задан, то показать всё, что меньше to
 		if (selectFrom === 0 && selectTo > 0) {
 			// console.log('год от=нулю:', selectFrom, 'год до больше 0:', selectTo);
 			isBetween = checkboxBlock => selectTo >= Number(checkboxBlock.dataset.to) || selectTo >= Number(checkboxBlock.dataset.from);
-			answMessage.innerText = `${selectTo}`;
+			answerMessage.innerText = `до ${selectTo}`;
 		}
 		if (selectFrom === 0 && selectTo === 0) {
 			// console.log('всё по нулям:', selectFrom, '-', selectTo);
 			isBetween = () => false;
-			// answMessage.innerText = `Любой`;
+			answerMessage.innerText = `Любой год`;
 		}
 		// console.log(isBetween);
-		// removeClassArray(checkboxBlocks, 'active');
 		checkboxBlocks.forEach(checkboxBlock => {
 			if (isBetween(checkboxBlock)) {
 				// console.log(checkboxBlock);
@@ -94,8 +149,8 @@ const yearsShowSelect = () => {
 
 	const selects = document.querySelector('.years__selects');
 	const chatMessageBlock = closestElement(selects, 'chat__message-block');
-	const answMessage = chatMessageBlock.nextElementSibling;
-	answMessage.innerText = '';
+	const answerMessage = chatMessageBlock.nextElementSibling;
+	answerMessage.innerText = '';
 
 	selects.addEventListener('click', e => {
 		// const selectInput = e.target.closest('.years__input');
@@ -122,7 +177,7 @@ const yearsShowSelect = () => {
 			const optionContainsTo = containsClass(YearsOption.parentElement, 'select-to');
 			const checkboxBlocks = document.querySelectorAll('.years__checkbox-block'); // блоки checkbox с поколениями
 			if (containsClass(YearsOption, 'option')) {
-				// console.log('option====');
+				console.log('option====');
 				// count++;
 				const option = YearsOption.closest('.option');
 				addClass(option, 'active');
@@ -135,7 +190,7 @@ const yearsShowSelect = () => {
 					selectTo = Number(option.dataset.value);
 				}
 
-				updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answMessage);
+				updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answerMessage);
 				// console.log(selectFrom, '-', selectTo, 'count:', count);
 			}
 
@@ -146,11 +201,11 @@ const yearsShowSelect = () => {
 				inputYears.innerHTML = '';
 				if (optionContainsFrom) {
 					selectFrom = 0;
-					updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answMessage);
+					updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answerMessage);
 				}
 				if (optionContainsTo) {
 					selectTo = 0;
-					updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answMessage);
+					updateCheckboxActive(checkboxBlocks, selectFrom, selectTo, answerMessage);
 				}
 				// console.log(selectFrom, '-', selectTo, 'count:', count);
 			}
