@@ -10,7 +10,7 @@
           Выберите количество владельцев автомобиля
         </p>
         <div class="owner__checkbox">
-          <div class="owner__checkbox-block">
+          <div class="owner__checkbox-block" data-owner="1">
             <p class="owner__checkbox-text">
               1
             </p>
@@ -21,7 +21,7 @@
               </svg>
             </div>
           </div>
-          <div class="owner__checkbox-block">
+          <div class="owner__checkbox-block" data-owner="2">
             <p class="owner__checkbox-text">
               2
             </p>
@@ -32,7 +32,7 @@
               </svg>
             </div>
           </div>
-          <div class="owner__checkbox-block">
+          <div class="owner__checkbox-block" data-owner="3 и более">
             <p class="owner__checkbox-text">
               3 и более
             </p>
@@ -54,6 +54,6 @@
   @include('./_chat_message-client.html',
   {
   'text':
-  '1'
+  'Любое количество'
   })
 </div>

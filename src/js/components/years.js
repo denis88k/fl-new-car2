@@ -1,90 +1,10 @@
-import { addClass, closestElement, containsClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
+import { addClass, closestElement, containsClass, removeClass, removeClassArray, resetAnswer, toggleClass } from './helpers.js';
 
 const yearsShowSelect = () => {
 	let selectFrom = 0;
 	let selectTo = 0;
-	let answerMsgFrom = 0;
-	let answerMsgTo = 0;
 	let isBetween = () => false;
 	// let count = 0;
-
-	// функция ответа сообщения
-	const checkboxBlock = document.querySelector('.years__checkbox');
-	// input's
-	const input = document.querySelectorAll('.years__select-item');
-	const inputFrom = input[0];
-	const inputTo = input[1];
-	const inputFromText = inputFrom.querySelector('.input-years');
-	const inputToText = inputTo.querySelector('.input-years');
-	// options
-	const optionFromInput = document.querySelectorAll('.select-from>.option');
-	const optionToInput = document.querySelectorAll('.select-to>.option');
-	const checkboxBlockClick = e => {
-		const checkboxBlock = closestElement(e.target, 'years__checkbox-block');
-		if (!containsClass(checkboxBlock, 'active')) {
-			console.log(checkboxBlock);
-			// answerMsgFrom = selectFrom;
-			// answerMsgTo = selectTo;
-			const checkboxFrom = Number(checkboxBlock.dataset.from);
-			const checkboxTo = Number(checkboxBlock.dataset.to);
-			// console.log(selectFrom, selectTo);
-
-			// TODO:
-			// selectFrom > checkboxFrom => selectFrom = checkboxFrom
-			// selectFrom <= checkboxFrom => return
-			// selectTo >= checkboxTo => return
-			// selectTo < checkboxTo => selectTo = checkboxTo
-			if (selectFrom > checkboxFrom || (selectFrom <= checkboxFrom && selectFrom === 0)) {
-				selectFrom = checkboxFrom;
-				inputFromText.innerText = selectFrom;
-				optionFromInput.forEach(option => {
-					if (Number(option.dataset.value) === selectFrom) {
-						console.log('optionFromInput');
-						option.click();
-						// addClass(option, 'active')
-					} else {
-						// containsClass(option, 'active') && removeClass(option, 'active')
-					}
-				});
-			}
-			if (selectFrom <= checkboxFrom && selectFrom !== 0) selectFrom;
-			if (selectTo >= checkboxTo) selectTo;
-			if (selectTo < checkboxTo) {
-				selectTo = checkboxTo;
-				inputToText.innerText = selectTo;
-				optionToInput.forEach(option => {
-					if (Number(option.dataset.value) === selectTo) {
-						console.log('optionToInput');
-						option.click();
-						// addClass(option, 'active')
-					} else {
-						// containsClass(option, 'active') && removeClass(option, 'active')
-					}
-				});
-			}
-
-			// if (
-			// 	(selectFrom < checkboxFrom && selectFrom === 0 && answerMsgFrom > checkboxFrom) ||
-			// 	(selectFrom > checkboxFrom && answerMsgFrom > checkboxFrom)
-			// ) {
-			// 	answerMsgFrom = checkboxFrom;
-			// }
-			// if (selectTo < checkboxTo && answerMsgTo < checkboxTo) {
-			// 	answerMsgTo = checkboxTo;
-			// }
-			// if (answerMsgFrom > 0 && answerMsgTo > 0) {
-			// 	answerMessage.innerText = `${answerMsgFrom} - ${answerMsgTo}`;
-			// }
-			// if (answerMsgFrom > 0 && answerMsgTo === 0) {
-			// 	answerMessage.innerText = `${answerMsgFrom}`;
-			// }
-			// if (answerMsgFrom === 0 && answerMsgTo > 0) {
-			// 	answerMessage.innerText = `${answerMsgTo}`;
-			// }
-			console.log(selectFrom, selectTo, '-', answerMsgFrom, answerMsgTo);
-		}
-	};
-	checkboxBlock.addEventListener('click', checkboxBlockClick);
 
 	// функция проверяющая подходит ли checkboxBlock под условия
 	const updateCheckboxActive = (checkboxBlocks, selectFrom, selectTo, answerMessage) => {
@@ -101,16 +21,6 @@ const yearsShowSelect = () => {
 				(selectFrom <= Number(checkboxBlock.dataset.to) && Number(checkboxBlock.dataset.to) <= selectTo);
 
 			answerMessage.innerText = `от ${selectFrom} до ${selectTo}`;
-
-			// if (selectFrom < answerMsgFrom && selectTo > answerMsgTo) {
-			// 	answerMessage.innerText = `${selectFrom} - ${selectTo}`;
-			// }
-			// if (selectFrom > answerMsgFrom && selectTo < answerMsgTo) {
-			// 	answerMessage.innerText = `${answerMsgFrom} - ${selectTo}`;
-			// }
-			// if(selectFrom > answerMsgFrom && selectTo < answerMsgTo){
-			// 	answerMessage.innerText = `${answerMsgFrom} - ${selectTo}`;
-			// }
 		}
 		// если задан from, а to=0, то показать всё, что больше from
 		if (selectFrom > 0 && selectTo === 0) {
@@ -150,7 +60,7 @@ const yearsShowSelect = () => {
 	const selects = document.querySelector('.years__selects');
 	const chatMessageBlock = closestElement(selects, 'chat__message-block');
 	const answerMessage = chatMessageBlock.nextElementSibling;
-	answerMessage.innerText = '';
+	// answerMessage.innerText = 'Любой год';
 
 	selects.addEventListener('click', e => {
 		// const selectInput = e.target.closest('.years__input');
@@ -177,7 +87,7 @@ const yearsShowSelect = () => {
 			const optionContainsTo = containsClass(YearsOption.parentElement, 'select-to');
 			const checkboxBlocks = document.querySelectorAll('.years__checkbox-block'); // блоки checkbox с поколениями
 			if (containsClass(YearsOption, 'option')) {
-				console.log('option====');
+				console.log('option====', YearsOption);
 				// count++;
 				const option = YearsOption.closest('.option');
 				addClass(option, 'active');
@@ -214,6 +124,68 @@ const yearsShowSelect = () => {
 		}
 		return;
 	});
+
+	// ======функция ОТВЕТА сообщения======
+	const checkboxBlocks = document.querySelector('.years__checkbox');
+	// input's
+	const inputs = document.querySelectorAll('.years__select-item');
+	const inputFrom = inputs[0];
+	const inputTo = inputs[1];
+	const inputFromText = inputFrom.querySelector('.input-years');
+	const inputToText = inputTo.querySelector('.input-years');
+	// options
+	const optionFromInput = document.querySelectorAll('.select-from>.option');
+	const optionToInput = document.querySelectorAll('.select-to>.option');
+	let arrFrom = [];
+	let arrTo = [];
+
+	const updateCheckboxClick = checkboxBlock => {
+		removeClassArray(optionFromInput, 'active');
+		removeClassArray(optionToInput, 'active');
+		inputFromText.innerText = '';
+		inputToText.innerText = '';
+
+		document.querySelectorAll('.years__checkbox-block').forEach(block => {
+			if (block !== checkboxBlock && containsClass(block, 'active')) {
+				arrFrom.push(Number(block.dataset.from));
+				arrTo.push(Number(block.dataset.to));
+			}
+		});
+		const checkboxFromMin = Math.min(...arrFrom);
+		const checkboxToMax = Math.max(...arrTo);
+		// console.log(arrFrom, checkboxFromMin, arrTo, checkboxToMax);
+		if (arrFrom.length === 0 && arrTo.length === 0) {
+			answerMessage.innerText = `Любой год`;
+		} else {
+			selectFrom = checkboxFromMin;
+			selectTo = checkboxToMax;
+			answerMessage.innerText = `от ${selectFrom} до ${selectTo}`;
+		}
+	};
+
+	const checkboxBlockClick = e => {
+		const checkboxBlock = closestElement(e.target, 'years__checkbox-block');
+		const checkboxFrom = Number(checkboxBlock.dataset.from);
+		const checkboxTo = Number(checkboxBlock.dataset.to);
+
+		// поставили галочку
+		if (!containsClass(checkboxBlock, 'active')) {
+			arrFrom = [checkboxFrom];
+			arrTo = [checkboxTo];
+			updateCheckboxClick(checkboxBlock);
+			console.log(selectFrom, '-', selectTo, 'active');
+		}
+		// убираем галочку
+		if (containsClass(checkboxBlock, 'active')) {
+			// checkboxFrom checkboxTo
+			arrFrom = [];
+			arrTo = [];
+			updateCheckboxClick(checkboxBlock);
+			console.log(selectFrom, '-', selectTo, 'without active');
+		}
+	};
+	checkboxBlocks.addEventListener('click', checkboxBlockClick);
+
 	// ====спрятать список годов====
 	document.addEventListener('click', function (e) {
 		if (!e.target.closest('.years__input')) {
@@ -228,13 +200,21 @@ const yearsShowSelect = () => {
 	});
 };
 
-const resetYearsShowSelect = () => {
+const resetYears = () => {
 	document.querySelectorAll('.years__input').forEach(selectInput => {
 		removeClass(selectInput, 'active');
-		removeClass(selectInput.nextElementSibling, 'active');
+		const selector = selectInput.nextElementSibling;
+		removeClass(selector, 'active');
+		const option = selector.querySelectorAll('option');
+		removeClassArray(option, 'active');
 	});
 	document.querySelector('.select-from>.clear').click();
 	document.querySelector('.select-to>.clear').click();
+	resetAnswer('years', 'Любой год', 'chat__message-block');
+	// const selects = document.querySelector('.years__selects');
+	// const chatMessageBlock = closestElement(selects, 'chat__message-block');
+	// const answerMessage = chatMessageBlock.nextElementSibling;
+	// answerMessage.innerText = 'Любой год';
 };
 
-export { resetYearsShowSelect, yearsShowSelect };
+export { resetYears, yearsShowSelect };

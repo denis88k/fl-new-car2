@@ -4,7 +4,43 @@
 // true - elem вверху
 // elem.scrollIntoView(false)
 
-// ===========================Логика чата===================
+// ==============CHAT "GIGA"===================
+
+// model
+// 0 удаление:
+//		msg show
+//		active на выборе
+
+// YEARS
+// 1 удаление:
+//		msg show
+//		resetYears()
+//		blockVisibleAndBtnShowMore('.years__checkbox-block', 6, '.years__show-more', '.years__show-more-text', 'Показать все поколения')
+
+// mileage
+// 2 удаление:
+//		msg show
+//		resetMileage()
+
+// owner
+// 3 удаление:
+//		msg show
+//		resetOwner()
+
+// CHOICE CAR
+// 4 удаление:
+//		msg show
+// 		active на выборе
+//		resetYears()
+
+// report
+// 6 удаление:
+//		msg show
+//		blockVisibleAndBtnShowMore('.report__info-block', 3, '.report__info-btn', '', 'Показать все сведения');
+
+// form
+// 7 удаление:
+//		msg show
 
 // чат
 // необходимые переменные:

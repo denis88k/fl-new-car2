@@ -2886,13 +2886,13 @@ body._lock {
   background-color: var(--bg-color);
   transition: all 0.3s ease;
 }
-.choice-car__block:hover {
+.choice-car__block:hover, .choice-car__block.active {
   background-color: var(--red-light);
 }
-.choice-car__block:hover .choice-car__title {
+.choice-car__block:hover .choice-car__title, .choice-car__block.active .choice-car__title {
   color: var(--primary-color);
 }
-.choice-car__block:hover .choice-car__tel {
+.choice-car__block:hover .choice-car__tel, .choice-car__block.active .choice-car__tel {
   color: var(--primary-color);
   background-color: var(--white);
 }

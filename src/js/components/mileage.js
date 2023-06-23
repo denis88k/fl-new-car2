@@ -1,7 +1,6 @@
-import { addClass, closestElement, containsClass, removeClassArray } from './helpers.js';
+import { addClass, closestElement, containsClass, removeClassArray, resetAnswer } from './helpers.js';
 
 const mileageInput = () => {
-	// const mileageInputs = document.querySelectorAll('.mileage__input');
 	const mileageInputs = document.querySelector('.mileage__inputs');
 	const mileageCheckboxBlocks = document.querySelectorAll('.mileage__checkbox-block');
 	const valueFrom = document.querySelector('.input-from');
@@ -16,7 +15,7 @@ const mileageInput = () => {
 
 	const chatMessageBlock = closestElement(mileageInputs, 'chat__message-block');
 	const answerMessage = chatMessageBlock.nextElementSibling;
-	answerMessage.innerText = '';
+	// answerMessage.innerText = '';
 
 	mileageInputs.addEventListener('input', e => {
 		removeClassArray(mileageCheckboxBlocks, 'active');
@@ -99,19 +98,19 @@ const mileageInput = () => {
 			if (!containsClass(blockTo, 'active')) {
 				console.log(blockTo, 'blockTo');
 				if (containsClass(blockTo.nextElementSibling, 'active')) {
-					console.log(1);
+					// console.log(1);
 					answerMessage.innerText = answerTextAny;
 				} else {
-					console.log(2);
+					// console.log(2);
 					answerMessage.innerText = answerTextLess;
 				}
 			} else {
 				if (containsClass(blockTo.nextElementSibling, 'active')) {
 					answerMessage.innerText = answerTextMore;
-					console.log(3);
+					// console.log(3);
 				} else {
 					answerMessage.innerText = answerTextAny;
-					console.log(4);
+					// console.log(4);
 				}
 			}
 		}
@@ -137,16 +136,18 @@ const mileageInput = () => {
 				}
 			}
 		}
-
-		// if(!containsClass(blockTo, 'active') && (blockTo.nextElementSibling))
-		// const blockTo = block.dataset.value
 	});
 };
 
-const resetMileageInput = () => {
+const resetMileage = () => {
 	document.querySelector('.input-from').value = '';
 	document.querySelector('.input-to').value = '';
 	removeClassArray(document.querySelectorAll('.mileage__checkbox-block'), 'active');
+	resetAnswer('mileage', 'Любой пробег', 'chat__message-block');
+	// const mileageInputs = document.querySelector('.mileage__inputs');
+	// const chatMessageBlock = closestElement(mileageInputs, 'chat__message-block');
+	// const answerMessage = chatMessageBlock.nextElementSibling;
+	// answerMessage.innerText = 'Любой пробег';
 };
 
-export { mileageInput, resetMileageInput };
+export { mileageInput, resetMileage };

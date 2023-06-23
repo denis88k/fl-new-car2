@@ -18,5 +18,25 @@ const removeClassArray = (elements, cls) => {
 const closestElement = (element, cls) => {
 	return element.closest(`.${cls}`);
 };
+// msgBlock =chat__message-block-choice, chat__message-block
+const resetAnswer = (cls, defaultAnswer, msgBlock) => {
+	const block = document.querySelector(`.${cls}__block`);
+	const chatMessageBlock = closestElement(block, msgBlock);
+	const answerMessage = chatMessageBlock.nextElementSibling;
+	answerMessage.innerText = defaultAnswer;
+};
 
-export { addClass, closestElement, containsClass, removeClass, removeClassArray, toggleClass };
+const answerChoice = blockMain => {
+	const blockParent = document.querySelector(`.${blockMain}__blocks`);
+	const blocks = blockParent.querySelectorAll(`.${blockMain}__block`);
+	const chatMessageBlock = closestElement(blockParent, 'chat__message-block-choice');
+	const answerMessage = chatMessageBlock.nextElementSibling;
+	blockParent.addEventListener('click', e => {
+		const block = closestElement(e.target, `${blockMain}__block`);
+		removeClassArray(blocks, 'active');
+		addClass(block, 'active');
+		answerMessage.innerText = block.dataset.choice;
+	});
+};
+
+export { addClass, answerChoice, closestElement, containsClass, removeClass, removeClassArray, resetAnswer, toggleClass };
