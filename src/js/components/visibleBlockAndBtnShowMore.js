@@ -1,4 +1,4 @@
-import { addClass, containsClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
+import { addClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
 
 // =========кнопка показать ещё=========
 // blocksShow - блоки, которые нужно отобразить
@@ -125,49 +125,3 @@ const blockVisibleAndBtnShowMore = (...params) => {
 };
 
 export { blockVisibleAndBtnShowMore };
-// =======проверка кол-ва первых видимых блоков=======
-// старая версия
-// ====обнуление кнопки "ПОКАЗАТЬ ЕЩЁ" и проверка длины первых видимых блоков=====
-// const resetBtnShowMore = (btn, blocksShow, countBlockVisible) => {
-// 	const btnClick = document.querySelector(btn);
-// 	containsClass(btnClick, 'active') && btnClick.click();
-// 	checkLengthFirstVisible(blocksShow, countBlockVisible, btnClick);
-// };
-
-// const btnShowMore = (blocksShow, btn, btnText = '', countBlockVisible, textHidden, textOpen) => {
-// 	// checkboxBlocks->blocks
-// 	const blocks = document.querySelectorAll(blocksShow);
-// 	const btnShowMore = document.querySelector(btn);
-// 	let btnShowMoreText;
-// 	let isShowMore = false;
-// 	let countBlock = countBlockVisible; // сколько в начале отобразить шт
-
-// 	btnText ? (btnShowMoreText = btnShowMore.querySelector(btnText)) : (btnShowMoreText = btnShowMore);
-
-// 	const toggleClassActive = isShowMore => {
-// 		for (let i = countBlock + 1; i < blocks.length; i++) {
-// 			isShowMore ? removeClass(blocks[i], 'isVisible') : addClass(blocks[i], 'isVisible');
-// 		}
-// 		isShowMore ? removeClass(btnShowMore, 'active') : addClass(btnShowMore, 'active');
-// 	};
-
-// 	const toggleBtnText = isShowMore => {
-// 		btnShowMoreText.innerHTML = isShowMore ? textOpen : textHidden;
-// 	};
-
-// 	if (blocks.length > countBlock) {
-// 		for (let i = 0; i <= countBlock; i++) {
-// 			addClass(blocks[i], 'isVisible');
-// 		}
-// 		btnShowMore.addEventListener('click', () => {
-// 			toggleClassActive(isShowMore);
-// 			toggleBtnText(isShowMore);
-// 			isShowMore = !isShowMore;
-// 		});
-// 	}
-// 	// checkLengthFirstVisible(blocksShow, countBlockVisible, btn);
-// 	if (blocks.length <= countBlockVisible) {
-// 		blocks.forEach(block => addClass(block, 'isVisible'));
-// 		btnShowMore.style.display = 'none';
-// 	}
-// };

@@ -1,10 +1,11 @@
-.msg-blocks-choice {
+.chat__message-block-choice {
 	position: absolute;
 	opacity: 0;
 	visibility: hidden;
 }
 
 .chat {
+	// общий класс для сообщения консультанта и клиента
 	&__message {
 		// @include adaptiv-value(padding-top, 25, 20, 1);
 		// @include adaptiv-value(padding-bottom, 25, 20, 1);
@@ -15,7 +16,6 @@
 		line-height: 135%;
 		opacity: 0;
 		visibility: hidden;
-		transition: all 0.7s ease;
 		@include adaptiv-value(font-size, 20, 18, 1);
 		@include adaptiv-value(padding-top, 25, 20, 1);
 		@include adaptiv-value(padding-bottom, 25, 20, 1);
@@ -50,7 +50,11 @@
 		// opacity: 0;
 		// visibility: hidden;
 		@include adaptiv-value(margin-bottom, 20, 15, 1);
-		transform: translateX(-40px);
+		// transform: translateX(-40px);
+		// transform: translate(-40px, 100%);
+		&.msg-show {
+			animation-name: anim_show_message-consultant;
+		}
 	}
 
 	&__message-client {
@@ -68,7 +72,11 @@
 
 		// opacity: 0;
 		// visibility: hidden;
-		transform: translateX(40px);
+		// transform: translateX(40px);
+		// transform: translate(40px, 100%);
+		&.msg-show {
+			animation-name: anim_show_message-client;
+		}
 	}
 
 	// &__message-consultant,
@@ -76,6 +84,7 @@
 
 	// }
 
+	// печатание консультанта
 	&__message-print {
 		position: absolute;
 		align-self: flex-start;
@@ -118,12 +127,9 @@
 	position: static;
 	opacity: 1;
 	visibility: visible;
-
-	// animation-name: anim_show_message;
-	// animation-duration: 0.7s;
-	// animation-timing-function: ease;
-	// animation-fill-mode: forwards;
-	transform: translateX(0);
+	animation-duration: 0.7s;
+	animation-timing-function: ease;
+	animation-fill-mode: forwards;
 }
 
 // показывает сообщение от клиента
@@ -131,7 +137,7 @@
 // 	position: static;
 // 	opacity: 1;
 // 	visibility: visible;
-// 	animation-name: anim_show_message-client;
+
 // 	animation-duration: 0.7s;
 // 	animation-timing-function: ease;
 // 	animation-fill-mode: forwards;
@@ -144,29 +150,29 @@
 	}
 }
 
-// @keyframes anim_show_message {
-// 	from {
-// 		// opacity: 0;
-// 		transform: translateX(-40px);
-// 	}
+@keyframes anim_show_message-consultant {
+	from {
+		// opacity: 0;
+		transform: translateX(-40px);
+	}
 
-// 	to {
-// 		// opacity: 1;
-// 		transform: translateX(0);
-// 	}
-// }
+	to {
+		// opacity: 1;
+		transform: translateX(0);
+	}
+}
 
-// @keyframes anim_show_message-client {
-// 	from {
-// 		// opacity: 0;
-// 		transform: translateX(40px);
-// 	}
+@keyframes anim_show_message-client {
+	from {
+		// opacity: 0;
+		transform: translateX(40px);
+	}
 
-// 	to {
-// 		// opacity: 1;
-// 		transform: translateX(0);
-// 	}
-// }
+	to {
+		// opacity: 1;
+		transform: translateX(0);
+	}
+}
 
 // сообщение от консультанта с несколькими выборами
 .chat__choice-multi {

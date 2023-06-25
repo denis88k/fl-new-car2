@@ -51,4 +51,4 @@ document.querySelectorAll('.form').forEach(form => {
 
 // карта яндекс
 import init from './components/yMap.js';
-ymaps.ready(init);
+// ymaps.ready(init);

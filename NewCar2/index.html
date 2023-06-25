@@ -92,7 +92,7 @@
 		<div class="chat__message-print">
 			<span class="message-print">Ольга печатает ...</span>
 		</div>
-		<p class="chat__message chat__message-consultant msg-show">
+		<p class="chat__message chat__message-consultant">
 			Здравствуйте!<br>Меня зовут Ольга. Я онлайн-консультант автосалона “АВТОЦЕНТР 77”. Я помогу вам подобрать авто с
 			пробегом на выгодных условиях
 		</p>
@@ -102,12 +102,12 @@
   <div class="chat__message-print">
     <span class="message-print">Ольга печатает ...</span>
   </div>
-  <p class="chat__message chat__message-consultant msg-show">Какую модель автомобиля вы рассматриваете? Выберите модель из списка, нажав на нее:</p>
+  <p class="chat__message chat__message-consultant">Какую модель автомобиля вы рассматриваете? Выберите модель из списка, нажав на нее:</p>
 </div>
 
-	<div class="chat__message-block-choice msg-show">
+	<div class="chat__message-block-choice">
 
-  <div class="car-card__blocks">
+  <div class="car-card__blocks blocks-choice">
 
     <div class="car-card__block block-choice" data-choice="GRANTA-1">
       <div class="car-card__img">
@@ -149,7 +149,7 @@
 
 </div>
 
-	<p class='chat__message chat__message-client msg-show'>
+	<p class='chat__message chat__message-client'>
   Granta
 </p>
 </div> <!-- 0 -->
@@ -158,7 +158,7 @@
   <div class="chat__message-print">
     <span class="message-print">Ольга печатает ...</span>
   </div>
-  <p class="chat__message chat__message-consultant msg-show">Какой год автомобиля?</p>
+  <p class="chat__message chat__message-consultant">Какой год автомобиля?</p>
 </div>
 
   <div class="chat__message-block">
@@ -166,7 +166,7 @@
       <span class="message-print">Ольга печатает ...</span>
     </div>
 
-    <div class="chat__message chat__message-consultant chat__choice-multi msg-show">
+    <div class="chat__message chat__message-consultant chat__choice-multi">
 
       <div class="years__block">
 
@@ -395,7 +395,7 @@
           </svg>
         </button>
 
-        <button class="years__continue btn-red btn-continue" type="button">
+        <button class="years__continue btn-red btn-continue" type="button" data-multi="">
           Продолжить
         </button>
 
@@ -404,7 +404,7 @@
     </div>
   </div>
 
-  <p class='chat__message chat__message-client msg-show'>
+  <p class='chat__message chat__message-client'>
   Любой год
 </p>
 
@@ -414,14 +414,14 @@
   <div class="chat__message-print">
     <span class="message-print">Ольга печатает ...</span>
   </div>
-  <p class="chat__message chat__message-consultant msg-show">Укажите желаемый пробег автомобиля</p>
+  <p class="chat__message chat__message-consultant">Укажите желаемый пробег автомобиля</p>
 </div>
 
   <div class="chat__message-block">
     <div class="chat__message-print">
       <span class="message-print">Ольга печатает ...</span>
     </div>
-    <div class="chat__message chat__message-consultant chat__choice-multi msg-show">
+    <div class="chat__message chat__message-consultant chat__choice-multi">
       <div class="mileage__block">
         <div class="mileage__inputs">
           <label class="mileage__label">
@@ -465,7 +465,7 @@
     </div>
   </div>
 
-  <p class='chat__message chat__message-client msg-show'>
+  <p class='chat__message chat__message-client'>
   Любой пробег
 </p>
 
@@ -476,7 +476,7 @@
       <span class="message-print">Ольга печатает ...</span>
     </div>
 
-    <div class="chat__message chat__message-consultant chat__choice-multi msg-show">
+    <div class="chat__message chat__message-consultant chat__choice-multi">
       <div class="owner__block">
         <p class="owner__message">
           Выберите количество владельцев автомобиля
@@ -516,14 +516,14 @@
             </div>
           </div>
         </div>
-        <button class="owner__continue btn-red btn-continue" type="button">
+        <button class="owner__continue btn-red btn-continue" type="button" data-multi="">
           Продолжить
         </button>
       </div>
     </div>
 
   </div>
-  <p class='chat__message chat__message-client msg-show'>
+  <p class='chat__message chat__message-client'>
   Любое количество
 </p>
 </div> <!-- 3 -->
@@ -533,9 +533,9 @@
       <span class="message-print">Ольга печатает ...</span>
     </div>
   </div>
-  <div class="chat__message-block-choice msg-show">
+  <div class="chat__message-block-choice">
     <div class="choice-car">
-      <div class="choice-car__blocks">
+      <div class="choice-car__blocks blocks-choice">
         <div class="choice-car__block block-choice" data-choice="Lada Granta III Рестайлинг [2013 - 2014]">
           <div class="choice-car__img">
 
@@ -631,7 +631,7 @@
     </div>
   </div>
 
-  <p class='chat__message chat__message-client msg-show'>
+  <p class='chat__message chat__message-client'>
   Lada Granta II Рестайлинг [2010 - 2012]
 </p>
 
@@ -643,7 +643,7 @@
     <div class="chat__message-print">
       <span class="message-print">Ольга печатает ...</span>
     </div>
-    <p class="chat__message chat__message-consultant msg-show">
+    <p class="chat__message chat__message-consultant">
       Отличный выбор. Вывожу подробную информацию о данном автомобиле
     </p>
   </div>
@@ -657,11 +657,11 @@
       <div class="chat__container">
         <div class="chat__inner">
           <div class="chat-messages" data-chat="6">
-  <div class="chat__message-block ">
+  <!-- <div class="chat__message-block ">
     <div class="chat__message-print">
       <span class="message-print">Ольга печатает ...</span>
     </div>
-  </div>
+  </div> -->
 
   <div class="chat__last">
     <div class="report">
@@ -1063,12 +1063,15 @@
       <div class="chat__container">
         <div class="chat__inner">
           <div class="chat-messages" data-chat="7">
+
   <div class="chat__message-block">
-  <div class="chat__message-print">
-    <span class="message-print">Ольга печатает ...</span>
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+    <p class="chat__message chat__message-consultant msg-show">
+      Стоимость <span class='total-car'>LADA GRANTA</span> - <span class='total-price'>от 5 155 000 руб.</span>
+    </p>
   </div>
-  <p class="chat__message chat__message-consultant msg-show">Стоимость <span class='total-car'>LADA GRANTA</span> - <span class='total-price'>от 5 155 000 руб.</span></p>
-</div>
 
   <div class="chat__message-block">
     <div class="chat__message-print">
@@ -1081,13 +1084,15 @@
   </div>
 
   <div class="chat__message-block">
-  <div class="chat__message-print">
-    <span class="message-print">Ольга печатает ...</span>
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+    <p class="chat__message chat__message-consultant msg-show">
+      Оставьте Ваш номер телефона
+    </p>
   </div>
-  <p class="chat__message chat__message-consultant msg-show">Оставьте Ваш номер телефона</p>
-</div>
 
-  <section class='chat__form msg-blocks-choice msg-show'>
+  <div class='chat__form'>
   <div class="chat__form-inner">
     <div class="chat__form-block">
       <form class="form">
@@ -1112,7 +1117,7 @@
 </div>
     </div>
   </div>
-</section>
+</div>
 
 </div> <!-- 7 -->
         </div>
@@ -1123,7 +1128,7 @@
 </section>
 			<section class='section__promo-footer'>
   <div class="container">
-    <div class="promo__footer-inner active">
+    <div class="promo__footer-inner">
       <h2 class="promo__footer-title">
         Актуальные акции автосалона
       </h2>

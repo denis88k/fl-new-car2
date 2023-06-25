@@ -1,8 +1,8 @@
 import Swiper, { Navigation, Pagination, Thumbs } from 'swiper';
 
-import { chatLogic } from './components/chat.js';
+import { chat2 } from './components/chat.js';
 import { checkboxComponent } from './components/checkbox.js';
-import { addClass, answerChoice, closestElement, containsClass, removeClass, removeClassArray, toggleClass } from './components/helpers.js';
+import { addClass, answerChoice, closestElement, removeClassArray } from './components/helpers.js';
 import { mileageInput, resetMileageInput } from './components/mileage.js';
 import { owner, resetCheckboxOwner } from './components/owner.js';
 import stickyConsultant from './components/stickyConsultant.js';
@@ -13,7 +13,7 @@ import { resetYearsShowSelect, yearsShowSelect } from './components/years.js';
 window.addEventListener('scroll', stickyConsultant);
 
 // / =================MODEL CHOICE===============
-answerChoice('car-card');
+// answerChoice('.car-card__blocks', 'car-card__block');
 // ========================================
 
 // =================YEARS===============
@@ -48,7 +48,6 @@ owner();
 // ================================
 
 // ========CHOICE CAR===========
-
 // =============swiper=============
 // ========= CHOICE-CAR =========
 // слайдер в choice-car
@@ -87,12 +86,28 @@ const swiper = new Swiper(swiperReport, {
 		swiper: swiperMini,
 	},
 });
-answerChoice('choice-car');
+// answerChoice('.choice-car__blocks', 'choice-car__block');
+// TODO: доделать
+// const answerChoiceChoiceCar = () => {
+// 	const blockParent = document.querySelector('.choice-car__blocks');
+// 	const blocks = blockParent.querySelectorAll('.choice-car__block');
+// 	const chatMessageBlock = closestElement(blockParent, 'chat__message-block-choice');
+// 	const answerMessage = chatMessageBlock.nextElementSibling;
+// 	blockParent.addEventListener('click', e => {
+// 		const blockTitle = closestElement(e.target, 'choice-car__title');
+// 		if (blockTitle) {
+// 			const block = closestElement(blockTitle, 'choice-car__block');
+// 			removeClassArray(blocks, 'active');
+// 			addClass(block, 'active');
+// 			answerMessage.innerText = blockTitle.dataset.choice;
+// 		}
+// 	});
+// };
+// answerChoiceChoiceCar();
 // ===============================
 
 // ===========кнопка "показать все сведения" в секции report__info===========
-// btnShowMore('.report__info-block', '.report__info-btn', '', 2, 'Свернуть', 'Показать все сведения');
 blockVisibleAndBtnShowMore('.report__info-block', 3, '.report__info-btn', '', 'Показать все сведения');
 
-// ===========CHAT LOGIC===========
-// chatLogic(0);
+// ===========CHAT start===========
+chat2();

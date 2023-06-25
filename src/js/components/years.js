@@ -20,24 +20,28 @@ const yearsShowSelect = () => {
 				(selectFrom <= Number(checkboxBlock.dataset.from) && Number(checkboxBlock.dataset.from) <= selectTo) ||
 				(selectFrom <= Number(checkboxBlock.dataset.to) && Number(checkboxBlock.dataset.to) <= selectTo);
 
-			answerMessage.innerText = `от ${selectFrom} до ${selectTo}`;
+			// answerMessage.innerText = `от ${selectFrom} до ${selectTo}`;
+			answerMessage.dataset.multi = `от ${selectFrom} до ${selectTo}`;
 		}
 		// если задан from, а to=0, то показать всё, что больше from
 		if (selectFrom > 0 && selectTo === 0) {
 			// console.log('год от больше нуля:', selectFrom, 'год до=0:', selectTo);
 			isBetween = checkboxBlock => selectFrom <= Number(checkboxBlock.dataset.from) || selectFrom <= Number(checkboxBlock.dataset.to);
-			answerMessage.innerText = `от ${selectFrom}`;
+			// answerMessage.innerText = `от ${selectFrom}`;
+			answerMessage.dataset.multi = `от ${selectFrom}`;
 		}
 		// если задан from=0, а to задан, то показать всё, что меньше to
 		if (selectFrom === 0 && selectTo > 0) {
 			// console.log('год от=нулю:', selectFrom, 'год до больше 0:', selectTo);
 			isBetween = checkboxBlock => selectTo >= Number(checkboxBlock.dataset.to) || selectTo >= Number(checkboxBlock.dataset.from);
-			answerMessage.innerText = `до ${selectTo}`;
+			// answerMessage.innerText = `до ${selectTo}`;
+			answerMessage.dataset.multi = `до ${selectTo}`;
 		}
 		if (selectFrom === 0 && selectTo === 0) {
 			// console.log('всё по нулям:', selectFrom, '-', selectTo);
 			isBetween = () => false;
-			answerMessage.innerText = `Любой год`;
+			// answerMessage.innerText = `Любой год`;
+			answerMessage.dataset.multi = `Любой год`;
 		}
 		// console.log(isBetween);
 		checkboxBlocks.forEach(checkboxBlock => {
@@ -59,8 +63,9 @@ const yearsShowSelect = () => {
 
 	const selects = document.querySelector('.years__selects');
 	const chatMessageBlock = closestElement(selects, 'chat__message-block');
-	const answerMessage = chatMessageBlock.nextElementSibling;
-	// answerMessage.innerText = 'Любой год';
+	// const answerMessage = chatMessageBlock.nextElementSibling;
+	const answerMessage = chatMessageBlock.querySelector('.btn-continue');
+	answerMessage.dataset.multi = 'Любой год';
 
 	selects.addEventListener('click', e => {
 		// const selectInput = e.target.closest('.years__input');
@@ -155,11 +160,13 @@ const yearsShowSelect = () => {
 		const checkboxToMax = Math.max(...arrTo);
 		// console.log(arrFrom, checkboxFromMin, arrTo, checkboxToMax);
 		if (arrFrom.length === 0 && arrTo.length === 0) {
-			answerMessage.innerText = `Любой год`;
+			// answerMessage.innerText = `Любой год`;
+			answerMessage.dataset.multi = `Любой год`;
 		} else {
 			selectFrom = checkboxFromMin;
 			selectTo = checkboxToMax;
-			answerMessage.innerText = `от ${selectFrom} до ${selectTo}`;
+			// answerMessage.innerText = `от ${selectFrom} до ${selectTo}`;
+			answerMessage.dataset.multi = `от ${selectFrom} до ${selectTo}`;
 		}
 	};
 
@@ -210,7 +217,7 @@ const resetYears = () => {
 	});
 	document.querySelector('.select-from>.clear').click();
 	document.querySelector('.select-to>.clear').click();
-	resetAnswer('years', 'Любой год', 'chat__message-block');
+	// resetAnswer('years', 'Любой год', 'chat__message-block');
 	// const selects = document.querySelector('.years__selects');
 	// const chatMessageBlock = closestElement(selects, 'chat__message-block');
 	// const answerMessage = chatMessageBlock.nextElementSibling;

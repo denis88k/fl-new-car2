@@ -1,9 +1,13 @@
 <div class="chat-messages" data-chat="7">
-  @include('./_chat_message-consul.html',
-  {
-  'text':
-  "Стоимость <span class='total-car'>LADA GRANTA</span> - <span class='total-price'>от 5 155 000 руб.</span>"
-  })
+
+  <div class="chat__message-block">
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+    <p class="chat__message chat__message-consultant msg-show">
+      Стоимость <span class='total-car'>LADA GRANTA</span> - <span class='total-price'>от 5 155 000 руб.</span>
+    </p>
+  </div>
 
   <div class="chat__message-block">
     <div class="chat__message-print">
@@ -15,11 +19,14 @@
     </p>
   </div>
 
-  @include('./_chat_message-consul.html',
-  {
-  'text':
-  "Оставьте Ваш номер телефона"
-  })
+  <div class="chat__message-block">
+    <div class="chat__message-print">
+      <span class="message-print">Ольга печатает ...</span>
+    </div>
+    <p class="chat__message chat__message-consultant msg-show">
+      Оставьте Ваш номер телефона
+    </p>
+  </div>
 
   @include('./_form_discount.html')
 

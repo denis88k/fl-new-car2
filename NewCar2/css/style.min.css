@@ -1833,6 +1833,19 @@ body._lock {
   max-width: 940px;
   row-gap: 40px;
 }
+.chat__block:nth-child(2), .chat__block:nth-child(3) {
+  position: absolute;
+  z-index: -10;
+  opacity: 0;
+  visibility: hidden;
+}
+.chat__block.msg-show {
+  position: static;
+  z-index: 1;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
 .chat__container {
   padding-left: 120px;
   padding-right: 120px;
@@ -1969,7 +1982,7 @@ body._lock {
   }
 }
 
-.msg-blocks-choice {
+.chat__message-block-choice {
   position: absolute;
   opacity: 0;
   visibility: hidden;
@@ -1981,7 +1994,6 @@ body._lock {
   line-height: 135%;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.7s ease;
   font-size: 20px;
   padding-top: 25px;
   padding-bottom: 25px;
@@ -2030,12 +2042,14 @@ body._lock {
   color: var(--text-black);
   background-color: var(--white);
   margin-bottom: 20px;
-  transform: translateX(-40px);
 }
 @media (max-width: 1420px) {
   .chat__message-consultant {
     margin-bottom: calc(15px + 5 * ((100vw - 320px) / 1100));
   }
+}
+.chat__message-consultant.msg-show {
+  animation-name: anim_show_message-consultant;
 }
 .chat__message-client {
   align-self: flex-end;
@@ -2044,7 +2058,6 @@ body._lock {
   border-radius: 50px 0 50px 50px;
   color: var(--white);
   background-color: var(--answer-msg);
-  transform: translateX(40px);
 }
 @media (max-width: 1420px) {
   .chat__message-client {
@@ -2055,6 +2068,9 @@ body._lock {
   .chat__message-client {
     margin-bottom: calc(15px + 5 * ((100vw - 320px) / 1100));
   }
+}
+.chat__message-client.msg-show {
+  animation-name: anim_show_message-client;
 }
 .chat__message-print {
   position: absolute;
@@ -2088,12 +2104,30 @@ body._lock {
   position: static;
   opacity: 1;
   visibility: visible;
-  transform: translateX(0);
+  animation-duration: 0.7s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
 }
 
 @keyframes anim_print {
   to {
     clip-path: inset(0 -10px 0 0);
+  }
+}
+@keyframes anim_show_message-consultant {
+  from {
+    transform: translateX(-40px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes anim_show_message-client {
+  from {
+    transform: translateX(40px);
+  }
+  to {
+    transform: translateX(0);
   }
 }
 .chat__choice-multi {
@@ -3465,7 +3499,7 @@ body._lock {
 }
 
 .footer {
-  display: block;
+  display: none;
   background-color: var(--white);
 }
 .footer__inner {

@@ -13,8 +13,23 @@
 		row-gap: 40px;
 	}
 
-	// &__block {
-	// }
+	&__block {
+		&:nth-child(2),
+		&:nth-child(3) {
+			position: absolute;
+			z-index: -10;
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		&.msg-show {
+			position: static;
+			z-index: 1;
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+		}
+	}
 
 	&__container {
 		@include adaptiv-value-in-min(padding-left, 120, 15, 940, 375);
