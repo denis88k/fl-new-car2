@@ -11,7 +11,7 @@ const containsClass = (element, cls) => {
 	return element?.classList.contains(cls);
 };
 const containsAndRemove = (element, cls) => {
-	element.classList.contains(cls) && element.classList.remove(cls);
+	element?.classList.contains(cls) && element.classList.remove(cls);
 };
 const removeClassArray = (elements, cls) => {
 	elements?.forEach(element => {
@@ -19,7 +19,7 @@ const removeClassArray = (elements, cls) => {
 	});
 };
 const closestElement = (element, cls) => {
-	return element.closest(`.${cls}`);
+	return element?.closest(`.${cls}`);
 };
 // msgBlock =chat__message-block-choice, chat__message-block
 // const resetAnswer = (cls, defaultAnswer, msgBlock) => {

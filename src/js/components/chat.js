@@ -7,6 +7,7 @@
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
 import { resetMileage } from './mileage.js';
 import { resetOwner } from './owner.js';
+import { resetReport } from './report.js';
 import { blockVisibleAndBtnShowMore } from './visibleBlockAndBtnShowMore.js';
 import { resetYears } from './years.js';
 
@@ -74,13 +75,14 @@ const promoFooterInner = document.querySelector('.promo__footer-inner');
 const footer = document.querySelector('.footer');
 
 const showLastChat = chat => {
+	console.log(numberChat, 'show-chat');
 	setTimeout(() => {
+		addClass(chatBlock[1], 'msg-show'); // 6
+		addClass(chatBlock[2], 'msg-show'); // 7
+		addClass(promoFooterInner, 'active');
+		addClass(footer, 'active');
 		scrollChat(chat);
 	}, 3800);
-	addClass(chatBlock[1], 'msg-show'); // 6
-	addClass(chatBlock[2], 'msg-show'); // 7
-	addClass(promoFooterInner, 'active');
-	addClass(footer, 'active');
 };
 const hiddenLastChat = () => {
 	removeClass(chatBlock[1], 'msg-show'); // 6
@@ -104,39 +106,27 @@ const resetActiveAllBlock = currentNumber => {
 			// удаление активных классов
 			removeClass(msgPrint, 'msg-print-show');
 			removeClass(msgChatConsultant, 'msg-show');
-			// containsAndRemove(msgPrint, 'msg-print-show');
-			// containsAndRemove(msgChatConsultant, 'msg-show');
 		});
 		// NOTE: блок CHOICE
 		const msgBlocksChoice = chats[i].querySelector('.chat__message-block-choice');
 		if (msgBlocksChoice) {
-			console.log(chats[i]);
 			// блок с выборами
 			removeClass(msgBlocksChoice, 'msg-show');
-			// containsAndRemove(msgBlocksChoice, 'msg-show');
-
 			// блоки с вариантами выбора
 			const BlocksChoice = msgBlocksChoice.querySelectorAll('.block-choice');
 			BlocksChoice && removeClassArray(BlocksChoice, 'active');
-			// BlocksChoice.removeEventListener('click', blockChoiceClick);
 		}
-
 		// NOTE: блок MULTi
 		if (chats[i].querySelector('.chat__choice-multi')) {
-			console.log(chats[i]);
 			switch (i) {
 				case 1:
 					resetYears();
-					blockVisibleAndBtnShowMore('.years__checkbox-block', 6, '.years__show-more', '.years__show-more-text', 'Показать все поколения');
 				case 2:
 					resetMileage();
 				case 3:
 					resetOwner();
 				case 5:
-					blockVisibleAndBtnShowMore('.report__info-block', 3, '.report__info-btn', '', 'Показать все сведения');
 			}
-			// const btnContinue = chat.querySelector('.btn-continue');
-			// btnContinue.removeEventListener('click', btnContinueClick);
 		}
 
 		// сообщение ответа клиента
@@ -147,6 +137,7 @@ const resetActiveAllBlock = currentNumber => {
 		//  два последних чата и actual-promo и footer
 		if (i === chatLength - 3) {
 			hiddenLastChat();
+			resetReport();
 		}
 	}
 };
@@ -241,6 +232,7 @@ const chat2 = () => {
 
 		const blockChoiceClick = e => {
 			console.log(processWork, 'choice');
+			// не фиксировать нажатия на кнопки slider'а
 			if (containsClass(e.target, 'choice-car__btn-next') || containsClass(e.target, 'choice-car__btn-prev')) {
 				return;
 			}
@@ -249,7 +241,7 @@ const chat2 = () => {
 			const block = closestElement(e.target, 'block-choice');
 			// если текущий чат совпадает с глобальным номером чата,
 			// то есть нажали на выбор в последнем доступном чате, то:
-			if (currentNumber === numberChat) {
+			if (currentNumber === numberChat && block) {
 				console.log('currentNumber === numberChat');
 				removeClassArray(blockChoiceAll, 'active');
 				// доб. класс active на нажатый выбор
@@ -288,8 +280,8 @@ const chat2 = () => {
 						addClass(msgAnswer, 'msg-show');
 						// скролл до конца сообщения клиента
 						// прокрутка вниз, до сообщения с ответом клиента
+						console.log(currentNumber, 'last');
 						scrollEndChat();
-
 						// NOTE: должен же запускаться number= currentNumber+1
 						// запускаем секцию чата, в которой произошёл клик, заново
 						numberChat = currentNumber + 1;
@@ -338,6 +330,7 @@ const chat2 = () => {
 						// скролл до конца сообщения клиента
 						// прокрутка вниз, до сообщения с ответом клиента
 						// chatInner.scrollIntoView(scrollIntoViewOptions);
+
 						scrollEndChat();
 						numberChat = currentNumber + 1;
 						console.log(numberChat, 'новый счёт');

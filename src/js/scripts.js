@@ -6,30 +6,36 @@ import { addClass, answerChoice, closestElement, removeClassArray } from './comp
 import { mileageInput, resetMileageInput } from './components/mileage.js';
 import { owner, resetCheckboxOwner } from './components/owner.js';
 import stickyConsultant from './components/stickyConsultant.js';
-import { blockVisibleAndBtnShowMore } from './components/visibleBlockAndBtnShowMore.js';
+import { blockVisible, blockVisibleAndBtnShowMore, btnShowMoreClick } from './components/visibleBlockAndBtnShowMore.js';
 import { resetYearsShowSelect, yearsShowSelect } from './components/years.js';
 
-// ========= sticky consultant при скроле страницы=========
+// ========= sticky consultant при скролле страницы=========
 window.addEventListener('scroll', stickyConsultant);
 
-// / =================MODEL CHOICE===============
+// NOTE: =================MODEL CHOICE===============
 // answerChoice('.car-card__blocks', 'car-card__block');
 // ========================================
 
-// =================YEARS===============
+// NOTE: =================YEARS===============
 yearsShowSelect();
 // ====== обнуление инпута года выпуска/поколений ======
 // resetYears()
 // ====== блоки с выбором года выпуска (поколений) ======
 checkboxComponent('years');
 // ====КНОПКА "ПОКАЗАТЬ ВСЕ ПОКОЛЕНИЯ"=====
-blockVisibleAndBtnShowMore('.years__checkbox-block', 6, '.years__show-more', '.years__show-more-text', 'Показать все поколения');
+blockVisible('.years__checkbox-block', '.years__show-more', 6, 'Показать все поколения');
+
+document
+	.querySelector('.years__show-more')
+	.addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, 'Показать все поколения'));
+
 // ======обнуление кнопки "ПОКАЗАТЬ ВСЕ ПОКОЛЕНИЯ"======
 // для обнуления вызывать: =>
-//  blockVisibleAndBtnShowMore('.years__checkbox-block', 6, '.years__show-more', '.years__show-more-text', 'Показать все поколения')
+// blockVisible('years__checkbox-block', 'years__show-more', 6, 'Показать все сведения');
+
 // =============================
 
-// ===========ПРОБЕГ (mileage)===========
+// NOTE: ===========ПРОБЕГ (mileage)========
 // ===========INPUT ПРОБЕГА===========
 mileageInput();
 // ======CHECKBOX ПРОБЕГА======
@@ -38,7 +44,7 @@ checkboxComponent('mileage');
 // resetMileage()
 // ==================================
 
-// ===========ВЛАДЕЛЕЦ===========
+// NOTE: ===========ВЛАДЕЛЕЦ===========
 // ======CHECKBOX владелец======
 checkboxComponent('owner');
 // ======ответ сообщений владелец======
@@ -47,9 +53,9 @@ owner();
 // resetOwner()
 // ================================
 
-// ========CHOICE CAR===========
-// =============swiper=============
-// ========= CHOICE-CAR =========
+// NOTE: ========CHOICE CAR=============
+// =============swiper============
+// ========= CHOICE-CAR ==========
 // слайдер в choice-car
 const swipersChoice = document.querySelectorAll('.choice-car__swiper');
 swipersChoice.forEach(swiperChoice => {
@@ -65,7 +71,8 @@ swipersChoice.forEach(swiperChoice => {
 		},
 	});
 });
-// ========= REPORT =========
+// ==========================
+// NOTE: ========= REPORT =========
 // слайдер превью
 const swiperReportMini = document.querySelector('.report__swiper-mini');
 const swiperMini = new Swiper(swiperReportMini, {
@@ -86,28 +93,14 @@ const swiper = new Swiper(swiperReport, {
 		swiper: swiperMini,
 	},
 });
-// answerChoice('.choice-car__blocks', 'choice-car__block');
-// TODO: доделать
-// const answerChoiceChoiceCar = () => {
-// 	const blockParent = document.querySelector('.choice-car__blocks');
-// 	const blocks = blockParent.querySelectorAll('.choice-car__block');
-// 	const chatMessageBlock = closestElement(blockParent, 'chat__message-block-choice');
-// 	const answerMessage = chatMessageBlock.nextElementSibling;
-// 	blockParent.addEventListener('click', e => {
-// 		const blockTitle = closestElement(e.target, 'choice-car__title');
-// 		if (blockTitle) {
-// 			const block = closestElement(blockTitle, 'choice-car__block');
-// 			removeClassArray(blocks, 'active');
-// 			addClass(block, 'active');
-// 			answerMessage.innerText = blockTitle.dataset.choice;
-// 		}
-// 	});
-// };
-// answerChoiceChoiceCar();
 // ===============================
 
 // ===========кнопка "показать все сведения" в секции report__info===========
-blockVisibleAndBtnShowMore('.report__info-block', 3, '.report__info-btn', '', 'Показать все сведения');
+// document.querySelector('.years__show-more').removeEventListener('click', btnShowMoreClick.bind(null, 'years__show-more'));
+blockVisible('.report__info-block', '.report__info-btn', 3, 'Показать все сведения');
+document.querySelector('.report__info-btn').addEventListener('click', btnShowMoreClick.bind(null, '.report__info-block', 3, 'Показать все сведения'));
 
-// ===========CHAT start===========
+// blockVisibleAndBtnShowMore('.report__info-block', 3, '.report__info-btn', '', 'Показать все сведения');
+
+// NOTE:===========CHAT start===========
 chat2();

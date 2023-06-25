@@ -1,4 +1,5 @@
-import { addClass, closestElement, containsClass, removeClass, removeClassArray, resetAnswer, toggleClass } from './helpers.js';
+import { addClass, closestElement, containsClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
+import { blockVisible, blockVisibleAndBtnShowMore, btnShowMoreClick } from './visibleBlockAndBtnShowMore.js';
 
 const yearsShowSelect = () => {
 	let selectFrom = 0;
@@ -172,23 +173,25 @@ const yearsShowSelect = () => {
 
 	const checkboxBlockClick = e => {
 		const checkboxBlock = closestElement(e.target, 'years__checkbox-block');
-		const checkboxFrom = Number(checkboxBlock.dataset.from);
-		const checkboxTo = Number(checkboxBlock.dataset.to);
+		if (checkboxBlock) {
+			const checkboxFrom = Number(checkboxBlock.dataset.from);
+			const checkboxTo = Number(checkboxBlock.dataset.to);
 
-		// поставили галочку
-		if (!containsClass(checkboxBlock, 'active')) {
-			arrFrom = [checkboxFrom];
-			arrTo = [checkboxTo];
-			updateCheckboxClick(checkboxBlock);
-			console.log(selectFrom, '-', selectTo, 'active');
-		}
-		// убираем галочку
-		if (containsClass(checkboxBlock, 'active')) {
-			// checkboxFrom checkboxTo
-			arrFrom = [];
-			arrTo = [];
-			updateCheckboxClick(checkboxBlock);
-			console.log(selectFrom, '-', selectTo, 'without active');
+			// поставили галочку
+			if (!containsClass(checkboxBlock, 'active')) {
+				arrFrom = [checkboxFrom];
+				arrTo = [checkboxTo];
+				updateCheckboxClick(checkboxBlock);
+				console.log(selectFrom, '-', selectTo, 'active');
+			}
+			// убираем галочку
+			if (containsClass(checkboxBlock, 'active')) {
+				// checkboxFrom checkboxTo
+				arrFrom = [];
+				arrTo = [];
+				updateCheckboxClick(checkboxBlock);
+				console.log(selectFrom, '-', selectTo, 'without active');
+			}
 		}
 	};
 	checkboxBlocks.addEventListener('click', checkboxBlockClick);
@@ -217,11 +220,16 @@ const resetYears = () => {
 	});
 	document.querySelector('.select-from>.clear').click();
 	document.querySelector('.select-to>.clear').click();
-	// resetAnswer('years', 'Любой год', 'chat__message-block');
-	// const selects = document.querySelector('.years__selects');
-	// const chatMessageBlock = closestElement(selects, 'chat__message-block');
-	// const answerMessage = chatMessageBlock.nextElementSibling;
-	// answerMessage.innerText = 'Любой год';
+
+	const textOpen = 'Показать все поколения';
+	// const btn = document.querySelector('.years__show-more');
+	// btn.removeEventListener('click', btnShowMoreClick);
+
+	blockVisible('.years__checkbox-block', '.years__show-more', 6, textOpen);
+
+	// btn.addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, textOpen));
+
+	// blockVisibleAndBtnShowMore('.years__checkbox-block', 6, '.years__show-more', '.years__show-more-text', 'Показать все поколения');
 };
 
 export { resetYears, yearsShowSelect };

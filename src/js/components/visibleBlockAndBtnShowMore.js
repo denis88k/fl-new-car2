@@ -1,4 +1,4 @@
-import { addClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
+import { addClass, containsClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
 
 // =========кнопка показать ещё=========
 // blocksShow - блоки, которые нужно отобразить
@@ -86,42 +86,135 @@ import { addClass, removeClass, removeClassArray, toggleClass } from './helpers.
 // 	// btnShowMore(blocksShow, countBlockVisible, btn, btnText='',textHidden, textOpen);
 // }
 // const blockVisibleAndBtnShowMore = (blocksShow, countBlockVisible, btn, btnText = '') => {
-const blockVisibleAndBtnShowMore = (...params) => {
-	const [blocksShow, countBlockVisible, btn, btnText = '', textOpen] = params;
-	const textHidden = 'Свернуть';
+
+const countBlockVisibl = 6; // сколько блоков отобразить
+// const textHidden = 'Свернуть';
+// const textOpen = 'Показать все поколения';
+// const btnShowMore = document.querySelector(btn);
+// const btnShowMoreText = btnShowMore.querySelector('.show-more-text'); // куда вписывать текст кнопки
+// let isShowMoreBtnYears = false;
+
+const blockVisible = (blocksShow, btn, countBlockVisible, textOpen) => {
+	// blocksShow - блоки
 	const blocks = document.querySelectorAll(blocksShow);
 	const btnShowMore = document.querySelector(btn);
+	const btnShowMoreText = btnShowMore.querySelector('.show-more-text');
 	removeClassArray(blocks, 'isVisible');
 
 	if (blocks.length > countBlockVisible) {
-		let isShowMore = false;
-
 		for (let i = 0; i < countBlockVisible; i++) {
 			addClass(blocks[i], 'isVisible');
 		}
-
+		removeClass(btnShowMore, 'active');
 		btnShowMore.style.display = 'flex';
-		let btnShowMoreText;
-		btnText ? (btnShowMoreText = btnShowMore.querySelector(btnText)) : (btnShowMoreText = btnShowMore);
 		btnShowMoreText.innerText = textOpen;
-
-		const btnShowMoreClick = e => {
-			// console.log(isShowMore);
-			e.preventDefault();
-			for (let i = countBlockVisible; i <= blocks.length; i++) {
-				isShowMore ? removeClass(blocks[i], 'isVisible') : addClass(blocks[i], 'isVisible');
-			}
-			toggleClass(btnShowMore, 'active');
-			btnShowMoreText.innerText = isShowMore ? textOpen : textHidden;
-			isShowMore = !isShowMore;
-		};
-		btnShowMore.removeEventListener('click', btnShowMoreClick);
-		btnShowMore.addEventListener('click', btnShowMoreClick);
 	}
+
 	if (blocks.length <= countBlockVisible) {
+		// то показываем все блоки сразу
 		blocks.forEach(block => addClass(block, 'isVisible'));
-		btn.style.display = 'none';
+		btnShowMore.style.display = 'none';
 	}
 };
 
-export { blockVisibleAndBtnShowMore };
+let count = 0;
+const btnShowMoreClick = (blocksShow, countBlockVisible, textOpen, e) => {
+	e.preventDefault();
+	const blocks = document.querySelectorAll(blocksShow);
+
+	const eCurrentTarget = e.currentTarget;
+	const btnShowMoreText = eCurrentTarget.querySelector('.show-more-text');
+	toggleClass(eCurrentTarget, 'active');
+
+	console.log(containsClass(eCurrentTarget, 'active'));
+	for (let i = countBlockVisible; i <= blocks.length; i++) {
+		containsClass(eCurrentTarget, 'active') ? addClass(blocks[i], 'isVisible') : removeClass(blocks[i], 'isVisible');
+	}
+
+	btnShowMoreText.innerText = containsClass(eCurrentTarget, 'active') ? 'Свернуть' : textOpen;
+	count++;
+	console.log(count);
+};
+
+// btnShowMore.addEventListener('click', btnShowMoreClick);
+
+// const blockVisibleAndBtnShowMore = (...params) => {
+// 	const [blocksShow, btnText = ''] = params;
+
+// 	blocks = document.querySelectorAll(blocksShow);
+// 	// удаляем со всех элементов класс, который их показывает
+// 	removeClassArray(blocks, 'isVisible');
+// 	// если кол-во блоков больше, чем их надо показать, то:
+// 	if (blocks.length > countBlockVisible) {
+// 		// то показываем требуемое кол-во блоков
+// 		for (let i = 0; i < countBlockVisible; i++) {
+// 			addClass(blocks[i], 'isVisible');
+// 		}
+// 		removeClass(btnShowMore, 'active');
+// 		btnShowMore.style.display = 'flex';
+
+// 		btnText ? (btnShowMoreText = btnShowMore.querySelector(btnText)) : (btnShowMoreText = btnShowMore);
+// 		btnShowMoreText.innerText = textOpen;
+// 	}
+// 	// если кол-во блоков меньше, чем требуется, то:
+// 	if (blocks.length <= countBlockVisible) {
+// 		// то показываем все блоки сразу
+// 		blocks.forEach(block => addClass(block, 'isVisible'));
+// 		btnShowMore.style.display = 'none';
+// 	}
+// };
+
+// const btnShowMoreClick = e => {
+// 	e.preventDefault();
+// 	for (let i = countBlockVisible; i <= blocks.length; i++) {
+// 		isShowMoreBtnYears ? removeClass(blocks[i], 'isVisible') : addClass(blocks[i], 'isVisible');
+// 	}
+// 	toggleClass(btnShowMore, 'active');
+// 	btnShowMoreText.innerText = isShowMoreBtnYears ? textOpen : textHidden;
+// 	isShowMoreBtnYears = !isShowMoreBtnYears;
+// };
+
+// btnShowMore.removeEventListener('click', btnShowMoreClick);
+// btnShowMore.addEventListener('click', btnShowMoreClick);
+
+// const blockVisibleAndBtnShowMore = (...params) => {
+// 	const [blocksShow, countBlockVisible, btn, btnText = '', textOpen] = params;
+// 	const textHidden = 'Свернуть';
+// 	const blocks = document.querySelectorAll(blocksShow);
+// 	const btnShowMore = document.querySelector(btn);
+// 	removeClassArray(blocks, 'isVisible');
+// 	console.log(btnText, 'inner');
+// 	if (blocks.length > countBlockVisible) {
+// 		let isShowMore = false;
+
+// 		for (let i = 0; i < countBlockVisible; i++) {
+// 			addClass(blocks[i], 'isVisible');
+// 		}
+// 		removeClass(btnShowMore, 'active');
+// 		btnShowMore.style.display = 'flex';
+// 		let btnShowMoreText;
+// 		btnText ? (btnShowMoreText = btnShowMore.querySelector(btnText)) : (btnShowMoreText = btnShowMore);
+// 		btnShowMoreText.innerText = textOpen;
+// 		let count = 0;
+// 		const btnShowMoreClick = e => {
+// 			// console.log(isShowMore);
+// 			count++;
+// 			console.log(count, 'count');
+// 			e.preventDefault();
+// 			for (let i = countBlockVisible; i <= blocks.length; i++) {
+// 				isShowMore ? removeClass(blocks[i], 'isVisible') : addClass(blocks[i], 'isVisible');
+// 			}
+// 			toggleClass(btnShowMore, 'active');
+// 			btnShowMoreText.innerText = isShowMore ? textOpen : textHidden;
+// 			isShowMore = !isShowMore;
+// 		};
+// 		btnShowMore.removeEventListener('click', btnShowMoreClick);
+// 		btnShowMore.addEventListener('click', btnShowMoreClick);
+// 	}
+// 	if (blocks.length <= countBlockVisible) {
+// 		blocks.forEach(block => addClass(block, 'isVisible'));
+// 		btn.style.display = 'none';
+// 	}
+// };
+
+export { blockVisible, btnShowMoreClick };

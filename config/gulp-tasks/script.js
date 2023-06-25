@@ -20,7 +20,7 @@ export const script = () => {
 				optimization: {
 					minimize: app.isBuild ? true : false,
 					// minimizer: [app.isBuild ? new TerserPlugin() : '...'],
-					minimizer: [app.isBuild ? new EsbuildPlugin({ target: 'es2015' }) : '...'],
+					minimizer: [app.isBuild ? new EsbuildPlugin({ target: 'es2015', drop_console: true }) : '...'],
 				},
 				output: {
 					filename: 'main.min.js',
