@@ -71,14 +71,15 @@
 	}
 
 	&__checkbox-block {
-		$ptb-b: 30;
-		$ptb-s: 18;
-		$plr-b: 83;
-		$plr-s: 96;
+		$ptb-b: 29;
+		$ptb-s: 17;
+		$plr-b: 82;
+		$plr-s: 94;
 		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		border: 1px solid var(--choice-multi);
 		border-radius: 10px;
 		width: 100%;
 		background-color: var(--choice-multi);
@@ -94,7 +95,7 @@
 		@include adaptiv-value(font-size, 20, 18, 1);
 		line-height: 135%;
 		text-align: center;
-		color: var(--primary-color);
+		color: var(--text-black);
 	}
 
 	&__checkbox-check {
@@ -124,7 +125,7 @@
 	}
 
 	&__checkbox-block:hover {
-		background-color: var(--red-light);
+		background-color: rgba(52, 52, 52, 0.07);
 
 		// & .mileage__checkbox-text {
 		// 	color: var(--primary-color);
@@ -132,13 +133,12 @@
 	}
 
 	&__checkbox-block.active {
-		background-color: var(--primary-color);
-
-		.mileage__checkbox-text {
-			color: var(--white);
-		}
+		border: 1px solid rgba(49, 51, 62, 0.5);
+		background-color: rgba(52, 52, 52, 0.07);
 
 		.mileage__checkbox-check {
+			border: 1px solid #939499;
+			background-color: #f9f9f9;
 			svg {
 				opacity: 1;
 				visibility: visible;

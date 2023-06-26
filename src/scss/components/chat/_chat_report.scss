@@ -38,8 +38,16 @@
 		flex-direction: column;
 	}
 
-	// &__about-title {
-	// }
+	&__about-title {
+		font-weight: 700;
+		font-size: 32px;
+		line-height: 100%;
+		color: var(--text-black);
+		@media screen and (max-width: 835px) {
+			font-size: 25px;
+			line-height: 130%;
+		}
+	}
 
 	&__about-price {
 		display: flex;
@@ -55,18 +63,15 @@
 		margin-right: 25px;
 	}
 
-	&__about-price-month {
-	}
+	// &__about-price-month {
+	// }
 
 	&__charact {
-		// display: flex;
 		display: grid;
-
-		// justify-content: space-between;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 15px;
 
-		@media screen and (max-width: 790px) {
+		@media screen and (max-width: 835px) {
 			grid-template-columns: repeat(1, 1fr);
 		}
 	}
@@ -79,22 +84,39 @@
 	}
 
 	&__charact-row {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		display: flex;
 		font-size: 18px;
 		line-height: 100%;
-		@media screen and (max-width: 790px) {
-			grid-template-columns: 0.8fr 1fr;
+
+		@media screen and (max-width: 835px) {
+			justify-content: space-between;
 		}
 	}
 
-	&__about .report__charact-column:nth-child(2) .report__charact-row {
-		grid-template-columns: 0.6fr 1fr;
-		@media screen and (max-width: 890px) {
-			grid-template-columns: 0.5fr 1fr;
+	&__about {
+		& .report__charact {
+			@include adaptiv-value(column-gap, 60, 15, 1);
 		}
-		@media screen and (max-width: 790px) {
-			grid-template-columns: 0.8fr 1fr;
+
+		& .report__charact-column:nth-child(1) {
+			& .report__charact-name {
+				width: 103px;
+			}
+		}
+
+		& .report__charact-column:nth-child(2) {
+			& .report__charact-name {
+				width: 92px;
+			}
+		}
+
+		& .report__charact-row {
+			@include adaptiv-value(column-gap, 35, 5, 1);
+		}
+		@media screen and (max-width: 835px) {
+			& .report__charact-name {
+				width: auto;
+			}
 		}
 	}
 
@@ -108,6 +130,9 @@
 		grid-column: 1 span;
 		font-weight: 500;
 		color: var(--text-black);
+		@media screen and (max-width: 790px) {
+			text-align: right;
+		}
 	}
 
 	&__about-btn-red {
@@ -124,15 +149,39 @@
 		& .report__charact {
 			@include adaptiv-value(margin-top, 40, 30, 1);
 			@include adaptiv-value(margin-bottom, 15, 10, 1);
+			@include adaptiv-value(column-gap, 35, 15, 1);
 		}
 
-		& .report__charact-data {
-			width: 180.67px;
-			@media screen and (max-width: 790px) {
+		& .report__charact-column:nth-child(1) {
+			& .report__charact-name {
+				width: 119px;
+			}
+		}
+
+		& .report__charact-column:nth-child(2) {
+			& .report__charact-name {
+				width: 156px;
+			}
+		}
+
+		& .report__charact-row {
+			@include adaptiv-value(column-gap, 20, 5, 1);
+		}
+		@media screen and (max-width: 835px) {
+			& .report__charact-name {
 				width: auto;
 			}
+		}
+	}
 
-			// width: 100%;
+	&__info-title {
+		color: var(--text-black);
+		font-size: 32px;
+		font-weight: 700;
+		line-height: 115%;
+		@media screen and (max-width: 835px) {
+			font-size: 29px;
+			line-height: 115%;
 		}
 	}
 
@@ -205,6 +254,7 @@
 	&__form {
 		display: flex;
 		flex-direction: column;
+		gap: 0;
 	}
 
 	&__form-title {
@@ -216,9 +266,10 @@
 
 	&__form-input {
 		display: grid;
+		column-gap: 21px;
 		grid-template-columns: repeat(2, 1fr);
 		margin-bottom: 15px;
-		gap: 15px;
+		row-gap: 15px;
 		@include adaptiv-value(margin-top, 33, 38, 1);
 		@media screen and (max-width: 650px) {
 			grid-template-columns: repeat(1, 1fr);
@@ -240,41 +291,16 @@
 	}
 
 	&__map-block {
-		// display: block;
 		display: flex;
 		overflow: hidden;
 		border-radius: 20px;
-
-		// @include adaptiv-value(margin-left, 0, -15, 1);
-		// @include adaptiv-value(margin-right, 0, -15, 1);
-		// @include adaptiv-value-in-min(margin-left, -120, -15, 940, 375);
-		// @include adaptiv-value-in-min(margin-right, -120, -15, 940, 375);
-		// @include adaptiv-value-in-min(padding-left, 120, 15, 940, 375);
-		// @include adaptiv-value-in-min(padding-right, 120, 15, 940, 375);
-
-		// @include adaptiv-value-in-min(margin-left, 0, -15, 940, 375);
-		// @include adaptiv-value-in-min(margin-right, 0, -15, 940, 375);
-
 		width: 100%;
-
-		// height: 100%;
 		height: 368px;
-		@media screen and (max-width: 420px) {
-			// margin-right: -15px;
-			// margin-left: -15px;
-		}
 	}
 }
 
 .ymaps-2-1-79-copyright {
 	display: none !important;
-}
-
-.report-title {
-	font-weight: 700;
-	font-size: 32px;
-	line-height: 100%;
-	color: var(--text-black);
 }
 
 // .btn-modul {

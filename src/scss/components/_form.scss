@@ -14,14 +14,18 @@
 
 		& .just-validate-error-label {
 			position: absolute;
-			left: 235px;
-			top: 50%;
-			font-size: 18px;
-			transform: translateY(-50%);
+			left: 26px;
+			top: -9px;
+			padding: 0 6px;
+			font-size: 14px;
+			line-height: 135%;
+			color: #b81111;
+			background-color: var(--white);
 		}
 	}
 
 	&__input {
+		outline: none;
 		border: 2px solid var(--border-color);
 		border-radius: 15px;
 		padding: 20px 0 20px 45px;
@@ -38,13 +42,13 @@
 		&.just-validate-error-field {
 			border-color: #b81111;
 
-			&::placeholder {
-				color: #b81111;
-			}
+			// &::placeholder {
+			// color: #b81111;
+			// }
 
-			~ .input__tel-text {
-				color: #b81111;
-			}
+			// ~ .input__tel-text {
+			// 	color: #b81111;
+			// }
 		}
 
 		&.just-validate-success-field {
@@ -74,9 +78,9 @@
 			transform: translate(200%, 50%);
 		}
 
-		// &:hover {
-		// 	background-color: #309bff;
-		// }
+		&:hover {
+			background-color: #ff0b0b;
+		}
 	}
 }
 

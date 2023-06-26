@@ -9,6 +9,7 @@
 
 	&__block {
 		display: flex;
+		align-items: center;
 		@include adaptiv-value(border-radius, 45, 25, 1);
 		transition: all 0.3s ease;
 		cursor: pointer;
@@ -27,20 +28,28 @@
 	&__img {
 		width: 100%;
 		max-width: 340px;
+
+		// he
 		@media screen and (max-width: 670px) {
 			min-width: 100%;
 		}
 
 		img {
 			border-radius: 20px;
+			height: 100%;
+			object-fit: cover;
 		}
+	}
+
+	&__slide {
+		height: 275px;
 	}
 
 	&__info {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		row-gap: 12px;
+		// row-gap: 12px;
 		@media screen and (max-width: 670px) {
 			align-items: stretch;
 		}
@@ -59,6 +68,8 @@
 		font-size: 24px;
 		line-height: 130%;
 		color: var(--primary-color);
+		@include adaptiv-value(margin-top, 7, 10, 1);
+		@include adaptiv-value(margin-bottom, 15, 10, 1);
 	}
 
 	&__price-total {
@@ -88,6 +99,8 @@
 		font-size: 18px;
 		line-height: 135%;
 		color: var(--text-grey);
+		@include adaptiv-value(margin-top, 7, 5, 1);
+		@include adaptiv-value(margin-bottom, 17, 15, 1);
 	}
 
 	&__tel {
@@ -114,15 +127,17 @@
 			color: var(--primary-color);
 			background-color: var(--white);
 		}
+
+		.choice-car__mileage-owner {
+			color: var(--text-black);
+		}
+
+		.choice-car__charact {
+			color: var(--text-black);
+		}
 	}
 
 	&__btn {
 		@include adaptiv-value(margin-top, 20, 15, 1);
 	}
-}
-
-.block-choice {
-}
-
-.btn-white {
 }

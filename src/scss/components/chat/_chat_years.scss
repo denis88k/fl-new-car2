@@ -53,6 +53,7 @@
 		font-weight: 400;
 		font-size: 18px;
 		line-height: 100%;
+		color: var(--text-grey);
 		transition: all 0.2s ease;
 	}
 
@@ -152,6 +153,7 @@
 		display: flex;
 		flex-direction: column;
 		grid-column: 1 span;
+		border: 1px solid var(--choice-multi);
 		border-radius: 10px;
 		padding: 15px 15px 19px 20px;
 		background-color: var(--choice-multi);
@@ -223,17 +225,17 @@
 	}
 
 	&__checkbox-block.active {
-		background-color: var(--primary-color);
-
-		.years__checkbox-year {
-			color: var(--white);
-		}
+		border: 1px solid rgba(49, 51, 62, 0.5);
+		background-color: rgba(52, 52, 52, 0.07);
 
 		.years__checkbox-name {
-			color: rgba(255, 255, 255, 0.65);
+			color: #31333e;
 		}
 
 		.years__checkbox-check {
+			border: 1px solid #939499;
+			background-color: #f9f9f9;
+
 			svg {
 				opacity: 1;
 				visibility: visible;
@@ -242,11 +244,7 @@
 	}
 
 	&__checkbox-block:hover {
-		background-color: var(--red-light);
-
-		& .years__checkbox-year {
-			color: var(--primary-color);
-		}
+		background-color: rgba(52, 52, 52, 0.07);
 
 		.years__checkbox-name {
 			color: var(--text-grey);

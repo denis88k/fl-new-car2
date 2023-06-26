@@ -72,7 +72,6 @@
 }
 
 .btn-red {
-	border: 1px solid var(--primary-color);
 	border-radius: 15px;
 	font-weight: 500;
 	font-size: 18px;
@@ -86,9 +85,7 @@
 	@include adaptiv-value(padding-bottom, 20, 18, 1);
 
 	&:hover {
-		// border-color: var(--primary-color);
-		color: var(--primary-color);
-		background-color: var(--white);
+		background-color: #ff0b0b;
 	}
 }
 
@@ -109,7 +106,7 @@
 
 	&:hover {
 		// border-color: var(--white);
-		color: var(--white);
-		background-color: var(--primary-color);
+		// color: var(--white);
+		// background-color: var(--primary-color);
 	}
 }
