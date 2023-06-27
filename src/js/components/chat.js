@@ -8,7 +8,6 @@ import { addClass, closestElement, containsClass, removeClass, removeClassArray 
 import { resetMileage } from './mileage.js';
 import { resetOwner } from './owner.js';
 import { resetReport } from './report.js';
-import { blockVisibleAndBtnShowMore } from './visibleBlockAndBtnShowMore.js';
 import { resetYears } from './years.js';
 
 // ==============CHAT "GIGA"===================
@@ -75,7 +74,7 @@ const promoFooterInner = document.querySelector('.promo__footer-inner');
 const footer = document.querySelector('.footer');
 
 const showLastChat = chat => {
-	console.log(numberChat, 'show-chat');
+	// console.log(numberChat, 'show-chat');
 	setTimeout(() => {
 		addClass(chatBlock[1], 'msg-show'); // 6
 		addClass(chatBlock[2], 'msg-show'); // 7
@@ -144,7 +143,7 @@ const resetActiveAllBlock = currentNumber => {
 
 // =====ЛОГИКА ЧАТА2=====
 const chat2 = () => {
-	console.log(numberChat, 'numberChat');
+	// console.log(numberChat, 'numberChat');
 	processWork = true;
 	// получаем блок чата
 	// ====NOTE: chat=№
@@ -189,7 +188,7 @@ const chat2 = () => {
 	// ====если номер чата равен 6 (отчёт авто/report),
 	// то нужно показать эти блоки и выйти
 	if (numberChat === chatLength - 3) {
-		console.log('last');
+		// console.log('last');
 		showLastChat(chat);
 		setTimeout(() => {
 			processWork = false;
@@ -222,7 +221,7 @@ const chat2 = () => {
 	// ======NOTE: "блок с выборами"
 	if (msgBlockChoice) {
 		// ====NOTE: блок с выборами (choice)
-		console.log('choice');
+		// console.log('choice');
 
 		// блоки c вариантами выбора, за которыми нужно следить
 		// родитель блоков выбора
@@ -231,7 +230,7 @@ const chat2 = () => {
 		const blockChoiceAll = msgBlockChoice.querySelectorAll('.block-choice');
 
 		const blockChoiceClick = e => {
-			console.log(processWork, 'choice');
+			// console.log(processWork, 'choice');
 			// не фиксировать нажатия на кнопки slider'а
 			if (containsClass(e.target, 'choice-car__btn-next') || containsClass(e.target, 'choice-car__btn-prev')) {
 				return;
@@ -242,7 +241,7 @@ const chat2 = () => {
 			// если текущий чат совпадает с глобальным номером чата,
 			// то есть нажали на выбор в последнем доступном чате, то:
 			if (currentNumber === numberChat && block) {
-				console.log('currentNumber === numberChat');
+				// console.log('currentNumber === numberChat');
 				removeClassArray(blockChoiceAll, 'active');
 				// доб. класс active на нажатый выбор
 				addClass(block, 'active');
@@ -262,7 +261,7 @@ const chat2 = () => {
 				if (!processWork) {
 					// срабатывает когда нажимаешь на блок с выборами, на другой вариант
 					// и тогда удаляются все активные классы в других темах чата
-					console.log('заново choice');
+					// console.log('заново choice');
 					// ====скрываем сообщение ответ клиента:
 					removeClass(msgAnswer, 'msg-show');
 					msgAnswer.innerText = block.dataset.choice;
@@ -280,12 +279,12 @@ const chat2 = () => {
 						addClass(msgAnswer, 'msg-show');
 						// скролл до конца сообщения клиента
 						// прокрутка вниз, до сообщения с ответом клиента
-						console.log(currentNumber, 'last');
+						// console.log(currentNumber, 'last');
 						scrollEndChat();
 						// NOTE: должен же запускаться number= currentNumber+1
 						// запускаем секцию чата, в которой произошёл клик, заново
 						numberChat = currentNumber + 1;
-						console.log(numberChat, 'новый счёт');
+						// console.log(numberChat, 'новый счёт');
 						chat2();
 					}, 200);
 				} else return;
@@ -297,11 +296,11 @@ const chat2 = () => {
 
 	// ======NOTE: БЛОК MULTI
 	if (msgBlockMulti) {
-		console.log('multi');
+		// console.log('multi');
 
 		const btnContinue = chat.querySelector('.btn-continue');
 		const btnContinueClick = () => {
-			console.log(processWork, 'MULTI');
+			// console.log(processWork, 'MULTI');
 			if (currentNumber === numberChat) {
 				// ответ берём из data кнопки на которую нажали
 				msgAnswer.innerText = btnContinue.dataset.multi;
@@ -315,7 +314,7 @@ const chat2 = () => {
 				chat2();
 			} else {
 				if (!processWork) {
-					console.log('заново multi');
+					// console.log('заново multi');
 
 					// ====скрываем сообщение ответ клиента:
 					removeClass(msgAnswer, 'msg-show');
@@ -333,7 +332,7 @@ const chat2 = () => {
 
 						scrollEndChat();
 						numberChat = currentNumber + 1;
-						console.log(numberChat, 'новый счёт');
+						// console.log(numberChat, 'новый счёт');
 						// NOTE: должен же запускаться number= currentNumber+1
 						// запускаем секцию чата, в которой произошёл клик, заново
 						chat2();

@@ -126,14 +126,14 @@ const btnShowMoreClick = (blocksShow, countBlockVisible, textOpen, e) => {
 	const btnShowMoreText = eCurrentTarget.querySelector('.show-more-text');
 	toggleClass(eCurrentTarget, 'active');
 
-	console.log(containsClass(eCurrentTarget, 'active'));
+	// console.log(containsClass(eCurrentTarget, 'active'));
 	for (let i = countBlockVisible; i <= blocks.length; i++) {
 		containsClass(eCurrentTarget, 'active') ? addClass(blocks[i], 'isVisible') : removeClass(blocks[i], 'isVisible');
 	}
 
 	btnShowMoreText.innerText = containsClass(eCurrentTarget, 'active') ? 'Свернуть' : textOpen;
 	count++;
-	console.log(count);
+	// console.log(count);
 };
 
 // btnShowMore.addEventListener('click', btnShowMoreClick);

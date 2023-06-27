@@ -93,7 +93,7 @@ const yearsShowSelect = () => {
 			const optionContainsTo = containsClass(YearsOption.parentElement, 'select-to');
 			const checkboxBlocks = document.querySelectorAll('.years__checkbox-block'); // блоки checkbox с поколениями
 			if (containsClass(YearsOption, 'option')) {
-				console.log('option====', YearsOption);
+				// console.log('option====', YearsOption);
 				// count++;
 				const option = YearsOption.closest('.option');
 				addClass(option, 'active');
@@ -182,7 +182,7 @@ const yearsShowSelect = () => {
 				arrFrom = [checkboxFrom];
 				arrTo = [checkboxTo];
 				updateCheckboxClick(checkboxBlock);
-				console.log(selectFrom, '-', selectTo, 'active');
+				// console.log(selectFrom, '-', selectTo, 'active');
 			}
 			// убираем галочку
 			if (containsClass(checkboxBlock, 'active')) {
@@ -190,7 +190,7 @@ const yearsShowSelect = () => {
 				arrFrom = [];
 				arrTo = [];
 				updateCheckboxClick(checkboxBlock);
-				console.log(selectFrom, '-', selectTo, 'without active');
+				// console.log(selectFrom, '-', selectTo, 'without active');
 			}
 		}
 	};

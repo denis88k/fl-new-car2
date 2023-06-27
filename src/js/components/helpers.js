@@ -21,13 +21,7 @@ const removeClassArray = (elements, cls) => {
 const closestElement = (element, cls) => {
 	return element?.closest(`.${cls}`);
 };
-// msgBlock =chat__message-block-choice, chat__message-block
-// const resetAnswer = (cls, defaultAnswer, msgBlock) => {
-// 	const block = document.querySelector(`.${cls}__block`);
-// 	const chatMessageBlock = closestElement(block, msgBlock);
-// 	const answerMessage = chatMessageBlock.nextElementSibling;
-// 	answerMessage.innerText = defaultAnswer;
-// };
+
 const resetAnswer = (cls, defaultAnswer) => {
 	const block = document.querySelector(`.${cls}`);
 	const answerMessage = block.querySelector('.btn-continue');

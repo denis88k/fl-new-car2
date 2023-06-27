@@ -26,7 +26,7 @@ const mileageInput = () => {
 
 		// inputFrom > inputTo, то [inputFrom, inputTo] = [inputTo, inputFrom]
 		if (inputFrom > inputTo && inputTo !== 0) {
-			console.log('деструктуризация');
+			// console.log('деструктуризация');
 			[inputFrom, inputTo] = [inputTo, inputFrom];
 		}
 		// inputFrom < 100k, inputTo > 100k, то ничего
@@ -36,7 +36,7 @@ const mileageInput = () => {
 			(inputFrom === 100_000 && inputTo === 100_000) ||
 			(inputFrom === 0 && inputTo === 0)
 		) {
-			console.log('ни один из вариантов');
+			// console.log('ни один из вариантов');
 			// answerMessage.innerText = answerTextAny;
 			answerMessage.dataset.multi = answerTextAny;
 			return;
@@ -100,7 +100,7 @@ const mileageInput = () => {
 		// if (containsClass(blockTo, 'active')) {
 		if (blockTo) {
 			if (!containsClass(blockTo, 'active')) {
-				console.log(blockTo, 'blockTo');
+				// console.log(blockTo, 'blockTo');
 				if (containsClass(blockTo.nextElementSibling, 'active')) {
 					// console.log(1);
 					// answerMessage.innerText = answerTextAny;
@@ -125,26 +125,26 @@ const mileageInput = () => {
 
 		if (blockFrom) {
 			if (!containsClass(blockFrom, 'active')) {
-				console.log(blockFrom, 'blockFrom');
+				// console.log(blockFrom, 'blockFrom');
 
 				if (containsClass(blockFrom.previousElementSibling, 'active')) {
 					// answerMessage.innerText = answerTextAny;
 					answerMessage.dataset.multi = answerTextAny;
-					console.log(5);
+					// console.log(5);
 				} else {
 					// answerMessage.innerText = answerTextMore;
 					answerMessage.dataset.multi = answerTextMore;
-					console.log(6);
+					// console.log(6);
 				}
 			} else {
 				if (containsClass(blockFrom.previousElementSibling, 'active')) {
 					// answerMessage.innerText = answerTextLess;
 					answerMessage.dataset.multi = answerTextLess;
-					console.log(7);
+					// console.log(7);
 				} else {
 					// answerMessage.innerText = answerTextAny;
 					answerMessage.dataset.multi = answerTextAny;
-					console.log(8);
+					// console.log(8);
 				}
 			}
 		}
