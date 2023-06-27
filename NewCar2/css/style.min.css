@@ -2862,21 +2862,55 @@ body._lock {
   }
 }
 .choice-car__img {
+  width: 340px;
+  height: 275px;
+}
+.choice-car__swiper {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 340px;
+  height: 275px;
+}
+.choice-car__wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  display: flex;
   width: 100%;
-  max-width: 340px;
+  height: 100%;
 }
-@media screen and (max-width: 670px) {
-  .choice-car__img {
-    min-width: 100%;
-  }
+.choice-car__slide {
+  flex-grow: 1;
+  cursor: pointer;
 }
-.choice-car__img img {
+.choice-car__slide-img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.choice-car__slide-img img {
   border-radius: 20px;
   height: 100%;
   object-fit: cover;
 }
-.choice-car__slide {
-  height: 275px;
+.choice-car__slide:first-child .choice-car__slide-img {
+  z-index: -1;
+  opacity: 1;
+}
+.choice-car__slide:hover .choice-car__slide-img {
+  z-index: -1;
+  opacity: 1;
 }
 .choice-car__info {
   display: flex;

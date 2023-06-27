@@ -57,23 +57,25 @@ owner();
 // =============swiper============
 // ========= CHOICE-CAR ==========
 // слайдер в choice-car
-const swipersChoice = document.querySelectorAll('.choice-car__swiper');
-swipersChoice.forEach(swiperChoice => {
-	const swiper = new Swiper(swiperChoice, {
-		modules: [Navigation, Pagination],
-		loop: true,
-		pagination: {
-			el: '.choice-car__pagination',
-		},
-		navigation: {
-			nextEl: '.choice-car__btn-next',
-			prevEl: '.choice-car__btn-prev',
-		},
-	});
-});
+// const swipersChoice = document.querySelectorAll('.choice-car__swiper');
+// swipersChoice.forEach(swiperChoice => {
+// 	const swiperChc = new Swiper(swiperChoice, {
+// 		modules: [Navigation, Pagination],
+// 		loop: true,
+// 		pagination: {
+// 			el: '.choice-car__pagination',
+// 		},
+// 		navigation: {
+// 			nextEl: '.choice-car__btn-next',
+// 			prevEl: '.choice-car__btn-prev',
+// 		},
+// 	});
+// });
+
 // ==========================
 // NOTE: ========= REPORT =========
 // слайдер превью
+
 const swiperReportMini = document.querySelector('.report__swiper-mini');
 const swiperMini = new Swiper(swiperReportMini, {
 	loop: true,
@@ -93,6 +95,7 @@ const swiper = new Swiper(swiperReport, {
 		swiper: swiperMini,
 	},
 });
+export { swiperMini, swiper };
 // ===============================
 
 // ===========кнопка "показать все сведения" в секции report__info===========

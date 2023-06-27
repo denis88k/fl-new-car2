@@ -50,5 +50,7 @@ document.querySelectorAll('.form').forEach(form => {
 });
 
 // карта яндекс
-import init from './components/yMap.js';
+// import yandexiniti from './components/yMap.js';
+// ymaps3.ready.then(init);
 // ymaps.ready(init);
+// yandexiniti();
