@@ -52,14 +52,13 @@ const promoFooterInner = document.querySelector('.promo__footer-inner');
 const footer = document.querySelector('.footer');
 
 const showLastChat = chat => {
-	// console.log(numberChat, 'show-chat');
-
 	setTimeout(() => {
 		addClass(chatBlock[1], 'msg-show'); // 6
 		addClass(chatBlock[2], 'msg-show'); // 7
 		addClass(promoFooterInner, 'active');
 		addClass(footer, 'active');
 		scrollChat(chat);
+		resetReport();
 	}, 3800);
 };
 const hiddenLastChat = () => {
@@ -116,7 +115,6 @@ const resetActiveAllBlock = currentNumber => {
 		//  два последних чата и actual-promo и footer
 		if (i === chatLength - 3) {
 			hiddenLastChat();
-			resetReport();
 		}
 	}
 };
