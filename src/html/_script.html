@@ -2,8 +2,6 @@
 <script>
   function yandexiniti() {
     ymaps.ready(init);
-
-
     function init() {
       document.querySelectorAll('.ymaps-2-1-79-map').forEach(map => map.style.width = '100%');
       const iconimage_default =
@@ -21,8 +19,6 @@
       }, {
         suppressMapOpenBlock: true
       });
-
-
 
       const myPlacemark_1 = new ymaps.Placemark(center, {
         // Хинт показывается при наведении мышкой на иконку метки.

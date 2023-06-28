@@ -74,5 +74,5 @@ function initY() {
 	// placemark1.balloon.open(); // открытый балун с подсказкой
 }
 
-export default initY;
+// export default initY;
 // ymaps.ready(initY);

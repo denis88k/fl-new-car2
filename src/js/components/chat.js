@@ -3,7 +3,6 @@ import { resetMileage } from './mileage.js';
 import { resetOwner } from './owner.js';
 import { resetReport } from './report.js'; // из-за него лагает
 import { resetYears } from './years.js';
-import initY from './yMap.js';
 
 // =========скроллы========
 // скролл до начала сообщения от консультанта +10px вверх
@@ -61,7 +60,6 @@ const showLastChat = chat => {
 		addClass(promoFooterInner, 'active');
 		addClass(footer, 'active');
 		scrollChat(chat);
-		initY();
 	}, 3800);
 };
 const hiddenLastChat = () => {

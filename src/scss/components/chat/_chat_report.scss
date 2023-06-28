@@ -279,8 +279,6 @@
 	&__map {
 		display: flex;
 		flex-direction: column;
-		// width: 100%;
-		// max-width: 700px;
 		@include adaptiv-value(width, 700, 345, 1);
 	}
 
@@ -306,6 +304,7 @@
 // fancybox-carousel
 .f-thumbs__slide {
 	--f-thumb-gap: 5px;
+
 	// @include adaptiv-value(width, 95, 60, 1);
 	@include adaptiv-value(--f-thumb-width, 95, 60, 1);
 	@include adaptiv-value(height, 95, 60, 1);
