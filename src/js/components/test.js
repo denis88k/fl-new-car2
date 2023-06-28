@@ -1,9 +1,25 @@
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
 import { resetMileage } from './mileage.js';
 import { resetOwner } from './owner.js';
-import { resetReport } from './report.js'; // из-за него лагает
+import { resetReport } from './report.js';
 import { resetYears } from './years.js';
-import initY from './yMap.js';
+
+// ==============CHAT "GIGA"===================
+
+// resetMulti
+// 1 --- resetYears(); blockVisibleAndBtnShowMore('.years__checkbox-block', 6, '.years__show-more', '.years__show-more-text', 'Показать все поколения')
+// 2 --- resetMileage()
+// 3 --- resetOwner()
+// 6 --- blockVisibleAndBtnShowMore('.report__info-block', 3, '.report__info-btn', '', 'Показать все сведения');
+
+// чат
+// необходимые переменные:
+// номер чата --- numberChat
+// блок с чатом, который определяется от data-chat --- chat
+// блок с чатом -> блоки с вопросами
+// блок с чатом -> блок с выбором, которое появляется как сообщения чата --- msgBlocksChoiceElement
+// блок с выбором -> блоки для выбора --- blockChoiceElement
+// блок с выбором -> блоки для выбора -> выбранный блок добавляется класс active чтобы подсветить выбранный элемент
 
 // =========скроллы========
 // скролл до начала сообщения от консультанта +10px вверх
@@ -36,17 +52,15 @@ const scrollChat = chat => {
 // ===========сам GIGA CHATIC==========
 // необходим, т.к. будем сравнивать текущий чат, с другой относительной позицией чата, чтобы вернуться к прошлому чату
 let numberChat = 0;
-let animShowChat;
+let processWork;
 
 const chatMain = document.querySelector('.chat');
 const chats = document.querySelectorAll('.chat-messages');
 const chatLength = chats.length; // длина блоков чата 8
 
-// скролл к концу чата
 const scrollEndChat = () => {
 	chatMain.scrollIntoView(scrollIntoViewOptions);
 };
-
 // NOTE: последние чаты
 const chatBlock = chatMain.querySelectorAll('.chat__block');
 const promoFooterInner = document.querySelector('.promo__footer-inner');
@@ -54,14 +68,12 @@ const footer = document.querySelector('.footer');
 
 const showLastChat = chat => {
 	// console.log(numberChat, 'show-chat');
-
 	setTimeout(() => {
 		addClass(chatBlock[1], 'msg-show'); // 6
 		addClass(chatBlock[2], 'msg-show'); // 7
 		addClass(promoFooterInner, 'active');
 		addClass(footer, 'active');
 		scrollChat(chat);
-		initY();
 	}, 3800);
 };
 const hiddenLastChat = () => {
@@ -126,11 +138,10 @@ const resetActiveAllBlock = currentNumber => {
 // =====ЛОГИКА ЧАТА2=====
 const chat2 = () => {
 	// console.log(numberChat, 'numberChat');
-	animShowChat = true;
+	processWork = true;
 	// получаем блок чата
 	// ====NOTE: chat=№
-	// const chat = document.querySelector(`.chat-messages[data-chat="${numberChat}"]`);
-	const chat = chats[numberChat];
+	const chat = document.querySelector(`.chat-messages[data-chat="${numberChat}"]`);
 	// ====NOTE: chat__message-block====
 	// ====получаем кол-во блоков сообщений: анимация печати + вопрос консультанта
 	const msgBlocks = chat.querySelectorAll('.chat__message-block');
@@ -168,18 +179,17 @@ const chat2 = () => {
 		// итого время показа одного блока сообщений консультанта "2500+550=3050мс"
 	});
 
-	// ====NOTE: если номер чата равен 6 (отчёт авто/report),
+	// ====если номер чата равен 6 (отчёт авто/report),
 	// то нужно показать эти блоки и выйти
 	if (numberChat === chatLength - 3) {
 		// console.log('last');
 		showLastChat(chat);
 		setTimeout(() => {
-			animShowChat = false;
+			processWork = false;
 		});
 		return;
 	}
 
-	// NOTE: сообщения клиента
 	// сообщение ответ клиента
 	const msgAnswer = chat.querySelector('.chat__message-client');
 	// блок choice
@@ -199,7 +209,7 @@ const chat2 = () => {
 		});
 		// появление всех блоков завершено
 		setTimeout(() => {
-			animShowChat = false;
+			processWork = false;
 		});
 	}, 2500 * msgBlocks.length + 950);
 
@@ -215,11 +225,12 @@ const chat2 = () => {
 		const blockChoiceAll = msgBlockChoice.querySelectorAll('.block-choice');
 
 		const blockChoiceClick = e => {
-			// console.log(animShowChat, 'choice');
+			// console.log(processWork, 'choice');
 			// не фиксировать нажатия на кнопки slider'а
 			if (containsClass(e.target, 'choice-car__btn-next') || containsClass(e.target, 'choice-car__btn-prev')) {
 				return;
 			}
+
 			// блок на который нажали
 			const block = closestElement(e.target, 'block-choice');
 			// если текущий чат совпадает с глобальным номером чата,
@@ -242,7 +253,7 @@ const chat2 = () => {
 				// NOTE: когда меняем ответ в чате
 				// но нас не пустит, пока process work не станет === false
 				// он меняется выше, после появление последнего блока
-				if (!animShowChat && block) {
+				if (!processWork) {
 					// срабатывает когда нажимаешь на блок с выборами, на другой вариант
 					// и тогда удаляются все активные классы в других темах чата
 					// console.log('заново choice');
@@ -277,12 +288,14 @@ const chat2 = () => {
 
 		blocksChoice.addEventListener('click', blockChoiceClick);
 	}
+	// ============
+	// ======NOTE: БЛОК MULTI
 	if (msgBlockMulti) {
 		// console.log('multi');
 
 		const btnContinue = chat.querySelector('.btn-continue');
 		const btnContinueClick = () => {
-			// console.log(animShowChat, 'MULTI');
+			// console.log(processWork, 'MULTI');
 			if (currentNumber === numberChat) {
 				// ответ берём из data кнопки на которую нажали
 				msgAnswer.innerText = btnContinue.dataset.multi;
@@ -295,7 +308,7 @@ const chat2 = () => {
 				numberChat++;
 				chat2();
 			} else {
-				if (!animShowChat) {
+				if (!processWork) {
 					// console.log('заново multi');
 
 					// ====скрываем сообщение ответ клиента:
@@ -325,5 +338,4 @@ const chat2 = () => {
 		btnContinue.addEventListener('click', btnContinueClick);
 	}
 };
-
 export { chat2 };

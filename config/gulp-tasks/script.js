@@ -55,6 +55,7 @@ export const script = () => {
 						// },
 					],
 				},
+				resolve: { extensions: ['.js'] },
 				devtool: app.isDev ? 'source-map' : false,
 			}),
 			webpack,
