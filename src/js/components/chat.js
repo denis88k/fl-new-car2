@@ -261,7 +261,7 @@ const chat2 = () => {
 						// прокрутка вниз, до сообщения с ответом клиента
 						// console.log(currentNumber, 'last');
 						scrollEndChat();
-						// NOTE: должен же запускаться number= currentNumber+1
+						// NOTE:
 						// запускаем секцию чата, в которой произошёл клик, заново
 						numberChat = currentNumber + 1;
 						// console.log(numberChat, 'новый счёт');
@@ -311,7 +311,7 @@ const chat2 = () => {
 						scrollEndChat();
 						numberChat = currentNumber + 1;
 						// console.log(numberChat, 'новый счёт');
-						// NOTE: должен же запускаться number= currentNumber+1
+						// NOTE:
 						// запускаем секцию чата, в которой произошёл клик, заново
 						chat2();
 					}, 200);

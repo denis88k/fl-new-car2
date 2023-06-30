@@ -14,7 +14,6 @@ const mileageInput = () => {
 	const answerTextAny = 'Любой пробег';
 
 	const chatMessageBlock = closestElement(mileageInputs, 'chat__message-block');
-	// const answerMessage = chatMessageBlock.nextElementSibling;
 	const answerMessage = chatMessageBlock.querySelector('.btn-continue');
 	answerMessage.dataset.multi = 'Любой пробег';
 
@@ -37,7 +36,6 @@ const mileageInput = () => {
 			(inputFrom === 0 && inputTo === 0)
 		) {
 			// console.log('ни один из вариантов');
-			// answerMessage.innerText = answerTextAny;
 			answerMessage.dataset.multi = answerTextAny;
 			return;
 		}
@@ -79,13 +77,11 @@ const mileageInput = () => {
 
 		if (isMore100()) {
 			addClass(mileageCheckboxBlocks[1], 'active');
-			// answerMessage.innerText = answerTextMore;
 			answerMessage.dataset.multi = answerTextMore;
 			// console.log('isMore100');
 		}
 		if (isLess100()) {
 			addClass(mileageCheckboxBlocks[0], 'active');
-			// answerMessage.innerText = answerTextLess;
 			answerMessage.dataset.multi = answerTextLess;
 			// console.log('isLess100');
 		}
@@ -97,26 +93,21 @@ const mileageInput = () => {
 		const blockTo = closestElement(e.target, 'mileage__checkbox-block[data-value="to"]');
 		const blockFrom = closestElement(e.target, 'mileage__checkbox-block[data-value="from"]');
 		// console.log(e.target);
-		// if (containsClass(blockTo, 'active')) {
 		if (blockTo) {
 			if (!containsClass(blockTo, 'active')) {
 				// console.log(blockTo, 'blockTo');
 				if (containsClass(blockTo.nextElementSibling, 'active')) {
 					// console.log(1);
-					// answerMessage.innerText = answerTextAny;
 					answerMessage.dataset.multi = answerTextAny;
 				} else {
 					// console.log(2);
-					// answerMessage.innerText = answerTextLess;
 					answerMessage.dataset.multi = answerTextLess;
 				}
 			} else {
 				if (containsClass(blockTo.nextElementSibling, 'active')) {
-					// answerMessage.innerText = answerTextMore;
 					answerMessage.dataset.multi = answerTextMore;
 					// console.log(3);
 				} else {
-					// answerMessage.innerText = answerTextAny;
 					answerMessage.dataset.multi = answerTextAny;
 					// console.log(4);
 				}
@@ -126,23 +117,18 @@ const mileageInput = () => {
 		if (blockFrom) {
 			if (!containsClass(blockFrom, 'active')) {
 				// console.log(blockFrom, 'blockFrom');
-
 				if (containsClass(blockFrom.previousElementSibling, 'active')) {
-					// answerMessage.innerText = answerTextAny;
 					answerMessage.dataset.multi = answerTextAny;
 					// console.log(5);
 				} else {
-					// answerMessage.innerText = answerTextMore;
 					answerMessage.dataset.multi = answerTextMore;
 					// console.log(6);
 				}
 			} else {
 				if (containsClass(blockFrom.previousElementSibling, 'active')) {
-					// answerMessage.innerText = answerTextLess;
 					answerMessage.dataset.multi = answerTextLess;
 					// console.log(7);
 				} else {
-					// answerMessage.innerText = answerTextAny;
 					answerMessage.dataset.multi = answerTextAny;
 					// console.log(8);
 				}
@@ -155,12 +141,7 @@ const resetMileage = () => {
 	document.querySelector('.input-from').value = '';
 	document.querySelector('.input-to').value = '';
 	removeClassArray(document.querySelectorAll('.mileage__checkbox-block'), 'active');
-	// resetAnswer('mileage', 'Любой пробег', 'chat__message-block');
 	resetAnswer('mileage__block', 'Любой пробег');
-	// const mileageInputs = document.querySelector('.mileage__inputs');
-	// const chatMessageBlock = closestElement(mileageInputs, 'chat__message-block');
-	// const answerMessage = chatMessageBlock.nextElementSibling;
-	// answerMessage.innerText = 'Любой пробег';
 };
 
 export { mileageInput, resetMileage };

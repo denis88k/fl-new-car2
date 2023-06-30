@@ -24,25 +24,15 @@ const modal = (btnOpen, modal, btnClose) => {
 		e.preventDefault();
 		addClass(body, '_lock');
 		addClass(modal, 'active');
-		// body.classList.add('_lock');
-		// modal.classList.add('active');
 	});
 	// закрытие модального окна: по кнопке
 	btnClose?.addEventListener('click', () => {
-		// removeClass(body, '_lock')
-		// removeClass(modal, 'active')
-		// body.classList.remove('_lock');
-		// modal.classList.remove('active');
-		// modalErrorDelete(modal);
 		removeActiveClassModal();
 	});
 	// закрытие модального окна: по области вокруг модального окна
 	modal?.addEventListener('click', e => {
 		if (e.target === modal) {
 			removeActiveClassModal();
-			// body.classList.remove('_lock');
-			// modal.classList.remove('active');
-			// modalErrorDelete(modal);
 		}
 	});
 };

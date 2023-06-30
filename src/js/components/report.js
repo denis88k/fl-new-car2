@@ -23,9 +23,6 @@ if (reportSlideImg.dataset.lazySrc) {
 
 const resetReport = () => {
 	const textVisible = 'Показать все сведения';
-	// swiperMini.update();
-	// swiper.update();
-	// sliderCarMain.reInit();
 	blockVisible('.report__info-block', '.report__info-btn', 3, textVisible);
 };
 
