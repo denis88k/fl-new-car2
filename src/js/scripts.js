@@ -53,30 +53,9 @@ owner();
 
 // // ==========================
 // // NOTE: ========= REPORT =========
-// =========слайдеры=========
-// слайдер превью
-// const swiperReportMini = document.querySelector('.report__swiper-mini');
-// const swiperMini = new Swiper(swiperReportMini, {
-// 	loop: true,
-// 	freeMode: true,
-// 	slidesPerView: 'auto',
-// });
-// слайдер в report
-// const swiperReport = document.querySelector('.report__swiper');
-
-// console.log(swiperReport);
-// new Swiper(swiperReport, {
-// 	// modules: [Navigation, Thumbs],
-// 	// loop: true,
-// 	// navigation: {
-// 	// 	nextEl: '.report__btn-next',
-// 	// 	prevEl: '.report__btn-prev',
-// 	// },
-// 	thumbs: {
-// 		// swiper: swiperMini,
-// 	},
-// });
 
 // // ===========кнопка "показать все сведения" в секции report__info===========
 blockVisible('.report__info-block', '.report__info-btn', 3, 'Показать все сведения');
 document.querySelector('.report__info-btn').addEventListener('click', btnShowMoreClick.bind(null, '.report__info-block', 3, 'Показать все сведения'));
+// // для обнуления вызывать: =>
+// resetReport()
