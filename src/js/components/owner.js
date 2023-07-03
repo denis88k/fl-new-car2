@@ -14,9 +14,11 @@ const owner = () => {
 				arrOwner.push(block.dataset.owner);
 			}
 		});
-		if (arrOwner.length < 3) {
+		if (arrOwner.length < 3 && arrOwner.length !== 0) {
+			console.log(arrOwner.length);
 			answerMessage.dataset.multi = arrOwner.join(', ');
-		} else {
+		}
+		if (arrOwner.length === 0) {
 			answerMessage.dataset.multi = 'Любое количество';
 		}
 	});
