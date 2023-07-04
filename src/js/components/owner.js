@@ -5,9 +5,11 @@ const owner = () => {
 	const chatMessageBlock = closestElement(ownerBlock, 'chat__message-block');
 	const answerMessage = chatMessageBlock.querySelector('.btn-continue');
 	const ownerCheckboxBlock = document.querySelector('.owner__checkbox');
-	answerMessage.dataset.multi = 'Любое количество';
+	const answerTextAny = 'Любое количество';
+	answerMessage.dataset.multi = answerTextAny;
 	let arrOwner = [];
-	ownerCheckboxBlock.addEventListener('click', e => {
+	// let count = 0;
+	ownerCheckboxBlock.addEventListener('click', () => {
 		arrOwner = [];
 		document.querySelectorAll('.owner__checkbox-block').forEach(block => {
 			if (containsClass(block, 'active')) {
@@ -15,12 +17,16 @@ const owner = () => {
 			}
 		});
 		if (arrOwner.length < 3 && arrOwner.length !== 0) {
-			console.log(arrOwner.length);
 			answerMessage.dataset.multi = arrOwner.join(', ');
+			return;
 		}
-		if (arrOwner.length === 0) {
-			answerMessage.dataset.multi = 'Любое количество';
+		if (arrOwner.length === 0 || arrOwner.length === 3) {
+			answerMessage.dataset.multi = answerTextAny;
+			return;
 		}
+		// count++;
+		// console.log(count, 'count');
+		// console.log(arrOwner.length, 'владельцы');
 	});
 };
 
