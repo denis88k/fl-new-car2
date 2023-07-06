@@ -14,16 +14,16 @@ window.addEventListener('scroll', stickyConsultant);
 // ========================================
 
 // NOTE: =================YEARS===============
-yearsShowSelect();
+//* yearsShowSelect();
 // ====== обнуление инпута года выпуска/поколений ======
 // // resetYears()
 // ====== блоки с выбором года выпуска (поколений) ======
-checkboxComponent('years');
+//* checkboxComponent('years');
 // ====КНОПКА "ПОКАЗАТЬ ВСЕ ПОКОЛЕНИЯ"=====
-blockVisible('.years__checkbox-block', '.years__show-more', 6, 'Показать все поколения');
-document
-	.querySelector('.years__show-more')
-	.addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, 'Показать все поколения'));
+//* blockVisible('.years__checkbox-block', '.years__show-more', 6, 'Показать все поколения');
+//* document
+//* 	.querySelector('.years__show-more')
+//* 	.addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, 'Показать все поколения'));
 
 // // ======обнуление кнопки "ПОКАЗАТЬ ВСЕ ПОКОЛЕНИЯ"======
 // // для обнуления вызывать: =>
@@ -32,25 +32,25 @@ document
 
 // // NOTE: ===========ПРОБЕГ (mileage)========
 // // ===========INPUT ПРОБЕГА===========
-mileageInput();
+// mileageInput();
 // // ======CHECKBOX ПРОБЕГА======
-checkboxComponent('mileage');
+// checkboxComponent('mileage');
 // // ======обнуление инпута пробега======
 // // resetMileage()
 // // ==================================
 
 // // NOTE: ===========ВЛАДЕЛЕЦ (owner)===========
 // // ======CHECKBOX владелец======
-checkboxComponent('owner');
+// checkboxComponent('owner');
 // // ======ответ сообщений владелец======
-owner();
+// owner();
 // // для обнуления вызывать: =>
 // // resetOwner()
 // // ================================
 
 // // NOTE: ========CHOICE CAR=============
 // // =============swiper============
-
+// заменён на fancy box-carousel
 // // ==========================
 // // NOTE: ========= REPORT =========
 

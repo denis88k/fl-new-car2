@@ -1,8 +1,10 @@
+import { checkboxComponent } from './checkbox.js';
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
-import { resetMileage } from './mileage.js';
-import { resetOwner } from './owner.js';
+import { mileageInput, resetMileage } from './mileage.js';
+import { owner, resetOwner } from './owner.js';
 import { resetReport } from './report.js'; // из-за него лагает
-import { resetYears } from './years.js';
+import { blockVisible, btnShowMoreClick } from './visibleBlockAndBtnShowMore.js';
+import { resetYears, yearsShowSelect } from './years.js';
 
 // =========скроллы========
 // скролл до начала сообщения от консультанта +10px вверх
@@ -95,16 +97,30 @@ const resetActiveAllBlock = currentNumber => {
 			BlocksChoice && removeClassArray(BlocksChoice, 'active');
 		}
 		// NOTE: блок MULTi
-		if (chats[i].querySelector('.chat__choice-multi')) {
-			switch (i) {
-				case 1:
-					resetYears();
-				case 2:
-					resetMileage();
-				case 3:
-					resetOwner();
-				case 5:
+		const msgBlockMulti = chats[i].querySelector('.chat__choice-multi');
+		if (msgBlockMulti) {
+			console.log(msgBlockMulti);
+			if (msgBlockMulti.querySelector('.years__block')) {
+				console.log('years__block');
+				resetYears();
 			}
+			if (msgBlockMulti.querySelector('.mileage__block')) {
+				console.log('mileage__block');
+				resetMileage();
+			}
+			if (msgBlockMulti.querySelector('.owner__block')) {
+				console.log('owner__block');
+				resetOwner();
+			}
+			// switch (i) {
+			// 	case 1:
+			// 		resetYears();
+			// 	case 2:
+			// 		resetMileage();
+			// 	case 3:
+			// 		resetOwner();
+			// 	case 5:
+			// }
 		}
 
 		// сообщение ответа клиента
@@ -130,6 +146,8 @@ const chat2 = () => {
 	// ====NOTE: chat__message-block====
 	// ====получаем кол-во блоков сообщений: анимация печати + вопрос консультанта
 	const msgBlocks = chat.querySelectorAll('.chat__message-block');
+	// блок multi
+	const msgBlockMulti = chat.querySelector('.chat__choice-multi');
 	// показ сообщений консультанта
 	msgBlocks.forEach((msgBlock, index) => {
 		// анимация печатания
@@ -163,6 +181,29 @@ const chat2 = () => {
 		//						--- 2500 - время удаления + появления вопроса консультанта
 		// итого время показа одного блока сообщений консультанта "2500+550=3050мс"
 	});
+	setTimeout(() => {
+		if (msgBlockMulti) {
+			if (msgBlockMulti.querySelector('.years__block')) {
+				console.log('years__block');
+				yearsShowSelect();
+				checkboxComponent('years');
+				blockVisible('.years__checkbox-block', '.years__show-more', 6, 'Показать все поколения');
+				document
+					.querySelector('.years__show-more')
+					.addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, 'Показать все поколения'));
+			}
+			if (msgBlockMulti.querySelector('.mileage__block')) {
+				console.log('mileage__block');
+				mileageInput();
+				checkboxComponent('mileage');
+			}
+			if (msgBlockMulti.querySelector('.owner__block')) {
+				console.log('owner__block');
+				checkboxComponent('owner');
+				owner();
+			}
+		}
+	}, msgBlocks.length * 2500 + 700);
 
 	// ====NOTE: если номер чата равен 6 (отчёт авто/report),
 	// то нужно показать эти блоки и выйти
@@ -180,8 +221,6 @@ const chat2 = () => {
 	const msgAnswer = chat.querySelector('.chat__message-client');
 	// блок choice
 	const msgBlockChoice = chat.querySelector('.chat__message-block-choice');
-	// блок multi
-	const msgBlockMulti = chat.querySelector('.chat__choice-multi');
 
 	// ====текущий чат, эта переменная необходима, чтобы она замкнулась в прослушке функции следящая за блоком выборов и для блоков с multi
 	const currentNumber = Number(chat.dataset.chat);
@@ -264,7 +303,7 @@ const chat2 = () => {
 						// NOTE:
 						// запускаем секцию чата, в которой произошёл клик, заново
 						numberChat = currentNumber + 1;
-						// console.log(numberChat, 'новый счёт');
+						console.log(numberChat, 'новый счёт choice');
 						chat2();
 					}, 200);
 				} else return;
@@ -310,7 +349,7 @@ const chat2 = () => {
 
 						scrollEndChat();
 						numberChat = currentNumber + 1;
-						// console.log(numberChat, 'новый счёт');
+						console.log(numberChat, 'новый счёт multi');
 						// NOTE:
 						// запускаем секцию чата, в которой произошёл клик, заново
 						chat2();

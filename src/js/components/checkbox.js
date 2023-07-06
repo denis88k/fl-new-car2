@@ -9,6 +9,7 @@ const checkboxComponent = block => {
 			// console.log('вне componentCheckboxBlock');
 			return;
 		}
+		console.log(componentCheckboxBlock, 'checkbox');
 		toggleClass(componentCheckboxBlock, 'active');
 	});
 };

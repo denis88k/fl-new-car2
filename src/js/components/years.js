@@ -206,7 +206,7 @@ const resetYears = () => {
 		removeClass(selectInput, 'active');
 		const selector = selectInput.nextElementSibling;
 		removeClass(selector, 'active');
-		const option = selector.querySelectorAll('option');
+		const option = selector.querySelectorAll('.option');
 		removeClassArray(option, 'active');
 	});
 	document.querySelector('.select-from>.clear').click();
