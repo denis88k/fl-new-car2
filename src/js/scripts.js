@@ -1,10 +1,9 @@
 import { chat2 } from './components/chat.js';
-import { checkboxComponent } from './components/checkbox.js';
-import { mileageInput } from './components/mileage.js';
-import { owner } from './components/owner.js';
+import { mileageInit } from './components/mileage.js';
+import { ownerInit } from './components/owner.js';
 import stickyConsultant from './components/stickyConsultant.js';
 import { blockVisible, btnShowMoreClick } from './components/visibleBlockAndBtnShowMore.js';
-import { yearsShowSelect } from './components/years.js';
+import { yearsInit } from './components/years.js';
 
 // NOTE:===========CHAT start===========
 chat2();
@@ -14,6 +13,8 @@ window.addEventListener('scroll', stickyConsultant);
 // ========================================
 
 // NOTE: =================YEARS===============
+
+yearsInit();
 //* yearsShowSelect();
 // ====== обнуление инпута года выпуска/поколений ======
 // // resetYears()
@@ -32,6 +33,7 @@ window.addEventListener('scroll', stickyConsultant);
 
 // // NOTE: ===========ПРОБЕГ (mileage)========
 // // ===========INPUT ПРОБЕГА===========
+mileageInit();
 // mileageInput();
 // // ======CHECKBOX ПРОБЕГА======
 // checkboxComponent('mileage');
@@ -40,6 +42,7 @@ window.addEventListener('scroll', stickyConsultant);
 // // ==================================
 
 // // NOTE: ===========ВЛАДЕЛЕЦ (owner)===========
+ownerInit();
 // // ======CHECKBOX владелец======
 // checkboxComponent('owner');
 // // ======ответ сообщений владелец======
@@ -55,7 +58,9 @@ window.addEventListener('scroll', stickyConsultant);
 // // NOTE: ========= REPORT =========
 
 // // ===========кнопка "показать все сведения" в секции report__info===========
-blockVisible('.report__info-block', '.report__info-btn', 3, 'Показать все сведения');
-document.querySelector('.report__info-btn').addEventListener('click', btnShowMoreClick.bind(null, '.report__info-block', 3, 'Показать все сведения'));
+const textVisible = 'Показать все сведения';
+blockVisible('.report__info-block', '.report__info-btn', 3, textVisible);
 // // для обнуления вызывать: =>
 // resetReport()
+
+document.querySelector('.report__info-btn').addEventListener('click', btnShowMoreClick.bind(null, '.report__info-block', 3, 'Показать все сведения'));

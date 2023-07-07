@@ -1,10 +1,8 @@
-import { checkboxComponent } from './checkbox.js';
 import { addClass, closestElement, containsClass, removeClass, removeClassArray } from './helpers.js';
-import { mileageInput, resetMileage } from './mileage.js';
-import { owner, resetOwner } from './owner.js';
-import { resetReport } from './report.js'; // из-за него лагает
-import { blockVisible, btnShowMoreClick } from './visibleBlockAndBtnShowMore.js';
-import { resetYears, yearsShowSelect } from './years.js';
+import { mileageDefaultState } from './mileage.js';
+import { ownerDefaultState } from './owner.js';
+import { resetReport } from './report.js'; // из-за него лагало
+import { yearsDefaultState } from './years.js';
 
 // =========скроллы========
 // скролл до начала сообщения от консультанта +10px вверх
@@ -97,31 +95,23 @@ const resetActiveAllBlock = currentNumber => {
 			BlocksChoice && removeClassArray(BlocksChoice, 'active');
 		}
 		// NOTE: блок MULTi
-		const msgBlockMulti = chats[i].querySelector('.chat__choice-multi');
-		if (msgBlockMulti) {
-			console.log(msgBlockMulti);
-			if (msgBlockMulti.querySelector('.years__block')) {
-				console.log('years__block');
-				resetYears();
-			}
-			if (msgBlockMulti.querySelector('.mileage__block')) {
-				console.log('mileage__block');
-				resetMileage();
-			}
-			if (msgBlockMulti.querySelector('.owner__block')) {
-				console.log('owner__block');
-				resetOwner();
-			}
-			// switch (i) {
-			// 	case 1:
-			// 		resetYears();
-			// 	case 2:
-			// 		resetMileage();
-			// 	case 3:
-			// 		resetOwner();
-			// 	case 5:
-			// }
-		}
+		// const msgBlockMulti = chats[i].querySelector('.chat__choice-multi');
+		// if (msgBlockMulti) {
+		// 	console.log(msgBlockMulti);
+		// 	if (msgBlockMulti.querySelector('.years__block')) {
+		// 		console.log('years__block reset');
+		// 		// resetYears();
+		// 	}
+		// 	if (msgBlockMulti.querySelector('.mileage__block')) {
+		// 		console.log('mileage__block reset');
+		// 		// resetMileage();
+		// 	}
+		// 	if (msgBlockMulti.querySelector('.owner__block')) {
+		// 		console.log('owner__block reset');
+		// 		// resetOwner();
+		// 	}
+
+		// }
 
 		// сообщение ответа клиента
 		const msgClient = chats[i].querySelector('.chat__message-client');
@@ -181,26 +171,20 @@ const chat2 = () => {
 		//						--- 2500 - время удаления + появления вопроса консультанта
 		// итого время показа одного блока сообщений консультанта "2500+550=3050мс"
 	});
+	// NOTE: ===========DefaultState ==============
 	setTimeout(() => {
 		if (msgBlockMulti) {
 			if (msgBlockMulti.querySelector('.years__block')) {
-				console.log('years__block');
-				yearsShowSelect();
-				checkboxComponent('years');
-				blockVisible('.years__checkbox-block', '.years__show-more', 6, 'Показать все поколения');
-				document
-					.querySelector('.years__show-more')
-					.addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, 'Показать все поколения'));
+				// console.log('years__block init');
+				yearsDefaultState();
 			}
 			if (msgBlockMulti.querySelector('.mileage__block')) {
-				console.log('mileage__block');
-				mileageInput();
-				checkboxComponent('mileage');
+				// console.log('mileage__block init');
+				mileageDefaultState();
 			}
 			if (msgBlockMulti.querySelector('.owner__block')) {
-				console.log('owner__block');
-				checkboxComponent('owner');
-				owner();
+				// console.log('owner__block init');
+				ownerDefaultState();
 			}
 		}
 	}, msgBlocks.length * 2500 + 700);
@@ -303,7 +287,7 @@ const chat2 = () => {
 						// NOTE:
 						// запускаем секцию чата, в которой произошёл клик, заново
 						numberChat = currentNumber + 1;
-						console.log(numberChat, 'новый счёт choice');
+						// console.log(numberChat, 'новый счёт choice');
 						chat2();
 					}, 200);
 				} else return;
@@ -349,7 +333,7 @@ const chat2 = () => {
 
 						scrollEndChat();
 						numberChat = currentNumber + 1;
-						console.log(numberChat, 'новый счёт multi');
+						// console.log(numberChat, 'новый счёт multi');
 						// NOTE:
 						// запускаем секцию чата, в которой произошёл клик, заново
 						chat2();

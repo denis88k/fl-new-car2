@@ -1,5 +1,6 @@
-import { addClass, closestElement, containsClass, removeClass, removeClassArray, toggleClass } from './helpers.js';
-import { blockVisible } from './visibleBlockAndBtnShowMore.js';
+import { checkboxComponent } from './checkbox.js';
+import { addClass, closestElement, containsClass, removeClass, removeClassArray, resetAnswer, toggleClass } from './helpers.js';
+import { blockVisible, btnShowMoreClick } from './visibleBlockAndBtnShowMore.js';
 
 const yearsShowSelect = () => {
 	let selectFrom = 0;
@@ -201,7 +202,14 @@ const yearsShowSelect = () => {
 	});
 };
 
-const resetYears = () => {
+const yearsInit = () => {
+	yearsShowSelect();
+	checkboxComponent('years');
+	const textOpen = 'Показать все поколения';
+	document.querySelector('.years__show-more').addEventListener('click', btnShowMoreClick.bind(null, '.years__checkbox-block', 6, textOpen));
+};
+
+const yearsDefaultState = () => {
 	document.querySelectorAll('.years__input').forEach(selectInput => {
 		removeClass(selectInput, 'active');
 		const selector = selectInput.nextElementSibling;
@@ -213,8 +221,13 @@ const resetYears = () => {
 	document.querySelector('.select-to>.clear').click();
 
 	const textOpen = 'Показать все поколения';
-
 	blockVisible('.years__checkbox-block', '.years__show-more', 6, textOpen);
+	resetAnswer('years__block', 'Любой год');
 };
 
-export { resetYears, yearsShowSelect };
+// const resetYears = () => {
+// const textOpen = 'Показать все поколения';
+// blockVisible('.years__checkbox-block', '.years__show-more', 6, textOpen);
+// };
+
+export { yearsDefaultState, yearsInit, yearsShowSelect };

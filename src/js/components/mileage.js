@@ -1,3 +1,4 @@
+import { checkboxComponent } from './checkbox.js';
 import { addClass, closestElement, containsClass, removeClassArray, resetAnswer } from './helpers.js';
 
 const mileageInput = () => {
@@ -137,11 +138,18 @@ const mileageInput = () => {
 	});
 };
 
-const resetMileage = () => {
+const mileageInit = () => {
+	mileageInput();
+	checkboxComponent('mileage');
+};
+
+// const resetMileage = () => {
+const mileageDefaultState = () => {
 	document.querySelector('.input-from').value = '';
 	document.querySelector('.input-to').value = '';
 	removeClassArray(document.querySelectorAll('.mileage__checkbox-block'), 'active');
+
 	resetAnswer('mileage__block', 'Любой пробег');
 };
 
-export { mileageInput, resetMileage };
+export { mileageInit, mileageInput, mileageDefaultState };

@@ -1,3 +1,4 @@
+import { checkboxComponent } from './checkbox.js';
 import { closestElement, containsClass, removeClassArray, resetAnswer } from './helpers.js';
 
 const owner = () => {
@@ -9,8 +10,20 @@ const owner = () => {
 	answerMessage.dataset.multi = answerTextAny;
 	let arrOwner = [];
 	// let count = 0;
-	ownerCheckboxBlock.addEventListener('click', () => {
+	ownerCheckboxBlock.addEventListener('click', e => {
 		arrOwner = [];
+		// console.log(e.target);
+		// const checkbox = closestElement(e.target, 'owner__checkbox-block');
+		// if (checkbox) {
+		// 	console.log(checkbox.classList);
+		// 	setTimeout(() => {});
+		// 	document.querySelectorAll('.owner__checkbox-block').forEach(block => {
+		// 		// console.log(block.classList);
+		// 	});
+		// }
+		// console.log(containsClass(checkbox, 'active'));
+		// console.log(checkbox);
+
 		document.querySelectorAll('.owner__checkbox-block').forEach(block => {
 			if (containsClass(block, 'active')) {
 				arrOwner.push(block.dataset.owner);
@@ -30,9 +43,16 @@ const owner = () => {
 	});
 };
 
-const resetOwner = () => {
+const ownerInit = () => {
+	checkboxComponent('owner');
+	owner();
+};
+
+// const resetOwner = () => {
+const ownerDefaultState = () => {
 	removeClassArray(document.querySelectorAll('.owner__checkbox-block'), 'active');
+
 	resetAnswer('owner__block', 'Любое количество');
 };
 
-export { owner, resetOwner };
+export { owner, ownerInit, ownerDefaultState };
