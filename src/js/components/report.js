@@ -16,12 +16,19 @@ const options = {
 };
 let sliderCarMain;
 
+const sliderStart = () => {
+	const sliderCarousel = document.querySelector('.report__wrapper');
+	new Carousel(sliderCarousel, options, { Thumbs });
+};
 // если есть картинка при первой загрузки страницы, то инициализируется слайдер
+// для git
 if (reportSlideImg.dataset.lazySrc) {
 	sliderCarMain = new Carousel(sliderCarousel, options, { Thumbs });
 }
 
 const resetReport = () => {
+	// для prod
+	// sliderStart();
 	const textVisible = 'Показать все сведения';
 	blockVisible('.report__info-block', '.report__info-btn', 3, textVisible);
 };

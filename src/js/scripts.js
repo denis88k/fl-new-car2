@@ -1,6 +1,7 @@
 import { chat2 } from './components/chat.js';
 import { mileageInit } from './components/mileage.js';
 import { ownerInit } from './components/owner.js';
+// import { sliderMethod } from './components/report.js';
 import stickyConsultant from './components/stickyConsultant.js';
 import { blockVisible, btnShowMoreClick } from './components/visibleBlockAndBtnShowMore.js';
 import { yearsInit } from './components/years.js';
@@ -54,6 +55,7 @@ ownerInit();
 // // NOTE: ========CHOICE CAR=============
 // // =============swiper============
 // заменён на fancy box-carousel
+// sliderMethod.init();
 // // ==========================
 // // NOTE: ========= REPORT =========
 

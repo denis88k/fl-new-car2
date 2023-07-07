@@ -57,8 +57,8 @@ const showLastChat = chat => {
 		addClass(chatBlock[2], 'msg-show'); // 7
 		addClass(promoFooterInner, 'active');
 		addClass(footer, 'active');
-		scrollChat(chat);
 		resetReport();
+		scrollChat(chat);
 	}, 3800);
 };
 const hiddenLastChat = () => {
